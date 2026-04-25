@@ -1,0 +1,178 @@
+{
+  "business": {
+    "name": "Brooklyn Services Limited",
+    "location": "Christchurch, Canterbury, New Zealand",
+    "service_area": ["Christchurch", "Canterbury", "South Island"],
+    "services": [
+      "Plumbing",
+      "Drainage",
+      "Utility Locating",
+      "Leak Detection"
+    ]
+  },
+  "target_keywords": {
+    "primary": [
+      "plumber Christchurch",
+      "plumbing services Canterbury",
+      "drainlayer Christchurch",
+      "blocked drain clearing Christchurch",
+      "leak detection Christchurch",
+      "utility locating Christchurch",
+      "emergency plumber Christchurch",
+      "hot water cylinder repair Christchurch"
+    ],
+    "secondary": [
+      "licensed plumber Christchurch",
+      "drainage solutions Canterbury",
+      "septic tank installation Christchurch",
+      "CCTV drain inspection Christchurch",
+      "gas plumber Christchurch",
+      "commercial plumbing Canterbury",
+      "residential plumbing Christchurch",
+      "bathroom renovation plumbing",
+      "kitchen plumbing Christchurch",
+      "water leak detection Canterbury"
+    ],
+    "long_tail": [
+      "same day emergency plumber Christchurch",
+      "no call out fee plumber Christchurch",
+      "Rinnai hot water cylinder service Christchurch",
+      "50 years experience plumbers Christchurch",
+      "Summerset village plumbing contractor",
+      "Ryman healthcare plumbing services",
+      "underground utility locating Canterbury",
+      "GPR ground penetrating radar Christchurch",
+      "acoustic leak detection Christchurch",
+      "thermal imaging leak detection Canterbury"
+    ]
+  },
+  "local_seo": {
+    "google_business_profile": {
+      "name": "Brooklyn Services Limited",
+      "category": "Plumber",
+      "additional_categories": [
+        "Drainage Service",
+        "Leak Detection Service",
+        "Utility Locator"
+      ],
+      "address": "96b Carmen Rd, Hei Hei, Christchurch 8042",
+      "service_areas": [
+        "Christchurch",
+        "Hei Hei",
+        "Hoon Hay",
+        "Cashmere",
+        "Halswell",
+        "Rolleston",
+        "Rangiora",
+        "Kaiapoi",
+        "Canterbury Region"
+      ]
+    },
+    "local_citations": [
+      "Yellow NZ",
+      "Finda",
+      "NZ Plumbers Directory",
+      "NoCowboys",
+      "BuildersCrack"
+    ]
+  },
+  "content_strategy": {
+    "pillars": [
+      {
+        "pillar": "Service Information",
+        "content_types": [
+          "Service pages for each offering",
+          "Process explanations",
+          "FAQ sections",
+          "Pricing guides"
+        ]
+      },
+      {
+        "pillar": "Educational Content",
+        "content_types": [
+          "How-to guides",
+          "Maintenance tips",
+          "Problem identification",
+          "Prevention advice"
+        ]
+      },
+      {
+        "pillar": "Local Authority",
+        "content_types": [
+          "Canterbury-specific advice",
+          "Local water quality info",
+          "Christchurch council requirements",
+          "Regional considerations"
+        ]
+      },
+      {
+        "pillar": "Trust Building",
+        "content_types": [
+          "About company",
+          "Team profiles",
+          "Case studies",
+          "Customer testimonials",
+          "Credentials and certifications"
+        ]
+      }
+    ],
+    "content_calendar": {
+      "frequency": "2-4 blog posts per month",
+      "topics": [
+        "Seasonal plumbing tips",
+        "Common problems and solutions",
+        "Product comparisons",
+        "Local issues and solutions",
+        "Industry news and updates"
+      ]
+    }
+  },
+  "technical_seo": {
+    "site_structure": {
+      "home": "/",
+      "services": {
+        "plumbing": "/services/plumbing/",
+        "drainage": "/services/drainage/",
+        "utility-locating": "/services/utility-locating/",
+        "leak-detection": "/services/leak-detection/"
+      },
+      "about": "/about/",
+      "contact": "/contact/",
+      "blog": "/blog/",
+      "areas": "/areas/"
+    },
+    "schema_markup": {
+      "local_business": true,
+      "service": true,
+      "faq": true,
+      "breadcrumb": true,
+      "review": true
+    },
+    "core_web_vitals": {
+      "target_lcp": "< 2.5s",
+      "target_fid": "< 100ms",
+      "target_cls": "< 0.1"
+    }
+  },
+  "competitor_analysis": {
+    "main_competitors": [
+      "Plumb Right Ltd (Hei Hei)",
+      "Various independent plumbers"
+    ],
+    "differentiation": [
+      "No after-hours call-out fee",
+      "50+ years combined experience",
+      "Multi-service integration",
+      "Rinnai/Electrolux authorized agent",
+      "South Island-wide capability",
+      "Major client portfolio"
+    ]
+  },
+  "kpis": {
+    "organic_traffic": "Increase 50% in 6 months",
+    "local_pack_rankings": "Top 3 for all primary keywords",
+    "conversion_rate": "5%+ contact form submissions",
+    "page_speed": "90+ mobile score",
+    "reviews": "Maintain 4.5+ rating, increase to 300+ reviews"
+  }
+}

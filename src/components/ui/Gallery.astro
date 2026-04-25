@@ -1,0 +1,201 @@
+---
+interface GalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  images: GalleryImage[];
+  title?: string;
+  subtitle?: string;
+  columns?: number;
+}
+
+const { images, title, subtitle, columns = 4 } = Astro.props;
+const galleryId = `gallery-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+{title && (
+  <section id={galleryId} class="py-20 lg:py-28 bg-[#f6f3f2] mt-8">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="text-center mb-16">
+        <div class="flex items-center justify-center gap-6 mb-8">
+          <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Portfolio</span>
+          <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+        </div>
+        <h2 class="font-['Space_Grotesk'] font-black text-4xl lg:text-5xl text-[#1b1b1c] uppercase tracking-tight">
+          {title}
+        </h2>
+        {subtitle && (
+          <p class="text-[#564241] text-lg mt-4 max-w-2xl mx-auto font-['Inter']">
+            {subtitle}
+          </p>
+        )}
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-{columns} gap-4">
+        {images.map((image, index) => (
+          <button
+            class="gallery-item group relative overflow-hidden cursor-pointer bg-[#1b1b1c] skew-block aspect-square"
+            data-gallery={galleryId}
+            data-index={index}
+            aria-label={`View ${image.alt}`}
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover opacity-70 grayscale transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+              {image.caption && (
+                <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold skew-block-content">
+                  {image.caption}
+                </p>
+              )}
+            </div>
+            <div class="absolute top-3 right-3 bg-[#CD5C5C] w-8 h-8 flex items-center justify-center skew-block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="material-symbols-outlined text-white text-sm skew-block-content">zoom_in</span>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{!title && (
+  <div class="py-20 lg:py-28 bg-[#f6f3f2] mt-8">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-{columns} gap-4">
+        {images.map((image, index) => (
+          <button
+            class="gallery-item group relative overflow-hidden cursor-pointer bg-[#1b1b1c] skew-block aspect-square"
+            data-gallery={galleryId}
+            data-index={index}
+            aria-label={`View ${image.alt}`}
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover opacity-70 grayscale transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+              {image.caption && (
+                <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold skew-block-content">
+                  {image.caption}
+                </p>
+              )}
+            </div>
+            <div class="absolute top-3 right-3 bg-[#CD5C5C] w-8 h-8 flex items-center justify-center skew-block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="material-symbols-outlined text-white text-sm skew-block-content">zoom_in</span>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+<div id="lightbox-overlay" class="fixed inset-0 z-[9999] bg-black/95 hidden items-center justify-center">
+  <button id="lightbox-close" class="absolute top-6 right-6 z-10 w-12 h-12 bg-[#CD5C5C] flex items-center justify-center skew-block hover:brightness-110 transition-all" aria-label="Close lightbox">
+    <span class="material-symbols-outlined text-white text-2xl skew-block-content">close</span>
+  </button>
+  <button id="lightbox-prev" class="absolute left-4 md:left-8 z-10 w-12 h-12 bg-white/10 flex items-center justify-center skew-block hover:bg-[#CD5C5C] transition-all" aria-label="Previous image">
+    <span class="material-symbols-outlined text-white text-2xl skew-block-content">chevron_left</span>
+  </button>
+  <button id="lightbox-next" class="absolute right-4 md:right-8 z-10 w-12 h-12 bg-white/10 flex items-center justify-center skew-block hover:bg-[#CD5C5C] transition-all" aria-label="Next image">
+    <span class="material-symbols-outlined text-white text-2xl skew-block-content">chevron_right</span>
+  </button>
+  <div class="max-w-6xl max-h-[85vh] mx-auto px-16 flex items-center justify-center">
+    <img id="lightbox-img" class="max-w-full max-h-[80vh] object-contain" src="" alt="" />
+  </div>
+  <div id="lightbox-counter" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 font-['Space_Grotesk'] text-sm uppercase tracking-widest font-bold"></div>
+  <div id="lightbox-caption" class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white font-['Space_Grotesk'] text-sm uppercase tracking-wider font-bold"></div>
+</div>
+
+<script>
+  const galleryData: Record<string, { src: string; alt: string; caption?: string }[]> = {};
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    const galleryId = item.getAttribute('data-gallery');
+    if (!galleryId) return;
+    if (!galleryData[galleryId]) galleryData[galleryId] = [];
+
+    const index = parseInt(item.getAttribute('data-index') || '0');
+    const img = item.querySelector('img');
+    if (img) {
+      galleryData[galleryId][index] = {
+        src: img.src,
+        alt: img.alt,
+        caption: img.parentElement?.querySelector('[class*="caption"]')?.textContent || undefined
+      };
+    }
+
+    item.addEventListener('click', () => openLightbox(galleryId, index));
+  });
+
+  let currentGallery = '';
+  let currentIndex = 0;
+
+  function openLightbox(galleryId: string, index: number) {
+    currentGallery = galleryId;
+    currentIndex = index;
+    updateLightbox();
+    const overlay = document.getElementById('lightbox-overlay');
+    if (overlay) {
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeLightbox() {
+    const overlay = document.getElementById('lightbox-overlay');
+    if (overlay) {
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function updateLightbox() {
+    const images = galleryData[currentGallery];
+    if (!images || !images[currentIndex]) return;
+    const { src, alt, caption } = images[currentIndex];
+    const img = document.getElementById('lightbox-img');
+    const counter = document.getElementById('lightbox-counter');
+    const captionEl = document.getElementById('lightbox-caption');
+
+    if (img) { img.src = src; img.alt = alt; }
+    if (counter) counter.textContent = `${currentIndex + 1} / ${images.length}`;
+    if (captionEl) captionEl.textContent = caption || '';
+  }
+
+  function navigateLightbox(direction: number) {
+    const images = galleryData[currentGallery];
+    if (!images) return;
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    updateLightbox();
+  }
+
+  document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-prev')?.addEventListener('click', () => navigateLightbox(-1));
+  document.getElementById('lightbox-next')?.addEventListener('click', () => navigateLightbox(1));
+
+  document.getElementById('lightbox-overlay')?.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).id === 'lightbox-overlay') closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (document.getElementById('lightbox-overlay')?.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+</script>

@@ -1,0 +1,139 @@
+{
+  "name": "Block Dynamic - Brooklyn Services",
+  "version": "1.0",
+  "creative_north_star": "The Precision Architect",
+  "design_approach": "Panel-Based Bento Grid - interlocking tactical modules with mathematical precision",
+  "inspiration": "Block Oblique logo - momentum, structural integrity, and precision",
+  "colors": {
+    "primary": "#CD5C5C",
+    "primary_container": "#e28c8c",
+    "on_primary": "#ffffff",
+    "background": "#fcf9f8",
+    "surface": "#fcf9f8",
+    "on_surface": "#1b1b1c",
+    "surface_container": "#f0eded",
+    "surface_container_low": "#f6f3f2",
+    "surface_container_high": "#eae7e7",
+    "surface_container_highest": "#e5e2e1",
+    "on_surface_variant": "#564241",
+    "inverse_surface": "#1b1b1c",
+    "on_inverse_surface": "#f3f0ef",
+    "outline": "#897170",
+    "secondary": "#5f5e5e",
+    "design_rules": {
+      "no_line_rule": "Traditional 1px solid borders are strictly prohibited for sectioning. Use background color shifts instead.",
+      "glassmorphism": "Floating navigation uses semi-transparent surface with backdrop-blur of 12px-20px",
+      "gradient_cta": "Primary CTAs use linear gradient from primary to primary_container at 135-degree angle for 'machined metal' sheen"
+    }
+  },
+  "typography": {
+    "strategy": "Technical Editorial - Space Grotesk for headlines, Inter for body",
+    "fonts": {
+      "headline": "Space Grotesk",
+      "body": "Inter",
+      "label": "Space Grotesk"
+    },
+    "display": {
+      "font": "Space Grotesk",
+      "size": "3.5rem",
+      "letter_spacing": "-0.02em",
+      "weight": "700"
+    },
+    "body": {
+      "font": "Inter",
+      "size": "1rem",
+      "weight": "400"
+    },
+    "labels": {
+      "font": "Space Grotesk",
+      "style": "Small caps or high-tracking for technical data points"
+    }
+  },
+  "elevation": {
+    "hierarchy_method": "Tonal layering through color-weight, not shadows",
+    "ambient_shadow": {
+      "y_offset": "20px",
+      "blur": "40px",
+      "color": "#1b1b1c at 6% opacity"
+    },
+    "ghost_border": {
+      "token": "outline-variant (#ddc0be)",
+      "opacity": "15%",
+      "weight": "1px",
+      "note": "Never use 100% opaque border"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": {
+        "fill": "Gradient (primary to primary_container)",
+        "text": "on-primary",
+        "radius": "xl (0.75rem)",
+        "animation": "Scale 1.02x on hover"
+      },
+      "secondary": {
+        "fill": "surface-container-highest",
+        "border": "none",
+        "hover": "Shifts to primary-fixed-dim"
+      },
+      "tertiary": {
+        "style": "Text-only in primary",
+        "underline": "2px surface-tint that expands on hover"
+      }
+    },
+    "bento_cards": {
+      "default_background": "surface-container",
+      "divider_rule": "Forbid divider lines - use spacing scale (24px gap)",
+      "hover_state": "Scale 1.02x and background shifts to surface-bright"
+    },
+    "inputs": {
+      "background": "surface-container-low",
+      "border": "No bottom line",
+      "radius": "sm (0.125rem)",
+      "focus": "outline token at 40% opacity as soft outer glow"
+    },
+    "navigation": {
+      "style": "Glassmorphism",
+      "background": "rgba(252, 249, 248, 0.85)",
+      "backdrop_blur": "12px"
+    }
+  },
+  "layout": {
+    "approach": "Bento Grid with intentional asymmetry",
+    "column_ratios": "60%/40% for dynamic tension",
+    "corners": "Maximum xl (0.75rem) - precise, not playful",
+    "scrolling": "Panel-Linking with primary red vertical bar animating between blocks"
+  },
+  "animations": {
+    "block_pop": {
+      "duration": "0.4s",
+      "easing": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+      "effect": "Scale from 0.98 to 1"
+    },
+    "fade_in_up": {
+      "duration": "0.8s",
+      "easing": "ease-out"
+    },
+    "slide_in_right": {
+      "duration": "0.8s",
+      "easing": "cubic-bezier(0.2, 0, 0, 1)"
+    }
+  },
+  "do_dont": {
+    "do": [
+      "Use intentional asymmetry (60/40 column ratios)",
+      "Use optical alignment for slanted logo",
+      "Use high-contrast imagery - macro shots of technical equipment",
+      "Use glassmorphism for floating elements"
+    ],
+    "dont": [
+      "Use standard 1px borders or dividers",
+      "Use generic blue 'trust' colors",
+      "Use rounded corners larger than xl (0.75rem)",
+      "Overlay red text on dark backgrounds except for error states"
+    ]
+  },
+  "css_framework": "Tailwind CSS v3",
+  "template_file": "ASSETS/stitch_brooklyn_services_revamp (1)/code.html",
+  "screen_reference": "ASSETS/stitch_brooklyn_services_revamp (1)/screen.png"
+}

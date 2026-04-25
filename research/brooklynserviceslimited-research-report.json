@@ -1,0 +1,174 @@
+{
+  "business_profile": {
+    "legal_name": "Brooklyn Services Limited",
+    "trading_name": "Brooklyn Services",
+    "company_number": "3455651",
+    "nzbn": "9429031033725",
+    "status": "Registered (Active)",
+    "entity_type": "NZ Limited Company",
+    "registration_date": "July 4, 2011",
+    "director": "Sam William Aitken",
+    "shareholding": {
+      "sam_aitken": "90%",
+      "frances_aitken": "10%"
+    },
+    "origin_story": "Founded by Sam Aitken, a Christchurch plumber and drainlayer who completed a stable apprenticeship before going out on his own. The company name 'Brooklyn' was chosen in honor of Sam's son.",
+    "evolution": "Started as Sam Aitken Plumbing (sole trader), grew into Brooklyn Services Limited while maintaining relationships with businesses that helped during startup"
+  },
+  "contact_information": {
+    "primary_phone": "0800 127 665",
+    "office_phone": "03 349 7322",
+    "mobile": "021 841 746",
+    "email": "sam@brooklynservices.co.nz",
+    "website": "https://www.brooklynservices.co.nz/",
+    "facebook": "https://www.facebook.com/BrooklynServicesLtd",
+    "addresses": {
+      "registered_office": "211 Cashmere Road, Hoon Hay, Christchurch, 8025",
+      "trading_address": "96b Carmen Rd, Hei Hei, Christchurch 8042, Canterbury, New Zealand"
+    }
+  },
+  "services": {
+    "categories": [
+      {
+        "name": "Plumbing",
+        "description": "Expert licensed plumbers with over 50 years combined experience",
+        "offerings": [
+          "Residential/Domestic Plumbing",
+          "Commercial Plumbing",
+          "Hot Water Solutions",
+          "Water Quality & Filtration",
+          "Boiling Water Systems",
+          "Backflow Prevention",
+          "Renovations and Alterations"
+        ],
+        "key_features": [
+          "New house plumbing installations",
+          "Bathroom renovations",
+          "Hot water cylinder servicing",
+          "Water filter installation",
+          "Boiling water units"
+        ]
+      },
+      {
+        "name": "Drainage Solutions",
+        "description": "Licensed drainlayers providing exceptional service",
+        "offerings": [
+          "New Drain Systems",
+          "Drain Maintenance & Repairs",
+          "Blocked Drain Solutions"
+        ],
+        "key_features": [
+          "Sewer and stormwater systems",
+          "Pump chambers",
+          "Septic tank installations",
+          "Water blaster truck clearing",
+          "CCTV drain inspection"
+        ]
+      },
+      {
+        "name": "Utility Locating",
+        "description": "Advanced technology for accurate utility detection",
+        "offerings": [
+          "GPR (Ground Penetrating Radar)",
+          "Electromagnetic Locating",
+          "Service Mapping"
+        ],
+        "key_features": [
+          "Non-destructive testing",
+          "Underground service location",
+          "Accurate depth measurement",
+          "Digital mapping and reporting"
+        ]
+      },
+      {
+        "name": "Leak Detection",
+        "description": "Professional leak detection services",
+        "offerings": [
+          "Residential Leak Detection",
+          "Commercial Leak Detection",
+          "Thermal Imaging"
+        ],
+        "key_features": [
+          "Acoustic leak detection",
+          "Thermal imaging technology",
+          "Minimal disruption",
+          "Accurate location pinpointing"
+        ]
+      }
+    ]
+  },
+  "brand_identity": {
+    "tagline": "Do it right, call day and night!",
+    "core_values": [
+      "Personalized service and quality of products",
+      "Trust and reliability in all dealings",
+      "Friendly and personalized customer service",
+      "Quality workmanship above all"
+    ],
+    "philosophy": "Work with the people that you trust and that you know are reliable and can provide quality results for customers.",
+    "hiring_policy": "Hire and train apprentices to maintain quality standards"
+  },
+  "partnerships": {
+    "authorized_agents": [
+      {
+        "brand": "Rinnai",
+        "coverage": "Canterbury-wide",
+        "services": "Service agent for hot water systems"
+      },
+      {
+        "brand": "Electrolux",
+        "coverage": "Canterbury",
+        "services": "Service agent"
+      }
+    ],
+    "product_recommendations": [
+      "Mico products (efficient, energy-saving, sustainable)",
+      "Reece products (built to last)"
+    ]
+  },
+  "major_clients": [
+    "Summerset villages",
+    "Ryman Healthcare"
+  ],
+  "service_areas": {
+    "primary": "Christchurch and wider Canterbury region",
+    "extended": "South Island-wide (on request for utility locating and leak detection)"
+  },
+  "reviews": {
+    "google": {
+      "total_reviews": 226,
+      "average_rating": 4.5,
+      "sentiment": "Positive",
+      "key_themes": [
+        "Same-day emergency response",
+        "Friendly, professional team",
+        "Prompt, reliable service",
+        "Went the extra mile"
+      ]
+    }
+  },
+  "team": {
+    "combined_experience": "50+ years",
+    "qualifications": "Licensed plumbers and drainlayers",
+    "training": "Apprenticeship program"
+  },
+  "competitive_advantages": [
+    "No after-hours call-out fee",
+    "Multi-service integration (4 categories)",
+    "Rinnai/Electrolux authorized agent status",
+    "50+ years combined team experience",
+    "South Island-wide service capability",
+    "Major project experience with listed clients"
+  ],
+  "data_sources": [
+    "Companies Office NZ",
+    "Company Hub NZ",
+    "Official website (brooklynservices.co.nz)",
+    "Facebook business page",
+    "Google Reviews",
+    "Local business directories"
+  ],
+  "verification_status": "High confidence (90%+ for core business information)",
+  "data_collected_date": "April 12, 2026",
+  "research_quality": "Comprehensive - 8 website pages scraped, 226 reviews analyzed, multi-source verification"
+}

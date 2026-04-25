@@ -1,0 +1,54 @@
+{
+  "business_name": "Brooklyn Services Limited",
+  "address": "96b Carmen Rd, Hei Hei, Christchurch 8042, Canterbury, New Zealand",
+  "registered_office": "211 Cashmere Road, Hoon Hay, Christchurch, 8025",
+  "phone": "0800 127 665",
+  "office_phone": "03 349 7322",
+  "mobile": "021 841 746",
+  "email": "sam@brooklynservices.co.nz",
+  "industry": "Plumbing, Drainage, Utility Locating, Leak Detection",
+  "company_number": "3455651",
+  "nzbn": "9429031033725",
+  "director": "Sam William Aitken",
+  "founded": "2011",
+  "exact_identifiers": {
+    "website": "https://www.brooklynservices.co.nz/",
+    "facebook": "https://www.facebook.com/BrooklynServicesLtd",
+    "google_business_profile": "https://www.google.com/search?q=Brooklyn+Services+Limited+Christchurch"
+  },
+  "services": [
+    "Plumbing",
+    "Drainage Solutions",
+    "Utility Locating",
+    "Leak Detection"
+  ],
+  "service_areas": [
+    "Christchurch",
+    "Canterbury",
+    "South Island (on request for utility locating and leak detection)"
+  ],
+  "tagline": "Do it right, call day and night!",
+  "core_values": [
+    "Personalized service",
+    "Quality of products",
+    "Trust and reliability",
+    "Friendly customer service",
+    "Quality workmanship"
+  ],
+  "authorized_partnerships": [
+    "Rinnai service agent (Canterbury-wide)",
+    "Electrolux service agent (Canterbury)"
+  ],
+  "major_clients": [
+    "Summerset villages",
+    "Ryman Healthcare"
+  ],
+  "reviews": {
+    "google": {
+      "count": 226,
+      "rating": 4.5
+    }
+  },
+  "custom_domain": "brooklynservices.co.nz",
+  "cms_domain": "cms.brooklynservices.co.nz"
+}

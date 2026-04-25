@@ -1,0 +1,246 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const title = "Contact | Brooklyn Services - Initiate Consultation";
+const description = "Contact Brooklyn Services for plumbing, drainage, and detection services in Christchurch. Free quotes, 24/7 emergency response. Call 0800 1 BROOK.";
+---
+
+<Layout title={title} description={description}>
+  <div class="fixed inset-0 isometric-pattern pointer-events-none z-0"></div>
+  
+  <Header />
+  
+  <main class="relative z-10 space-y-0 px-4 pb-20 max-w-[1800px] mx-auto">
+    
+    <!-- Hero Section -->
+    <section class="bg-[#CD5C5C] py-20 lg:py-28">
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <span class="text-white/80 font-['Space_Grotesk'] text-xs tracking-[0.4em] uppercase font-black mb-6 block">Secure Channel</span>
+        <h1 class="font-['Space_Grotesk'] font-black text-5xl lg:text-7xl text-white tracking-tighter leading-[0.9] uppercase mb-6">
+          Initiate<br/>Consultation
+        </h1>
+        <p class="text-white/90 text-lg font-light font-['Inter'] leading-relaxed max-w-2xl mx-auto">
+          Connect with our infrastructure intelligence unit for assessments, quotes, or emergency response coordination.
+        </p>
+      </div>
+    </section>
+    
+    <!-- Contact Grid -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-0 mt-8">
+      <!-- Contact Info -->
+      <div class="bg-[#1b1b1c] p-12 lg:p-20">
+        <div class="flex items-center gap-6 mb-10">
+          <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Direct Channels</span>
+        </div>
+        
+        <div class="space-y-10">
+          <!-- Phone -->
+          <div class="group">
+            <div class="flex items-start gap-6">
+              <div class="w-14 h-14 bg-[#CD5C5C]/10 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
+                <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">phone</span>
+              </div>
+              <div>
+                <span class="text-white/50 font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-bold block mb-2">Emergency Line</span>
+                <a href="tel:0800127665" class="font-['Space_Grotesk'] font-black text-3xl text-white hover:text-[#CD5C5C] transition-colors">
+                  0800 1 BROOK
+                </a>
+                <p class="text-white/50 text-sm mt-2 font-['Inter']">24/7 Critical Response Unit</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Email -->
+          <div class="group">
+            <div class="flex items-start gap-6">
+              <div class="w-14 h-14 bg-[#CD5C5C]/10 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
+                <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">email</span>
+              </div>
+              <div>
+                <span class="text-white/50 font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-bold block mb-2">Secure Message</span>
+                <a href="mailto:sam@brooklynservices.co.nz" class="font-['Space_Grotesk'] font-bold text-xl text-white hover:text-[#CD5C5C] transition-colors">
+                  sam@brooklynservices.co.nz
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Address -->
+          <div class="group">
+            <div class="flex items-start gap-6">
+              <div class="w-14 h-14 bg-[#CD5C5C]/10 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
+                <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">location_on</span>
+              </div>
+              <div>
+                <span class="text-white/50 font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-bold block mb-2">Headquarters</span>
+                <p class="font-['Space_Grotesk'] font-bold text-xl text-white">
+                  96b Carmen Rd
+                </p>
+                <p class="text-white/70 font-['Inter']">Hei Hei, Christchurch 8042</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Hours -->
+          <div class="group">
+            <div class="flex items-start gap-6">
+              <div class="w-14 h-14 bg-[#CD5C5C]/10 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
+                <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">schedule</span>
+              </div>
+              <div>
+                <span class="text-white/50 font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-bold block mb-2">Operational Hours</span>
+                <p class="font-['Space_Grotesk'] font-bold text-xl text-white">
+                  Mon-Fri: 7:00 AM - 5:00 PM
+                </p>
+                <p class="text-[#CD5C5C] font-['Space_Grotesk'] font-bold text-sm mt-1">
+                  24/7 EMERGENCY RESPONSE
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="mt-16 pt-10 border-t border-white/10">
+          <span class="text-white/50 font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-bold block mb-6">External Channels</span>
+          <div class="flex gap-4">
+            <a 
+              href="https://www.facebook.com/BrooklynServicesLtd"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-14 h-14 bg-white/5 flex items-center justify-center hover:bg-[#CD5C5C] transition-all cursor-pointer skew-block group"
+            >
+              <span class="material-symbols-outlined text-2xl text-white skew-block-content">share</span>
+            </a>
+            <a 
+              href="https://www.google.com/maps/place/Brooklyn+Services+Limited"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-14 h-14 bg-white/5 flex items-center justify-center hover:bg-[#CD5C5C] transition-all cursor-pointer skew-block group"
+            >
+              <span class="material-symbols-outlined text-2xl text-white skew-block-content">map</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="bg-[#f6f3f2] p-12 lg:p-20">
+        <div class="flex items-center gap-6 mb-10">
+          <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Data Transmission</span>
+        </div>
+        
+        <form 
+          action="https://contact-form.brooklynservices.co.nz"
+          method="POST"
+          class="space-y-6"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-[#564241] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider mb-2">
+                Designation
+              </label>
+              <input 
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 bg-white border-0 text-[#1b1b1c] font-['Inter'] focus:ring-2 focus:ring-[#CD5C5C]/40 outline-none transition-all"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label for="phone" class="block text-[#564241] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider mb-2">
+                Communication Line
+              </label>
+              <input 
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full px-4 py-3 bg-white border-0 text-[#1b1b1c] font-['Inter'] focus:ring-2 focus:ring-[#CD5C5C]/40 outline-none transition-all"
+                placeholder="Phone number"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <label for="email" class="block text-[#564241] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider mb-2">
+              Electronic Address
+            </label>
+            <input 
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 bg-white border-0 text-[#1b1b1c] font-['Inter'] focus:ring-2 focus:ring-[#CD5C5C]/40 outline-none transition-all"
+              placeholder="your@email.com"
+            />
+          </div>
+          
+          <div>
+            <label for="service" class="block text-[#564241] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider mb-2">
+              Service Category
+            </label>
+            <select 
+              id="service"
+              name="service"
+              class="w-full px-4 py-3 bg-white border-0 text-[#1b1b1c] font-['Inter'] focus:ring-2 focus:ring-[#CD5C5C]/40 outline-none transition-all"
+            >
+              <option value="">Select service type</option>
+              <option value="plumbing">Plumbing Dynamics</option>
+              <option value="drainage">Drainage Logistics</option>
+              <option value="utility-locating">Utility Locating</option>
+              <option value="leak-detection">Leak Detection</option>
+              <option value="emergency">Emergency Response</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="message" class="block text-[#564241] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider mb-2">
+              Mission Parameters
+            </label>
+            <textarea 
+              id="message"
+              name="message"
+              rows="5"
+              required
+              class="w-full px-4 py-3 bg-white border-0 text-[#1b1b1c] font-['Inter'] focus:ring-2 focus:ring-[#CD5C5C]/40 outline-none transition-all resize-none"
+              placeholder="Describe your infrastructure requirements..."
+            ></textarea>
+          </div>
+          
+          <button 
+            type="submit"
+            class="btn-actuator w-full justify-center"
+          >
+            <span>Transmit Request</span>
+          </button>
+          
+          <p class="text-[#564241]/60 text-xs font-['Inter'] text-center">
+            Response typically within 24 hours. For emergency response, call 0800 1 BROOK.
+          </p>
+        </form>
+      </div>
+    </section>
+    
+    <!-- Emergency Banner -->
+    <section class="bg-[#CD5C5C] py-8 mt-8">
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <div class="flex items-center justify-center gap-4">
+          <span class="material-symbols-outlined text-white text-3xl animate-pulse">emergency</span>
+          <p class="text-white font-['Space_Grotesk'] font-bold uppercase tracking-wider">
+            Critical Infrastructure Failure? Call <a href="tel:0800127665" class="underline hover:text-white/80">0800 1 BROOK</a> — 24/7 Response
+          </p>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+  <Footer />
+</Layout>

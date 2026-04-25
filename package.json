@@ -1,0 +1,28 @@
+{
+  "name": "brooklyn-services-website",
+  "version": "1.0.0",
+  "description": "Brooklyn Services Limited - Professional Plumbing, Drainage, Utility Locating & Leak Detection Services in Christchurch",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "wrangler pages deploy dist",
+    "deploy:preview": "wrangler pages deploy dist --branch=preview"
+  },
+  "dependencies": {
+    "astro": "^4.5.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "tailwindcss": "^3.4.1",
+    "@astrojs/sitemap": "^3.1.1",
+    "@astrojs/partytown": "^2.0.4"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0",
+    "@types/node": "^20.11.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

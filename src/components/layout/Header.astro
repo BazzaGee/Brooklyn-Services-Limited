@@ -1,0 +1,76 @@
+---
+const navItems = [
+  { label: 'Services', href: '/services/' },
+  { label: 'Projects', href: '/projects/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!-- Sticky Glassmorphism Nav -->
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-primary/10">
+  <div class="flex justify-between items-center w-full px-8 py-5 max-w-screen-2xl mx-auto">
+    <div class="text-2xl font-black tracking-tighter text-stone-900 font-headline flex items-center gap-3 group cursor-pointer">
+      <img alt="BROOKLYN SERVICES LIMITED" class="h-12 w-auto object-contain" src="/images/logo.png" />
+    </div>
+    <div class="hidden md:flex gap-10 items-center">
+      {navItems.map((item) => (
+        <a 
+          href={item.href}
+          class="text-stone-600 font-bold font-label tracking-tight uppercase hover:text-primary transition-colors duration-300 text-sm"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+    <a href="/contact/" class="bg-primary text-on-primary px-8 py-3.5 font-label font-bold uppercase tracking-wider text-xs skew-block hover:brightness-110 active:scale-95 transition-all hidden md:flex items-center">
+      Book a Service
+    </a>
+    
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden p-2 hover:bg-surface-container transition-colors"
+      aria-label="Toggle menu"
+    >
+      <span class="material-symbols-outlined text-2xl">menu</span>
+    </button>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-primary/10">
+    <div class="px-8 py-4 space-y-4">
+      {navItems.map((item) => (
+        <a 
+          href={item.href}
+          class="block text-stone-600 font-bold font-label tracking-tight uppercase hover:text-primary transition-colors text-sm"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a href="/contact/" class="w-full bg-primary text-on-primary px-8 py-3.5 font-label font-bold uppercase tracking-wider text-xs skew-block hover:brightness-110 active:scale-95 transition-all mt-4 flex items-center justify-center">
+        Book a Service
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer to push content below fixed header -->
+<div class="h-[80px]"></div>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const icon = mobileMenuBtn.querySelector('.material-symbols-outlined');
+      if (icon) {
+        icon.textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
+      }
+    });
+  }
+</script>

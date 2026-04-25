@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = [
+    { slug: 'signs-of-a-water-leak', title: '7 Warning Signs You Have a Hidden Water Leak in Your Home' },
+    { slug: 'preventing-blocked-drains', title: 'How to Prevent Blocked Drains: 10 Essential Tips for Christchurch Homes' },
+    { slug: 'choosing-hot-water-system', title: 'How to Choose the Right Hot Water System for Your Christchurch Home' },
+    { slug: 'rinnai-vs-rheem-hot-water', title: 'Rinnai vs Rheem: Which Hot Water System is Best for Your Home?' },
+    { slug: 'plumbing-maintenance-checklist', title: 'Annual Plumbing Maintenance Checklist for Christchurch Homeowners' }
+  ];
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout 
+  title={post.title} 
+  description="Expert infrastructure intelligence from Brooklyn Services Limited"
+>
+  <div class="fixed inset-0 isometric-pattern pointer-events-none z-0"></div>
+  
+  <Header />
+  
+  <main class="relative z-10">
+    <article class="py-20 lg:py-28">
+      <div class="max-w-3xl mx-auto px-8">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-[#564241] mb-8 font-['Inter']">
+          <a href="/" class="hover:text-[#CD5C5C] transition-colors">Home</a>
+          <span>/</span>
+          <a href="/blog/" class="hover:text-[#CD5C5C] transition-colors">Resources</a>
+          <span>/</span>
+          <span class="text-[#1b1b1c] font-medium">{post.title}</span>
+        </nav>
+
+        <!-- Header -->
+        <header class="mb-12">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-1.5 bg-[#CD5C5C] skew-block"></div>
+            <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-black">Technical Brief</span>
+          </div>
+          <h1 class="font-['Space_Grotesk'] font-black text-3xl lg:text-4xl text-[#1b1b1c] mb-4 uppercase tracking-tight">
+            {post.title}
+          </h1>
+          <div class="flex items-center gap-4 text-sm text-[#564241] font-['Inter']">
+            <span>Brooklyn Services Limited</span>
+            <span class="text-[#CD5C5C]">•</span>
+            <time class="font-['Space_Grotesk'] uppercase tracking-wider text-xs">April 2026</time>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="prose-container">
+          <p class="text-[#564241] text-lg leading-relaxed mb-8 font-['Inter']">
+            Full article content available. This technical brief provides detailed guidance on {post.title.toLowerCase()}.
+          </p>
+          <p class="text-[#564241] leading-relaxed mb-8 font-['Inter']">
+            Contact our infrastructure intelligence unit for specific technical consultation on this topic.
+          </p>
+          <p>
+            <a href="/blog/" class="inline-flex items-center gap-2 text-[#CD5C5C] font-['Space_Grotesk'] font-bold uppercase tracking-wider text-sm hover:underline">
+              <span class="material-symbols-outlined text-sm">arrow_back</span>
+              Back to all resources
+            </a>
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-16 p-8 bg-[#f6f3f2] border-l-4 border-[#CD5C5C]">
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] uppercase mb-2">Require Professional Support?</h3>
+          <p class="text-[#564241] mb-6 font-['Inter']">
+            Contact Brooklyn Services for expert infrastructure solutions in Christchurch and Canterbury.
+          </p>
+          <a href="/contact/" class="btn-actuator">
+            <span>Initiate Consultation</span>
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+  
+  <Footer />
+</Layout>

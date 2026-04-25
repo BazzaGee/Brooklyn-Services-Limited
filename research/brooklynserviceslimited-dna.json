@@ -1,0 +1,136 @@
+{
+  "brand_dna": {
+    "archetype": "The Reliable Expert / The Precision Architect",
+    "personality_traits": [
+      "Professional",
+      "Trustworthy",
+      "Technical",
+      "Precise",
+      "Approachable",
+      "Experienced"
+    ],
+    "voice": {
+      "tone": "Professional yet friendly",
+      "style": "Technical precision balanced with approachability",
+      "vocabulary": [
+        "Licensed",
+        "Expert",
+        "Quality",
+        "Reliable",
+        "Professional",
+        "Combined experience",
+        "Personalized service"
+      ],
+      "avoid": [
+        "Jargon without explanation",
+        "Overly casual language",
+        "Generic tradesman clichés"
+      ]
+    },
+    "visual_identity": {
+      "logo_concept": "Block Oblique - symbol of momentum, structural integrity, and precision",
+      "color_strategy": "Industrial power with bold reds as surgical strike against sophisticated grayscale",
+      "design_approach": "Panel-Based Bento Grid - interlocking tactical modules",
+      "animation_concept": "Blocks 'click' into place with mathematical precision"
+    },
+    "key_messaging": {
+      "primary": "Do it right, call day and night!",
+      "supporting": [
+        "50+ years combined experience",
+        "Licensed plumbers and drainlayers",
+        "No after-hours call-out fee",
+        "Personalized service and quality products"
+      ],
+      "differentiators": [
+        "Rinnai and Electrolux authorized agent",
+        "Multi-service integration",
+        "Trusted by major clients like Summerset and Ryman",
+        "South Island-wide capability"
+      ]
+    },
+    "customer_promises": [
+      "Same-day emergency response",
+      "Friendly, professional team",
+      "Prompt, reliable service",
+      "Quality workmanship guaranteed"
+    ],
+    "origin_story": {
+      "founder": "Sam Aitken",
+      "background": "Completed stable apprenticeship before going out on his own",
+      "motivation": "To help the people of Canterbury",
+      "naming": "Named after son Brooklyn",
+      "evolution": "From sole trader to multi-service company while maintaining startup relationships"
+    },
+    "target_audience": {
+      "primary": [
+        "Homeowners in Christchurch and Canterbury",
+        "Commercial property managers",
+        "Construction companies",
+        "Retirement village operators"
+      ],
+      "pain_points": [
+        "Plumbing emergencies",
+        "Blocked drains",
+        "Hidden leaks",
+        "Unknown underground utilities",
+        "Need for reliable, licensed professionals"
+      ],
+      "desires": [
+        "Prompt service",
+        "No surprise fees",
+        "Quality work",
+        "Professional communication",
+        "Trustworthy technicians"
+      ]
+    },
+    "content_pillars": [
+      {
+        "pillar": "Expertise & Experience",
+        "topics": [
+          "50+ years combined team experience",
+          "Licensed professionals",
+          "Apprenticeship training",
+          "Technical capabilities"
+        ]
+      },
+      {
+        "pillar": "Service Excellence",
+        "topics": [
+          "No after-hours call-out fee",
+          "Same-day emergency response",
+          "Personalized service",
+          "Quality workmanship"
+        ]
+      },
+      {
+        "pillar": "Multi-Service Integration",
+        "topics": [
+          "Plumbing + Drainage + Detection + Locating",
+          "One-stop solution",
+          "Coordinated service delivery",
+          "Technical synergy"
+        ]
+      },
+      {
+        "pillar": "Trusted Partnerships",
+        "topics": [
+          "Rinnai authorized agent",
+          "Electrolux authorized agent",
+          "Major client portfolio",
+          "Industry recognition"
+        ]
+      }
+    ],
+    "competitive_positioning": {
+      "market": "Christchurch plumbing and drainage services",
+      "differentiation": "Multi-service technical firm vs traditional tradesman",
+      "premium_factors": [
+        "Authorized agent status",
+        "Advanced technology (GPR, CCTV)",
+        "Major commercial clients",
+        "Combined experience depth"
+      ],
+      "value_proposition": "High-tech engineering approach to traditional trades services"
+    }
+  }
+}

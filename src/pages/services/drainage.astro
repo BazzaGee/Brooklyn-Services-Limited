@@ -1,0 +1,291 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Gallery from '../../components/ui/Gallery.astro';
+
+const title = "Drainage Logistics | Brooklyn Services - System 02";
+const description = "Licensed drainlayers providing drainage solutions in Christchurch. New drains, blocked drain clearing, CCTV inspection, septic tanks. Call 0800 1 BROOK.";
+
+const galleryImages = [
+  { src: '/images/services/drainage/drainage-work-1.jpg', alt: 'Drainage installation work', caption: 'Drainage Install' },
+  { src: '/images/services/drainage/drainage-work-2.jpg', alt: 'Drainage repair work', caption: 'Drain Repair' },
+  { src: '/images/services/drainage/drainage-work-3.jpeg', alt: 'Drainage system work', caption: 'Drainage System' },
+  { src: '/images/services/drainage/drainage-work-4.jpg', alt: 'Drain maintenance', caption: 'Maintenance' },
+  { src: '/images/services/drainage/drainage-work-5.jpg', alt: 'Drain unblocking', caption: 'Drain Unblocking' },
+  { src: '/images/services/drainage/drainage-work-6.jpg', alt: 'Drainage project', caption: 'Drainage Project' },
+  { src: '/images/services/drainage/drainage-work-7.jpg', alt: 'Drain clearing work', caption: 'Drain Clearing' },
+  { src: '/images/services/drainage/drainage-work-8.jpg', alt: 'Drain inspection and repair', caption: 'Inspection' },
+];
+---
+
+<Layout title={title} description={description}>
+  <div class="fixed inset-0 isometric-pattern pointer-events-none z-0"></div>
+  
+  <Header />
+  
+  <main class="relative z-10 space-y-0 px-4 pb-20 max-w-[1800px] mx-auto">
+    
+    <section class="grid grid-cols-1 md:grid-cols-12 gap-0 min-h-[600px]">
+      <div class="md:col-span-4 bg-[#CD5C5C] p-12 lg:p-16 flex flex-col justify-end tetris-module-alt relative order-2 md:order-1">
+        <div class="relative z-10">
+          <span class="material-symbols-outlined text-white text-7xl mb-6 block">water_damage</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-2xl text-white uppercase tracking-tight mb-4">Licensed Drainlayers</h3>
+          <p class="text-white/80 font-['Inter']">Certified specialists for all drainage installations, repairs, and maintenance protocols.</p>
+        </div>
+      </div>
+      <div class="md:col-span-8 bg-[#1b1b1c] p-12 lg:p-20 flex flex-col justify-center relative overflow-hidden order-1 md:order-2">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#CD5C5C]/20 to-transparent"></div>
+        <div class="relative z-10">
+          <div class="flex items-center gap-6 mb-8">
+            <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+            <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">System 02</span>
+          </div>
+          <h1 class="font-['Space_Grotesk'] font-black text-5xl lg:text-7xl text-white tracking-tighter leading-[0.9] uppercase mb-6">
+            Drainage<br/><span class="text-[#CD5C5C]">Logistics</span>
+          </h1>
+          <p class="text-white/70 text-xl max-w-xl leading-relaxed font-light font-['Inter']">
+            Licensed drainlayers delivering comprehensive drainage solutions — from entirely new drain systems and septic tank installations to emergency blocked drain clearing, CCTV inspections, and EQC drainage reports.
+          </p>
+          <div class="mt-10 flex gap-4">
+            <a href="/contact/" class="btn-actuator">
+              <span>Request Assessment</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-0 mt-8">
+      <div class="bg-[#f6f3f2] p-12 lg:p-16 border-r border-[#CD5C5C]/10 group hover:bg-white transition-colors">
+        <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-6 block">engineering</span>
+        <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-black mb-4 block">Installation</span>
+        <h2 class="font-['Space_Grotesk'] font-black text-2xl text-[#1b1b1c] uppercase mb-4">Drain Laying</h2>
+        <p class="text-[#564241] font-['Inter'] leading-relaxed mb-6">
+          New drainage system installation for residential, commercial, and industrial properties. Complete site preparation and compliance documentation.
+        </p>
+        <ul class="space-y-2 text-sm text-[#564241]">
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Stormwater systems
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Sewer connections
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Pump chambers & soak pits
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Access points for future access
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            New house drainage
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Subdivision developments
+          </li>
+        </ul>
+      </div>
+      
+      <div class="bg-[#1b1b1c] p-12 lg:p-16 group">
+        <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-6 block">cleaning_services</span>
+        <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-black mb-4 block">Emergency</span>
+        <h2 class="font-['Space_Grotesk'] font-black text-2xl text-white uppercase mb-4">Blocked Drains</h2>
+        <p class="text-white/70 font-['Inter'] leading-relaxed mb-6">
+          Rapid response drain unblocking services. High-pressure water blaster truck clearing and mechanical spring machines for all types of blockages.
+        </p>
+        <ul class="space-y-2 text-sm text-white/70">
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Water blaster truck clearing
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Mechanical spring machines
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Root removal
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Grease trap cleaning
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            CCTV blockage identification
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Prevention recommendations
+          </li>
+        </ul>
+      </div>
+      
+      <div class="bg-[#f6f3f2] p-12 lg:p-16 group hover:bg-white transition-colors">
+        <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-6 block">videocam</span>
+        <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-black mb-4 block">Diagnostics</span>
+        <h2 class="font-['Space_Grotesk'] font-black text-2xl text-[#1b1b1c] uppercase mb-4">CCTV Inspection</h2>
+        <p class="text-[#564241] font-['Inter'] leading-relaxed mb-6">
+          Top-of-the-line colour drain cameras with video footage emailed to customers. Detailed reports outlining any issues and pinpoint locations of damage.
+        </p>
+        <ul class="space-y-2 text-sm text-[#564241]">
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            High-definition colour cameras
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Digital reports & video
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            EQC/earthquake damage reports
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-sm">check</span>
+            Natural Hazards Commission claims
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="py-20 lg:py-28 bg-[#e5e2e1] mt-0">
+      <div class="max-w-6xl mx-auto px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="flex items-center gap-6 mb-8">
+              <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+              <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Specialized</span>
+            </div>
+            <h2 class="font-['Space_Grotesk'] font-black text-4xl text-[#1b1b1c] uppercase mb-6 tracking-tight">
+              Stormwater & Groundwater
+            </h2>
+            <p class="text-[#564241] text-lg leading-relaxed mb-6 font-['Inter']">
+              Custom stormwater management solutions including soak pit installation, retaining wall drainage, kerb and channel work. 
+              We also handle groundwater removal for low-lying properties and Nova flow drainage for high water tables or flooding areas.
+            </p>
+            <p class="text-[#564241] text-lg leading-relaxed mb-6 font-['Inter']">
+              Pump installations and repairs for all types of pumping systems. Grease trap installation and repairs for commercial kitchens.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-[#CD5C5C]">check_circle</span>
+                <div>
+                  <strong class="text-[#1b1b1c] font-['Space_Grotesk'] uppercase text-sm tracking-wider">Groundwater Removal</strong>
+                  <p class="text-[#564241] text-sm mt-1">Solutions for low-lying properties and high water tables</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-[#CD5C5C]">check_circle</span>
+                <div>
+                  <strong class="text-[#1b1b1c] font-['Space_Grotesk'] uppercase text-sm tracking-wider">Pump Systems</strong>
+                  <p class="text-[#564241] text-sm mt-1">Installation, repair, and maintenance of all pump types</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-[#CD5C5C]">check_circle</span>
+                <div>
+                  <strong class="text-[#1b1b1c] font-['Space_Grotesk'] uppercase text-sm tracking-wider">Grease Traps</strong>
+                  <p class="text-[#564241] text-sm mt-1">Commercial kitchen grease trap installation and maintenance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative h-[400px] bg-[#1b1b1c] overflow-hidden skew-block modular-shadow">
+            <img 
+              class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale"
+              src="/images/services/drainage/drainage-work-5.jpg" 
+              alt="Drainage services work"
+            />
+            <div class="absolute inset-0 bg-[#CD5C5C]/10"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="py-20 lg:py-28 bg-[#f6f3f2] mt-0">
+      <div class="max-w-6xl mx-auto px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="relative h-[400px] bg-[#1b1b1c] overflow-hidden skew-block modular-shadow order-2 lg:order-1">
+            <img 
+              class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale"
+              src="/images/services/drainage/drainage-work-1.jpg" 
+              alt="Septic tank installation"
+            />
+            <div class="absolute inset-0 bg-[#CD5C5C]/10"></div>
+          </div>
+          <div class="order-1 lg:order-2">
+            <div class="flex items-center gap-6 mb-8">
+              <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+              <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Treatment Systems</span>
+            </div>
+            <h2 class="font-['Space_Grotesk'] font-black text-4xl text-[#1b1b1c] uppercase mb-6 tracking-tight">
+              Septic & Wastewater
+            </h2>
+            <p class="text-[#564241] text-lg leading-relaxed mb-6 font-['Inter']">
+              Complete septic tank services including state-of-the-art installations, maintenance, and repairs. We recommend Hynds Lifestyle Septic Tank Systems — excellent quality and environmentally friendly.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-[#CD5C5C]">check_circle</span>
+                <div>
+                  <strong class="text-[#1b1b1c] font-['Space_Grotesk'] uppercase text-sm tracking-wider">Septic Tank Installation</strong>
+                  <p class="text-[#564241] text-sm mt-1">Modern systems designed for your property requirements</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-[#CD5C5C]">check_circle</span>
+                <div>
+                  <strong class="text-[#1b1b1c] font-['Space_Grotesk'] uppercase text-sm tracking-wider">Tank Cleaning & Pumping</strong>
+                  <p class="text-[#564241] text-sm mt-1">Regular maintenance to prevent system failures</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-[#CD5C5C]">check_circle</span>
+                <div>
+                  <strong class="text-[#1b1b1c] font-['Space_Grotesk'] uppercase text-sm tracking-wider">Repairs & Upgrades</strong>
+                  <p class="text-[#564241] text-sm mt-1">Fixing damaged components and system improvements</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <Gallery 
+      images={galleryImages}
+      title="Our Drainage Work"
+      subtitle="Recent drainage projects across Christchurch and Canterbury — from new installations to emergency clearances."
+      columns={4}
+    />
+    
+    <section class="py-20 lg:py-28 bg-[#1b1b1c] mt-0">
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <h2 class="font-['Space_Grotesk'] font-black text-white text-4xl lg:text-5xl mb-6 uppercase tracking-tight">
+          Drainage Emergency?
+        </h2>
+        <p class="text-white/70 text-lg mb-10 max-w-2xl mx-auto font-['Inter']">
+          Blocked drains and drainage failures require immediate attention. Our rapid response team is available 24/7 with no after-hours call-out fee.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="tel:0800127665" class="btn-actuator">
+            <span>Call 0800 1 BROOK</span>
+          </a>
+          <a href="/contact/" class="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white font-['Space_Grotesk'] font-bold uppercase tracking-widest text-sm hover:bg-white/20 transition-colors border border-white/30">
+            <span>Request Callback</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+  <Footer />
+</Layout>

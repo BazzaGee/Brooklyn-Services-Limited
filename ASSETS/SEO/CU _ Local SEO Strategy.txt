@@ -1,0 +1,48 @@
+Phase 1: Diagnostics and Foundations
+The first step is understanding where the business currently stands.
+The Local Rank Map: Ulku uses a "Rank Map" (via tools like LeadSnap) to track the business’s position across 169 specific points in a city. Results are color-coded:
+Green (1-3): Visible and generating calls.
+Yellow (4-10): Invisible but close to breaking through.
+Red (10+): Google doesn’t trust the business in that specific area.
+The "Top 3%" Metric: This is the percentage of the total map area that is "Green." This metric determines the entire future strategy (Topical vs. Geographic relevance).
+Phase 2: Google Business Profile (GBP) Audit
+Ulku identifies three common mistakes that keep businesses invisible:
+Categories: Most businesses only list one primary category. Ulku recommends listing 2-4 relevant categories (up to 10) to broaden search term visibility. Tools like GMB Everywhere can help find categories used by competitors.
+Services: A profile should have at least 20-30 services. These must be semantically mapped to the categories. For example, "Water Heater Replacement" should sit under the "Plumber" category.
+Empty Boxes: Every field provided by Google must be filled to signal "completion" to the algorithm. This includes:
+Business Description: Use all 750 characters.
+Photos: Upload at least 20 (interior, exterior, team, work-in-progress).
+Attributes: Check every relevant box (e.g., Veteran-owned, wheelchair accessible).
+Phase 3: Website/GBP Consistency Signals
+Google compares the GBP to the business's landing page (usually the homepage) to ensure they are the same entity. Ulku lists seven critical consistency signals:
+Title Tag: Must include the primary category and city name.
+H1 Tag: Must match the title tag.
+Google Maps Embed: Embed the specific GBP location on the page.
+Secondary Mentions: Mention secondary categories and core services in subheadings.
+Review Widget: Display actual Google reviews.
+NAP Consistency: Name, Address, and Phone number must match the GBP character-for-character.
+Schema: Implement Local Business Schema markup.
+Phase 4: Automation and Activity
+Active profiles rank higher than dormant ones. Ulku automates this through management tools:
+Weekly Posts: Schedule 52 posts (one per week) for the entire year.
+Geotagged Photos: Upload photos weekly. Modern tools automatically include metadata to prove the work is happening in the target city.
+AI Review Responses: Respond to every review immediately using AI-driven tools.
+Citations: Automatically push data to Apple Maps, Bing, Yelp, and other directories.
+Phase 5: The "Core 30" Website Structure
+Rather than random blog posts, Ulku builds a "Core 30" structure to build Topical Relevance:
+1 Homepage: The main landing page.
+3-4 Category Pages: Dedicated pages for each secondary category.
+25-30 Service Pages: Detailed pages for every individual service offered.
+Editorial Linking: This is the key. Links must be "Editorial" (inside the body paragraph context), not just in the footer or navigation. The homepage links to categories, and categories link to services, mirroring the GBP structure.
+Phase 6: Authority Building (Links)
+To prove the quality of the content (especially if AI-assisted), Ulku uses two types of links:
+"Not AI Slop" Links: Medium-quality external links that validate the page as helpful and trustworthy.
+Local Authority Links: The most powerful signal. This involves joining local Chambers of Commerce (even multiple ones in the surrounding area) and sponsoring local sports teams or charities to get high-trust local backlinks.
+Phase 7: Strategic Pivot (The Growth Loop)
+Once the "Core 30" is built, the business monitors the Rank Map and uses the "Top 3%" metric to decide the next move:
+Scenario A: Below the Topical Threshold: If the business is still ranking poorly near its own address, it needs more Topical Relevance.
+Strategy: Use "People Also Ask" and Reddit to find local FAQs. Write comprehensive, unique answers on supporting content pages and link them back to the Core 30.
+Scenario B: Above the Topical Threshold: If the business ranks well near its address but not further out, it needs Geographic Relevance.
+Strategy: Identify "Yellow" points on the Rank Map (positions 4-6) near specific landmarks or neighborhoods. Create location-specific pages (e.g., "Plumber in Memorial Park") that discuss local driving routes, area-specific house types, and local community involvement.
+Final Goal: The Scale
+The process becomes a loop: Run rank map -> Identify weakness -> Build content (Topical or Geographic) -> Repeat. This system allows a business to dominate its primary city before opening a second GBP location and repeating the entire process to scale.

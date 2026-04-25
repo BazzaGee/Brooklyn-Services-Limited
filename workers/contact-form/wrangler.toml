@@ -1,0 +1,23 @@
+name = "brooklyn-services-contact"
+main = "src/index.js"
+compatibility_date = "2024-04-01"
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[env.staging]
+vars = { ENVIRONMENT = "staging" }
+
+# Secrets (set via wrangler secret put)
+# RESEND_API_KEY = "re_..."
+# FROM_EMAIL = "noreply@brooklynservices.co.nz"
+# TO_EMAIL = "sam@brooklynservices.co.nz"
+
+# Deployment routes
+[[routes]]
+pattern = "brooklynservices.co.nz/contact-form/*"
+custom_domain = true
+
+[[routes]]
+pattern = "www.brooklynservices.co.nz/contact-form/*"
+custom_domain = true

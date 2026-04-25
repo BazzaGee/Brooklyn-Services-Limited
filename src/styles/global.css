@@ -1,0 +1,288 @@
+/* Global Styles - Block Dynamic Design System */
+
+/* CSS Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fcf9f8;
+  color: #1b1b1c;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+/* Glass Navigation */
+.glass-nav {
+  background: #ffffff;
+}
+
+/* Isometric Pattern Background */
+.isometric-pattern {
+  background-image: 
+    linear-gradient(30deg, #CD5C5C 12%, transparent 12.5%, transparent 87%, #CD5C5C 87.5%, #CD5C5C),
+    linear-gradient(150deg, #CD5C5C 12%, transparent 12.5%, transparent 87%, #CD5C5C 87.5%, #CD5C5C),
+    linear-gradient(30deg, #CD5C5C 12%, transparent 12.5%, transparent 87%, #CD5C5C 87.5%, #CD5C5C),
+    linear-gradient(150deg, #CD5C5C 12%, transparent 12.5%, transparent 87%, #CD5C5C 87.5%, #CD5C5C),
+    linear-gradient(60deg, #CD5C5C77 25%, transparent 25.5%, transparent 75%, #CD5C5C77 75%, #CD5C5C77),
+    linear-gradient(60deg, #CD5C5C77 25%, transparent 25.5%, transparent 75%, #CD5C5C77 75%, #CD5C5C77);
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  opacity: 0.04;
+}
+
+/* Tetris Modules - Block Dynamic Clip Paths */
+.tetris-module {
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 96% 100%, 0 100%);
+}
+
+.tetris-module-alt {
+  clip-path: polygon(4% 0, 100% 0, 100% 100%, 0 100%, 0 10%);
+}
+
+/* Skew Block */
+.skew-block {
+  transform: skewX(-6deg);
+}
+
+.skew-block-content {
+  transform: skewX(6deg);
+}
+
+/* Modular Shadow */
+.modular-shadow {
+  box-shadow: 8px 8px 0px rgba(205, 92, 92, 0.15);
+}
+
+/* Ambient Shadow */
+.ambient-shadow {
+  box-shadow: 0 20px 40px rgba(27, 27, 28, 0.06);
+}
+
+/* Primary Button - Actuator Style */
+.btn-actuator {
+  background: linear-gradient(135deg, #CD5C5C 0%, #bf5152 100%);
+  color: #ffffff;
+  padding: 0.875rem 2rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transform: skewX(-6deg);
+  transition: all 0.3s ease;
+}
+
+.btn-actuator > span {
+  display: inline-block;
+  transform: skewX(6deg);
+}
+
+.btn-actuator:hover {
+  filter: brightness(1.1);
+  transform: skewX(-6deg) scale(1.02);
+}
+
+.btn-actuator:active {
+  transform: skewX(-6deg) scale(0.98);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: #e5e2e1;
+  color: #1b1b1c;
+  padding: 0.875rem 2rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transform: skewX(-6deg);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary > span {
+  display: inline-block;
+  transform: skewX(6deg);
+}
+
+.btn-secondary:hover {
+  background: #bf5152;
+  color: white;
+}
+
+/* Inverse Button (Light on Dark) */
+.btn-inverse {
+  background: #ffffff;
+  color: #CD5C5C;
+  padding: 1rem 2rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transform: skewX(-6deg);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-inverse > span {
+  display: inline-block;
+  transform: skewX(6deg);
+}
+
+.btn-inverse:hover {
+  background: #f0eded;
+  transform: skewX(-6deg) scale(1.02);
+}
+
+/* Technical Labels */
+.label-technical {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #CD5C5C;
+}
+
+.label-system {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+/* Connection Lines */
+.connection-line {
+  width: 3px;
+  background: rgba(205, 92, 92, 0.2);
+  transition: background 0.5s ease;
+}
+
+.connection-line.active {
+  background: #CD5C5C;
+}
+
+/* Progress Bars */
+.progress-bar {
+  height: 4px;
+  background: rgba(205, 92, 92, 0.1);
+  display: flex;
+  gap: 4px;
+}
+
+.progress-bar-fill {
+  background: #CD5C5C;
+  transition: flex-grow 0.5s ease;
+}
+
+/* Scroll Reveal Animation */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Bento Card Base */
+.bento-card {
+  background: #f0eded;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bento-card:hover {
+  transform: scale(1.02);
+  background: #ffffff;
+}
+
+/* Ghost Border */
+.ghost-border {
+  border: 1px solid rgba(221, 192, 190, 0.15);
+}
+
+/* Focus States */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(137, 113, 112, 0.4);
+}
+
+/* Selection Color */
+::selection {
+  background: rgba(205, 92, 92, 0.2);
+  color: #1b1b1c;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f6f3f2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CD5C5C;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9f393b;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .tetris-module,
+  .tetris-module-alt {
+    clip-path: none;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
