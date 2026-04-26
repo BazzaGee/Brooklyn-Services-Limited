@@ -1,4 +1,6 @@
 ---
+import AnimatedLogo from '../ui/AnimatedLogo.astro';
+
 const navItems = [
   { label: 'Services', href: '/services/' },
   { label: 'Projects', href: '/projects/' },
@@ -13,7 +15,7 @@ const currentPath = Astro.url.pathname;
 <nav class="fixed top-0 w-full z-50 glass-nav border-b border-primary/10">
   <div class="flex justify-between items-center w-full px-8 py-5 max-w-screen-2xl mx-auto">
     <div class="text-2xl font-black tracking-tighter text-stone-900 font-headline flex items-center gap-3 group cursor-pointer">
-      <img alt="BROOKLYN SERVICES LIMITED" class="h-12 w-auto object-contain" src="/images/logo.png" />
+      <AnimatedLogo trigger="load" size="medium" />
     </div>
     <div class="hidden md:flex gap-10 items-center">
       {navItems.map((item) => (

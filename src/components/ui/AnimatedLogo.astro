@@ -1,0 +1,144 @@
+---
+interface Props {
+  trigger: 'load' | 'scroll';
+  className?: string;
+  size?: 'small' | 'medium' | 'large';
+}
+
+const { trigger, className = '', size = 'medium' } = Astro.props;
+
+const sizeClasses = {
+  small: {
+    video: 'h-8',
+    textBrooklyn: 'text-xl',
+    textServices: 'text-xs',
+  },
+  medium: {
+    video: 'h-12',
+    textBrooklyn: 'text-3xl',
+    textServices: 'text-sm',
+  },
+  large: {
+    video: 'h-16',
+    textBrooklyn: 'text-5xl',
+    textServices: 'text-base',
+  },
+};
+
+const classes = sizeClasses[size];
+---
+
+<div 
+  class={`animated-logo flex flex-row items-center gap-3 ${className}`}
+  data-trigger={trigger}
+>
+  <div class="video-container relative">
+    <video
+      class={`logo-video ${classes.video} w-auto object-contain`}
+      src="/videos/logo-icon.webm"
+      muted
+      playsinline
+      preload="auto"
+      data-trigger={trigger}
+    >
+    </video>
+  </div>
+  
+  <div class={`logo-text-container flex flex-col ${trigger === 'scroll' ? 'opacity-0' : ''}`}>
+    <div class={`logo-text-brooklyn font-['Space_Grotesk'] font-black text-[#E53935] uppercase ${classes.textBrooklyn} tracking-tight whitespace-nowrap`}>
+      BROOKLYN
+    </div>
+    <div class={`logo-text-services font-['Space_Grotesk'] font-bold text-[#616161] uppercase ${classes.textServices} tracking-wider whitespace-nowrap`}>
+      SERVICES LIMITED
+    </div>
+  </div>
+</div>
+
+<style>
+  .video-container {
+    background: transparent !important;
+  }
+  
+  .logo-video {
+    background: transparent !important;
+    display: block;
+  }
+  
+  .logo-text-container {
+    overflow: hidden;
+  }
+  
+  .logo-text-brooklyn,
+  .logo-text-services {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .logo-text-container.animate .logo-text-brooklyn {
+    animation: textSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
+  }
+  
+  .logo-text-container.animate .logo-text-services {
+    animation: textSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+  }
+  
+  @keyframes textSlideUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const logos = document.querySelectorAll('.animated-logo');
+    
+    logos.forEach((logo) => {
+      const trigger = logo.getAttribute('data-trigger');
+      const video = logo.querySelector('.logo-video') as HTMLVideoElement;
+      const textContainer = logo.querySelector('.logo-text-container') as HTMLElement;
+      
+      if (!video || !textContainer) return;
+      
+      const VIDEO_DURATION = 2000;
+      
+      const startAnimation = () => {
+        video.currentTime = 0;
+        video.play().catch((e) => {
+          console.log('Video autoplay prevented:', e);
+        });
+        
+        setTimeout(() => {
+          textContainer.classList.add('animate');
+        }, VIDEO_DURATION - 300);
+      };
+      
+      if (trigger === 'load') {
+        startAnimation();
+      } else if (trigger === 'scroll') {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && !logo.classList.contains('animated')) {
+                logo.classList.add('animated');
+                startAnimation();
+                observer.unobserve(logo);
+              }
+            });
+          },
+          {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px',
+          }
+        );
+        
+        observer.observe(logo);
+      }
+    });
+  });
+</script>

@@ -1,4 +1,6 @@
 ---
+import AnimatedLogo from '../ui/AnimatedLogo.astro';
+
 const expertiseLinks = [
   { label: 'Plumbing Systems', href: '/services/plumbing/' },
   { label: 'Drainage Logistics', href: '/services/drainage/' },
@@ -21,8 +23,7 @@ const regulatoryLinks = [
     <!-- Logo & Copyright -->
     <div class="col-span-1 flex flex-col gap-6 lg:gap-10">
       <a href="/" class="flex items-center gap-4 group cursor-pointer">
-        <img alt="Brooklyn Services" class="w-12 h-12 object-contain" src="/images/logo-icon.png" />
-        <span class="font-black text-2xl lg:text-3xl tracking-tighter font-['Space_Grotesk'] text-white">BROOKLYN</span>
+        <AnimatedLogo trigger="scroll" size="medium" className="footer-logo" />
       </a>
       <p class="text-white/50 font-['Space_Grotesk'] text-[10px] lg:text-[11px] tracking-[0.3em] uppercase font-bold leading-relaxed max-w-[250px]">
         © 2024 BROOKLYN SERVICES. <br/>PRECISION ENGINEERED INFRASTRUCTURE SOLUTIONS.
@@ -85,3 +86,12 @@ const regulatoryLinks = [
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-logo .logo-text-brooklyn {
+    color: #E53935 !important;
+  }
+  .footer-logo .logo-text-services {
+    color: #9CA3AF !important;
+  }
+</style>
