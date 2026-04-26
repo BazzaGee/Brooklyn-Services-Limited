@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import Gallery from '../../components/ui/Gallery.astro';
+import HorizontalScroll from '../../components/ui/HorizontalScroll.astro';
 
 const title = "Plumbing Dynamics | Brooklyn Services - System 01";
 const description = "Precision hydraulic engineering for commercial and residential infrastructure. Licensed plumbers serving Christchurch & Canterbury. Call 0800 1 BROOK.";
@@ -19,6 +20,15 @@ const galleryImages = [
   { src: '/images/services/plumbing/historical-work-1.jpeg', alt: 'Plumbing work project', caption: 'Project Work' },
   { src: '/images/services/plumbing/historical-work-2.jpeg', alt: 'Plumbing installation', caption: 'Installation' },
   { src: '/images/services/plumbing/historical-work-3.jpeg', alt: 'Plumbing service', caption: 'Service Work' },
+];
+
+const advantages = [
+  { icon: "verified", title: "Licensed & Certified", desc: "Fully licensed plumbers with current certifications and ongoing technical training.", color: "#f6f3f2" },
+  { icon: "schedule", title: "Same-Day Service", desc: "Emergency response available with fast turnaround times across Canterbury.", color: "#1b1b1c" },
+  { icon: "savings", title: "No After-Hours Fee", desc: "Fair pricing always. We don't charge extra for emergency call-outs.", color: "#CD5C5C" },
+  { icon: "handshake", title: "Rinnai Authorized", desc: "Authorized service centre for Rinnai across Canterbury. Supply, install, and service.", color: "#f6f3f2" },
+  { icon: "emergency", title: "24/7 Emergency", desc: "Burst pipes, blocked drains, no hot water — we respond around the clock.", color: "#1b1b1c" },
+  { icon: "build", title: "New Build Specialist", desc: "Full plumbing systems for new residential and commercial construction projects.", color: "#f6f3f2" },
 ];
 ---
 
@@ -226,43 +236,29 @@ const galleryImages = [
       title="Our Plumbing Work"
       subtitle="Recent projects showcasing our plumbing expertise across residential, commercial, and rural properties."
       columns={4}
+      horizontal={true}
     />
     
-    <section class="py-20 lg:py-28 mt-0">
-      <div class="max-w-6xl mx-auto px-8">
-        <div class="text-center mb-16">
+    <section class="bg-[#f6f3f2] mt-0">
+      <div class="max-w-[1800px] mx-auto px-8 pt-20 lg:pt-28 pb-4">
+        <div class="text-center mb-12">
           <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Advantages</span>
           <h2 class="font-['Space_Grotesk'] font-black text-4xl text-[#1b1b1c] uppercase mt-4 tracking-tight">
             Why Brooklyn Services
           </h2>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-[#f6f3f2] p-8 group hover:bg-white transition-colors">
-            <div class="w-14 h-14 bg-[#CD5C5C]/10 mb-6 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
-              <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">verified</span>
-            </div>
-            <h3 class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] uppercase mb-3">Licensed & Certified</h3>
-            <p class="text-[#564241] font-['Inter']">Fully licensed plumbers with current certifications and ongoing technical training.</p>
-          </div>
-          
-          <div class="bg-[#f6f3f2] p-8 group hover:bg-white transition-colors">
-            <div class="w-14 h-14 bg-[#CD5C5C]/10 mb-6 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
-              <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">schedule</span>
-            </div>
-            <h3 class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] uppercase mb-3">Same-Day Service</h3>
-            <p class="text-[#564241] font-['Inter']">Emergency response available with fast turnaround times across Canterbury.</p>
-          </div>
-          
-          <div class="bg-[#f6f3f2] p-8 group hover:bg-white transition-colors">
-            <div class="w-14 h-14 bg-[#CD5C5C]/10 mb-6 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
-              <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">savings</span>
-            </div>
-            <h3 class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] uppercase mb-3">No After-Hours Fee</h3>
-            <p class="text-[#564241] font-['Inter']">Fair pricing always. We don't charge extra for emergency call-outs — one of the few companies offering this.</p>
-          </div>
-        </div>
       </div>
+      <HorizontalScroll bgColor="#f6f3f2">
+        {advantages.map((adv) => (
+          <div class="group hover:bg-white transition-colors" style={`min-width: 320px; max-width: 360px; background: ${adv.color}; padding: 2rem;`}>
+            <div class="w-14 h-14 bg-[#CD5C5C]/10 mb-6 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
+              <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">{adv.icon}</span>
+            </div>
+            <h3 class={`font-['Space_Grotesk'] font-black text-xl uppercase mb-3 ${adv.color === '#CD5C5C' ? 'text-white' : 'text-[#1b1b1c]'}`}>{adv.title}</h3>
+            <p class={`text-sm font-['Inter'] ${adv.color === '#CD5C5C' ? 'text-white/90' : adv.color === '#1b1b1c' ? 'text-white/70' : 'text-[#564241]'}`}>{adv.desc}</p>
+          </div>
+        ))}
+      </HorizontalScroll>
     </section>
     
     <section class="py-20 lg:py-28 bg-[#CD5C5C] mt-0">

@@ -1,0 +1,28 @@
+{
+  "name": "brooklyn-services-logo-animation",
+  "version": "1.0.0",
+  "description": "Dynamic logo animation for Brooklyn Services Limited",
+  "type": "module",
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion render LogoAnimation",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.451",
+    "@remotion/cli": "^4.0.451",
+    "@remotion/renderer": "^4.0.451",
+    "@remotion/studio-server": "^4.0.451",
+    "@remotion/studio-shared": "^4.0.451",
+    "@remotion/zod-types": "4.0.451",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "remotion": "^4.0.451",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/web": "^0.0.61",
+    "typescript": "^5.0.0"
+  }
+}

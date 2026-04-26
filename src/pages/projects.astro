@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import Gallery from '../components/ui/Gallery.astro';
+import HorizontalScroll from '../components/ui/HorizontalScroll.astro';
 
 const title = "Projects | Brooklyn Services - Infrastructure Portfolio";
 const description = "View our infrastructure projects across Canterbury. Commercial plumbing, drainage, and utility locating for Summerset Villages, Ryman Healthcare, CCL Construction and more.";
@@ -251,7 +252,7 @@ const stats = [
           </h2>
         </div>
         
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
           <div class="bg-white p-8 flex items-center justify-center group hover:shadow-lg transition-all">
             <div class="text-center">
               <span class="font-['Space_Grotesk'] font-black text-2xl text-[#1b1b1c] group-hover:text-[#CD5C5C] transition-colors">Summerset</span>
@@ -278,13 +279,13 @@ const stats = [
           </div>
         </div>
         
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-6">
+        <HorizontalScroll bgColor="#e5e2e1">
           {['Tonkin & Taylor', 'Downer Group', 'Fulton Hogan', 'Mainmark', 'Ventia', 'CCL Construction', 'Spotless Services', 'Neda Facilities', 'OCS', 'Maiden Construction'].map(client => (
-            <div class="bg-white p-5 flex items-center justify-center group hover:shadow-md transition-all">
+            <div class="bg-white p-6 flex items-center justify-center group hover:shadow-md transition-all" style="min-width: 220px; height: 80px;">
               <span class="font-['Space_Grotesk'] font-bold text-sm text-[#564241] group-hover:text-[#CD5C5C] transition-colors text-center uppercase tracking-wider">{client}</span>
             </div>
           ))}
-        </div>
+        </HorizontalScroll>
       </div>
     </section>
     
@@ -307,9 +308,9 @@ const stats = [
           </div>
         </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <HorizontalScroll bgColor="#fcf9f8">
           {testimonials.map(testimonial => (
-            <div class="bg-[#f6f3f2] p-8 group hover:bg-white hover:shadow-ambient transition-all">
+            <div class="bg-[#f6f3f2] p-8 group hover:bg-white hover:shadow-ambient transition-all" style="min-width: 360px; max-width: 400px;">
               <div class="flex gap-1 mb-4">
                 {[1,2,3,4,5].map(() => (
                   <span class="material-symbols-outlined text-[#CD5C5C] text-sm">star</span>
@@ -327,7 +328,7 @@ const stats = [
               </div>
             </div>
           ))}
-        </div>
+        </HorizontalScroll>
       </div>
     </section>
 
@@ -336,6 +337,7 @@ const stats = [
       title="More Of Our Work"
       subtitle="Photos from our projects shared on Facebook — real work, real results."
       columns={4}
+      horizontal={true}
     />
     
     <section class="py-20 lg:py-28 bg-[#CD5C5C] mt-0 px-4">

@@ -10,13 +10,75 @@ interface Props {
   title?: string;
   subtitle?: string;
   columns?: number;
+  horizontal?: boolean;
 }
 
-const { images, title, subtitle, columns = 4 } = Astro.props;
+const { images, title, subtitle, columns = 4, horizontal = false } = Astro.props;
 const galleryId = `gallery-${Math.random().toString(36).substring(2, 9)}`;
 ---
 
-{title && (
+{title && horizontal && (
+  <section id={galleryId} class="bg-[#f6f3f2]">
+    <div class="max-w-6xl mx-auto px-8 pt-20 lg:pt-28 pb-4">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-6 mb-8">
+          <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Portfolio</span>
+          <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+        </div>
+        <h2 class="font-['Space_Grotesk'] font-black text-4xl lg:text-5xl text-[#1b1b1c] uppercase tracking-tight">
+          {title}
+        </h2>
+        {subtitle && (
+          <p class="text-[#564241] text-lg mt-4 max-w-2xl mx-auto font-['Inter']">
+            {subtitle}
+          </p>
+        )}
+      </div>
+    </div>
+
+    <div class="hscroll-proxy" data-hscroll data-bg-color="#f6f3f2">
+      <div class="hscroll-sticky" style="background: #f6f3f2;">
+        <div class="hscroll-viewport">
+          <div class="hscroll-track">
+            {images.map((image, index) => (
+              <div class="hscroll-gallery-card">
+                <button
+                  class="gallery-item group relative overflow-hidden cursor-pointer bg-[#1b1b1c] skew-block w-full h-full"
+                  data-gallery={galleryId}
+                  data-index={index}
+                  aria-label={`View ${image.alt}`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full object-cover opacity-70 grayscale transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    {image.caption && (
+                      <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold skew-block-content">
+                        {image.caption}
+                      </p>
+                    )}
+                  </div>
+                  <div class="absolute top-3 right-3 bg-[#CD5C5C] w-8 h-8 flex items-center justify-center skew-block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span class="material-symbols-outlined text-white text-sm skew-block-content">zoom_in</span>
+                  </div>
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hscroll-progress-bar" data-hscroll-progress></div>
+  </section>
+)}
+
+{title && !horizontal && (
   <section id={galleryId} class="py-20 lg:py-28 bg-[#f6f3f2] mt-8">
     <div class="max-w-6xl mx-auto px-8">
       <div class="text-center mb-16">
@@ -67,7 +129,50 @@ const galleryId = `gallery-${Math.random().toString(36).substring(2, 9)}`;
   </section>
 )}
 
-{!title && (
+{!title && horizontal && (
+  <div class="bg-[#f6f3f2]">
+    <div class="hscroll-proxy" data-hscroll data-bg-color="#f6f3f2">
+      <div class="hscroll-sticky" style="background: #f6f3f2;">
+        <div class="hscroll-viewport">
+          <div class="hscroll-track">
+            {images.map((image, index) => (
+              <div class="hscroll-gallery-card">
+                <button
+                  class="gallery-item group relative overflow-hidden cursor-pointer bg-[#1b1b1c] skew-block w-full h-full"
+                  data-gallery={galleryId}
+                  data-index={index}
+                  aria-label={`View ${image.alt}`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full object-cover opacity-70 grayscale transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    {image.caption && (
+                      <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold skew-block-content">
+                        {image.caption}
+                      </p>
+                    )}
+                  </div>
+                  <div class="absolute top-3 right-3 bg-[#CD5C5C] w-8 h-8 flex items-center justify-center skew-block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span class="material-symbols-outlined text-white text-sm skew-block-content">zoom_in</span>
+                  </div>
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hscroll-progress-bar" data-hscroll-progress></div>
+  </div>
+)}
+
+{!title && !horizontal && (
   <div class="py-20 lg:py-28 bg-[#f6f3f2] mt-8">
     <div class="max-w-6xl mx-auto px-8">
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-{columns} gap-4">
@@ -198,4 +303,68 @@ const galleryId = `gallery-${Math.random().toString(36).substring(2, 9)}`;
     if (e.key === 'ArrowLeft') navigateLightbox(-1);
     if (e.key === 'ArrowRight') navigateLightbox(1);
   });
+
+  function initScrollDriven() {
+    const progressBar = document.querySelector('.hscroll-progress-bar') as HTMLElement;
+
+    document.querySelectorAll('[data-hscroll]').forEach(proxy => {
+      if (proxy.dataset.hscrollInit) return;
+      proxy.dataset.hscrollInit = '1';
+
+      const sticky = proxy.querySelector('.hscroll-sticky') as HTMLElement;
+      const track = proxy.querySelector('.hscroll-track') as HTMLElement;
+      if (!sticky || !track) return;
+
+      let rafId = 0;
+
+      function calcProxyHeight() {
+        const trackWidth = track.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        const stickyHeight = window.innerHeight;
+        const extraScroll = Math.max(0, trackWidth - viewportWidth);
+        proxy.style.height = (stickyHeight + extraScroll) + 'px';
+      }
+
+      function onScroll() {
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          const proxyScrollable = proxy.offsetHeight - window.innerHeight;
+          if (proxyScrollable <= 0) return;
+
+          const scrolled = Math.max(0, Math.min(proxyScrollable, -proxy.getBoundingClientRect().top));
+          const progress = scrolled / proxyScrollable;
+
+          const maxTranslate = track.scrollWidth - (track.parentElement?.offsetWidth || window.innerWidth);
+          track.style.transform = `translateX(${-progress * maxTranslate}px)`;
+
+          if (progressBar) {
+            const isVisible = progress > 0.001 && progress < 0.999;
+            progressBar.style.opacity = isVisible ? '1' : '0';
+            progressBar.style.width = `${progress * 100}%`;
+          }
+        });
+      }
+
+      calcProxyHeight();
+      onScroll();
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      let resizeTimer: number;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(() => {
+          calcProxyHeight();
+          onScroll();
+        }, 100);
+      });
+
+      new ResizeObserver(() => {
+        calcProxyHeight();
+        onScroll();
+      }).observe(track);
+    });
+  }
+
+  initScrollDriven();
 </script>

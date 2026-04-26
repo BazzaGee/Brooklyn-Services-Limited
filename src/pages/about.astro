@@ -2,9 +2,33 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
+import HorizontalScroll from '../components/ui/HorizontalScroll.astro';
 
 const title = "About Us | Brooklyn Services - Precision Infrastructure Specialists";
 const description = "Learn about Brooklyn Services Limited - Christchurch's trusted plumbing, drainage and detection specialists. Founded by Sam Aitken, named after his son Brooklyn. 50+ years combined experience since 2011.";
+
+const valueProps = [
+  { icon: "verified", title: "Licensed Excellence", desc: "Fully licensed plumbers and drainlayers. Authorized service agents for Rinnai (Canterbury-wide) and Electrolux. Every technician carries current certifications.", color: "#1b1b1c" },
+  { icon: "schedule", title: "No After-Hours Fee", desc: "Critical infrastructure doesn't follow business hours. 24/7 emergency response without penalty rates — one of the few companies offering this. Fair pricing, always.", color: "#CD5C5C" },
+  { icon: "handshake", title: "Trusted Partnerships", desc: "Long-term relationships with businesses that supported us from the start. Preferred contractor for Summerset Villages, Ryman Healthcare, and major construction companies.", color: "#f6f3f2" },
+  { icon: "engineering", title: "Multi-Discipline", desc: "Four integrated service divisions — plumbing, drainage, utility locating, and leak detection. One team, one call, complete infrastructure coverage.", color: "#1b1b1c" },
+  { icon: "school", title: "Apprentice Programme", desc: "Investing in the next generation. We hire and train apprentices, teaching dedication to quality workmanship and professional standards.", color: "#CD5C5C" },
+  { icon: "location_on", title: "South Island Wide", desc: "Based in Christchurch with rapid response across Canterbury. Utility locating and leak detection available across the entire South Island on request.", color: "#f6f3f2" },
+  { icon: "analytics", title: "Predictive Approach", desc: "Modern infrastructure demands more than reactive fixes. We use diagnostics, thermal imaging, and data analysis to prevent failures before they occur.", color: "#1b1b1c" },
+];
+
+const equipment = [
+  { name: "Ground Penetrating Radar", tag: "GPR" },
+  { name: "CCTV Drain Cameras", tag: "Inspection" },
+  { name: "Acoustic Geophone", tag: "Leak Detection" },
+  { name: "Thermal Imaging", tag: "Non-Invasive" },
+  { name: "Water Blaster Truck", tag: "Drain Clearing" },
+  { name: "Electromagnetic Locator", tag: "Cable Detection" },
+  { name: "Sonde Tracking", tag: "Location" },
+  { name: "Pipe Inspection Tools", tag: "Diagnostics" },
+  { name: "Pressure Testing Kit", tag: "Analysis" },
+  { name: "Gas Detection Equipment", tag: "Safety" },
+];
 ---
 
 <Layout title={title} description={description}>
@@ -92,28 +116,49 @@ const description = "Learn about Brooklyn Services Limited - Christchurch's trus
       </div>
     </section>
     
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-0 mt-8">
-      <div class="bg-[#1b1b1c] p-12 lg:p-16 group hover:bg-[#252525] transition-colors">
-        <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-6 block">verified</span>
-        <h3 class="font-['Space_Grotesk'] font-black text-2xl text-white uppercase mb-4 tracking-tight">Licensed Excellence</h3>
-        <p class="text-white/70 font-['Inter'] leading-relaxed">
-          Fully licensed plumbers and drainlayers. Authorized service agents for Rinnai (Canterbury-wide) and Electrolux. Every technician carries current certifications.
-        </p>
+    <!-- Value Props - Horizontal Scroll -->
+    <section class="bg-[#f6f3f2] mt-8">
+      <div class="max-w-[1800px] mx-auto px-8 pt-16 lg:pt-20 pb-4">
+        <div class="flex items-center gap-6 mb-6">
+          <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Why Brooklyn</span>
+        </div>
+        <h2 class="font-['Space_Grotesk'] font-black text-4xl lg:text-5xl text-[#1b1b1c] uppercase mb-4 tracking-tight">
+          Our Advantages
+        </h2>
       </div>
-      <div class="bg-[#CD5C5C] p-12 lg:p-16 group">
-        <span class="material-symbols-outlined text-white text-5xl mb-6 block">schedule</span>
-        <h3 class="font-['Space_Grotesk'] font-black text-2xl text-white uppercase mb-4 tracking-tight">No After-Hours Fee</h3>
-        <p class="text-white/90 font-['Inter'] leading-relaxed">
-          Critical infrastructure doesn't follow business hours. 24/7 emergency response without penalty rates — one of the few companies offering this. Fair pricing, always.
-        </p>
+      <HorizontalScroll bgColor="#f6f3f2">
+        {valueProps.map((prop) => (
+          <div class="group transition-all duration-300" style={`min-width: 320px; max-width: 360px; background: ${prop.color}; padding: 2rem;`}>
+            <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-6 block">{prop.icon}</span>
+            <h3 class={`font-['Space_Grotesk'] font-black text-2xl uppercase mb-4 tracking-tight ${prop.color === '#CD5C5C' ? 'text-white' : 'text-[#1b1b1c]'}`}>{prop.title}</h3>
+            <p class={`font-['Inter'] leading-relaxed ${prop.color === '#CD5C5C' ? 'text-white/90' : prop.color === '#1b1b1c' ? 'text-white/70' : 'text-[#564241]'}`}>{prop.desc}</p>
+          </div>
+        ))}
+      </HorizontalScroll>
+    </section>
+
+    <!-- Equipment & Technology Strip -->
+    <section class="bg-[#1b1b1c] mt-0">
+      <div class="max-w-[1800px] mx-auto px-8 pt-16 lg:pt-20 pb-4">
+        <div class="flex items-center gap-6 mb-6">
+          <div class="w-12 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Technology</span>
+        </div>
+        <h2 class="font-['Space_Grotesk'] font-black text-3xl lg:text-4xl text-white uppercase tracking-tight">
+          Our Equipment
+        </h2>
       </div>
-      <div class="bg-[#f6f3f2] p-12 lg:p-16 group hover:bg-white transition-colors">
-        <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-6 block">handshake</span>
-        <h3 class="font-['Space_Grotesk'] font-black text-2xl text-[#1b1b1c] uppercase mb-4 tracking-tight">Trusted Partnerships</h3>
-        <p class="text-[#564241] font-['Inter'] leading-relaxed">
-          Maintaining long-term relationships with businesses that supported us from the start. Preferred contractor for Summerset Villages, Ryman Healthcare, and major construction companies.
-        </p>
-      </div>
+      <HorizontalScroll bgColor="#1b1b1c">
+        {equipment.map((item) => (
+          <div class="bg-[#252525] p-6 group hover:bg-[#CD5C5C] transition-all duration-500 flex items-center gap-4" style="min-width: 260px; max-width: 300px;">
+            <div class="flex-1">
+              <h4 class="font-['Space_Grotesk'] font-black text-sm text-white uppercase tracking-wider group-hover:text-white">{item.name}</h4>
+            </div>
+            <span class="px-3 py-1 bg-[#CD5C5C]/20 group-hover:bg-white/20 text-[#CD5C5C] group-hover:text-[#CD5C5C] text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold flex-shrink-0">{item.tag}</span>
+          </div>
+        ))}
+      </HorizontalScroll>
     </section>
 
     <section class="grid grid-cols-1 md:grid-cols-12 gap-0 mt-8">
@@ -191,26 +236,25 @@ const description = "Learn about Brooklyn Services Limited - Christchurch's trus
             Utility locating and leak detection available South Island-wide on request.
           </p>
           
-          <div class="grid grid-cols-2 gap-4">
-            <div class="p-4 bg-[#f6f3f2] border-l-4 border-[#CD5C5C]">
-              <span class="font-['Space_Grotesk'] font-bold text-[#1b1b1c] uppercase text-sm tracking-wider">Christchurch</span>
-            </div>
-            <div class="p-4 bg-[#f6f3f2] border-l-4 border-[#CD5C5C]">
-              <span class="font-['Space_Grotesk'] font-bold text-[#1b1b1c] uppercase text-sm tracking-wider">Rolleston</span>
-            </div>
-            <div class="p-4 bg-[#f6f3f2] border-l-4 border-[#CD5C5C]">
-              <span class="font-['Space_Grotesk'] font-bold text-[#1b1b1c] uppercase text-sm tracking-wider">Lincoln</span>
-            </div>
-            <div class="p-4 bg-[#f6f3f2] border-l-4 border-[#CD5C5C]">
-              <span class="font-['Space_Grotesk'] font-bold text-[#1b1b1c] uppercase text-sm tracking-wider">Kaiapoi</span>
-            </div>
-            <div class="p-4 bg-[#f6f3f2] border-l-4 border-[#CD5C5C]">
-              <span class="font-['Space_Grotesk'] font-bold text-[#1b1b1c] uppercase text-sm tracking-wider">Rangiora</span>
-            </div>
-            <div class="p-4 bg-[#f6f3f2] border-l-4 border-[#CD5C5C]">
-              <span class="font-['Space_Grotesk'] font-bold text-[#1b1b1c] uppercase text-sm tracking-wider">All Canterbury</span>
-            </div>
-          </div>
+          <HorizontalScroll bgColor="#fcf9f8">
+            {[
+              { name: "Christchurch", sub: "CBD & Suburbs" },
+              { name: "Rolleston", sub: "Selwyn District" },
+              { name: "Lincoln", sub: "Selwyn District" },
+              { name: "Kaiapoi", sub: "Waimakariri" },
+              { name: "Rangiora", sub: "Waimakariri" },
+              { name: "Halswell", sub: "Christchurch" },
+              { name: "Prebbleton", sub: "Selwyn District" },
+              { name: "West Melton", sub: "Christchurch" },
+              { name: "Rakaia", sub: "Ashburton" },
+              { name: "Ashburton", sub: "Mid Canterbury" },
+            ].map(area => (
+              <div class="p-5 bg-[#f6f3f2] border-l-4 border-[#CD5C5C] group hover:bg-white hover:shadow-lg transition-all" style="min-width: 200px;">
+                <span class="font-['Space_Grotesk'] font-bold text-[#1b1b1c] uppercase text-sm tracking-wider block">{area.name}</span>
+                <span class="text-xs text-[#564241] font-['Inter']">{area.sub}</span>
+              </div>
+            ))}
+          </HorizontalScroll>
         </div>
         
         <div class="relative h-[500px] bg-[#1b1b1c] overflow-hidden skew-block modular-shadow">

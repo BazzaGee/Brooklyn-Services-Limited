@@ -278,6 +278,60 @@ input:focus, textarea:focus, select:focus {
   }
 }
 
+/* Scroll-Driven Horizontal Sections */
+.hscroll-proxy {
+  position: relative;
+}
+
+.hscroll-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hscroll-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hscroll-track {
+  display: flex;
+  gap: 1rem;
+  padding: 0 2rem;
+  will-change: transform;
+}
+
+.hscroll-track > * {
+  flex-shrink: 0;
+}
+
+.hscroll-gallery-card {
+  width: 280px;
+  height: 280px;
+}
+
+@media (min-width: 1024px) {
+  .hscroll-gallery-card {
+    width: 360px;
+    height: 360px;
+  }
+}
+
+.hscroll-progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #CD5C5C;
+  z-index: 999;
+  width: 0%;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

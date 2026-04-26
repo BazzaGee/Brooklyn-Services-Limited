@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
+import HorizontalScroll from '../../components/ui/HorizontalScroll.astro';
 
 const title = "Services | Brooklyn Services - Infrastructure Systems";
 const description = "Complete infrastructure solutions: Plumbing, Drainage, Utility Locating & Leak Detection. Licensed specialists serving Christchurch & Canterbury. Call 0800 1 BROOK.";
@@ -50,6 +51,21 @@ const stats = [
   { value: "4", label: "Expert Systems" },
   { value: "1000+", label: "Projects Completed" },
   { value: "24/7", label: "Emergency Response" }
+];
+
+const capabilities = [
+  { name: "Ground Penetrating Radar", tag: "GPR" },
+  { name: "CCTV Drain Inspection", tag: "Video" },
+  { name: "Acoustic Leak Detection", tag: "Geophone" },
+  { name: "Thermal Imaging", tag: "Infrared" },
+  { name: "Water Blaster Truck", tag: "High Pressure" },
+  { name: "Electromagnetic Locating", tag: "Cable Trace" },
+  { name: "Sonde Location", tag: "Depth Find" },
+  { name: "Rinnai Authorized", tag: "Certified" },
+  { name: "Electrolux Authorized", tag: "Certified" },
+  { name: "Pressure Testing", tag: "Diagnostics" },
+  { name: "Pipe Freezing", tag: "Non-Drain" },
+  { name: "Gas Detection", tag: "Safety" },
 ];
 ---
 
@@ -137,6 +153,29 @@ const stats = [
           </a>
         ))}
       </div>
+    </section>
+    
+    <!-- Capabilities Strip -->
+    <section class="bg-[#1b1b1c] mt-8">
+      <div class="max-w-[1800px] mx-auto px-8 pt-16 lg:pt-20 pb-4">
+        <div class="flex items-center gap-6 mb-6">
+          <div class="w-12 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Capabilities</span>
+        </div>
+        <h2 class="font-['Space_Grotesk'] font-black text-3xl lg:text-4xl text-white uppercase tracking-tight">
+          Technology & Equipment
+        </h2>
+      </div>
+      <HorizontalScroll bgColor="#1b1b1c">
+        {capabilities.map((item) => (
+          <div class="bg-[#252525] p-6 group hover:bg-[#CD5C5C] transition-all duration-500 flex items-center gap-4" style="min-width: 260px; max-width: 300px;">
+            <div class="flex-1">
+              <h4 class="font-['Space_Grotesk'] font-black text-sm text-white uppercase tracking-wider group-hover:text-white">{item.name}</h4>
+            </div>
+            <span class="px-3 py-1 bg-[#CD5C5C]/20 group-hover:bg-white/20 text-[#CD5C5C] group-hover:text-[#CD5C5C] text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold flex-shrink-0">{item.tag}</span>
+          </div>
+        ))}
+      </HorizontalScroll>
     </section>
     
     <!-- The Brooklyn Protocol -->

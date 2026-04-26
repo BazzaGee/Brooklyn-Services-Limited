@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import Gallery from '../../components/ui/Gallery.astro';
+import HorizontalScroll from '../../components/ui/HorizontalScroll.astro';
 
 const title = "Leak Detection | Brooklyn Services - Detection Suite";
 const description = "Professional leak detection in Christchurch using acoustic geophone and thermal imaging technology. Accurate leak location with minimal disruption. South Island-wide.";
@@ -142,49 +143,35 @@ const galleryImages = [
       </div>
     </section>
 
-    <section class="py-20 lg:py-28 bg-[#e5e2e1] mt-0">
-      <div class="max-w-6xl mx-auto px-8">
-        <div class="text-center mb-16">
+    <section class="bg-[#e5e2e1] mt-0">
+      <div class="max-w-[1800px] mx-auto px-8 pt-20 lg:pt-28 pb-4">
+        <div class="text-center mb-12">
           <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Benefits</span>
           <h2 class="font-['Space_Grotesk'] font-black text-4xl text-[#1b1b1c] uppercase mt-4 tracking-tight">
             Why Professional Detection?
           </h2>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-white p-8 group hover:shadow-lg transition-all">
-            <div class="w-14 h-14 bg-[#CD5C5C]/10 mb-6 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
-              <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">savings</span>
-            </div>
-            <h3 class="font-['Space_Grotesk'] font-black text-lg text-[#1b1b1c] uppercase mb-3">Cost Reduction</h3>
-            <p class="text-[#564241] text-sm font-['Inter']">Find leaks before major damage. Targeted repairs save thousands in unnecessary excavation.</p>
-          </div>
-          
-          <div class="bg-white p-8 group hover:shadow-lg transition-all">
-            <div class="w-14 h-14 bg-[#CD5C5C]/10 mb-6 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
-              <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">shield</span>
-            </div>
-            <h3 class="font-['Space_Grotesk'] font-black text-lg text-[#1b1b1c] uppercase mb-3">Property Protection</h3>
-            <p class="text-[#564241] text-sm font-['Inter']">Prevent water damage, rot, mold, and foundation deterioration before they develop.</p>
-          </div>
-          
-          <div class="bg-white p-8 group hover:shadow-lg transition-all">
-            <div class="w-14 h-14 bg-[#CD5C5C]/10 mb-6 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
-              <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">speed</span>
-            </div>
-            <h3 class="font-['Space_Grotesk'] font-black text-lg text-[#1b1b1c] uppercase mb-3">Fast Results</h3>
-            <p class="text-[#564241] text-sm font-['Inter']">Same-day service available. Pinpoint accuracy means faster repairs and less downtime.</p>
-          </div>
-          
-          <div class="bg-white p-8 group hover:shadow-lg transition-all">
-            <div class="w-14 h-14 bg-[#CD5C5C]/10 mb-6 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
-              <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">eco</span>
-            </div>
-            <h3 class="font-['Space_Grotesk'] font-black text-lg text-[#1b1b1c] uppercase mb-3">Water Conservation</h3>
-            <p class="text-[#564241] text-sm font-['Inter']">Stop water waste and reduce environmental impact with prompt leak identification and repair.</p>
-          </div>
-        </div>
       </div>
+      <HorizontalScroll bgColor="#e5e2e1">
+        {[
+          { icon: "savings", title: "Cost Reduction", desc: "Find leaks before major damage. Targeted repairs save thousands in unnecessary excavation.", color: "white" },
+          { icon: "shield", title: "Property Protection", desc: "Prevent water damage, rot, mold, and foundation deterioration before they develop.", color: "#f6f3f2" },
+          { icon: "speed", title: "Fast Results", desc: "Same-day service available. Pinpoint accuracy means faster repairs and less downtime.", color: "white" },
+          { icon: "eco", title: "Water Conservation", desc: "Stop water waste and reduce environmental impact with prompt leak identification.", color: "#f6f3f2" },
+          { icon: "plumbing", title: "Pipe Preservation", desc: "Non-invasive detection avoids damaging existing pipe work and surrounding structures.", color: "white" },
+          { icon: "analytics", title: "Data Reporting", desc: "Comprehensive reports with leak locations, severity, and recommended remediation.", color: "#f6f3f2" },
+          { icon: "location_on", title: "South Island Wide", desc: "Christchurch-based with availability across the entire South Island on request.", color: "white" },
+          { icon: "trending_up", title: "Preventive Maintenance", desc: "Regular detection surveys catch developing issues before they become expensive failures.", color: "#f6f3f2" },
+        ].map((item) => (
+          <div class="group hover:shadow-lg transition-all" style={`min-width: 300px; max-width: 340px; background: ${item.color}; padding: 2rem;`}>
+            <div class="w-14 h-14 bg-[#CD5C5C]/10 mb-6 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
+              <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">{item.icon}</span>
+            </div>
+            <h3 class="font-['Space_Grotesk'] font-black text-lg text-[#1b1b1c] uppercase mb-3">{item.title}</h3>
+            <p class="text-[#564241] text-sm font-['Inter']">{item.desc}</p>
+          </div>
+        ))}
+      </HorizontalScroll>
     </section>
     
     <Gallery 
@@ -192,6 +179,7 @@ const galleryImages = [
       title="Our Leak Detection Work"
       subtitle="Real leak detection projects — from residential properties to large-scale commercial sites across Christchurch and the South Island."
       columns={4}
+      horizontal={true}
     />
     
     <section class="py-20 lg:py-28 bg-[#CD5C5C] mt-0">

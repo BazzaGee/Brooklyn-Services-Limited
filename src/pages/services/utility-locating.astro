@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import Gallery from '../../components/ui/Gallery.astro';
+import HorizontalScroll from '../../components/ui/HorizontalScroll.astro';
 
 const title = "Utility Locating | Brooklyn Services - System 03";
 const description = "Professional utility locating services in Christchurch using GPR and electromagnetic technology. South Island-wide service. Call 0800 1 BROOK.";
@@ -150,9 +151,9 @@ const clients = [
           </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <HorizontalScroll bgColor="#e5e2e1">
           {clients.map((client, index) => (
-            <div class={`p-6 group transition-all ${index % 2 === 0 ? 'bg-white hover:shadow-lg' : 'bg-[#f6f3f2] hover:bg-white'}`}>
+            <div class={`p-6 group transition-all ${index % 2 === 0 ? 'bg-white hover:shadow-lg' : 'bg-[#f6f3f2] hover:bg-white'}`} style="min-width: 320px; max-width: 380px;">
               <div class="flex items-center gap-4 mb-2">
                 <div class="w-3 h-3 bg-[#CD5C5C] skew-block"></div>
                 <h3 class="font-['Space_Grotesk'] font-black text-lg text-[#1b1b1c] uppercase tracking-tight">{client.name}</h3>
@@ -160,7 +161,7 @@ const clients = [
               <p class="text-[#564241] text-sm font-['Inter'] pl-7">{client.work}</p>
             </div>
           ))}
-        </div>
+        </HorizontalScroll>
       </div>
     </section>
     
@@ -169,6 +170,7 @@ const clients = [
       title="Our Utility Locating Work"
       subtitle="Utility detection projects across Christchurch, Canterbury, and the wider South Island."
       columns={3}
+      horizontal={true}
     />
     
     <section class="py-20 lg:py-28 bg-[#CD5C5C] mt-0">
