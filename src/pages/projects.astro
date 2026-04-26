@@ -255,34 +255,49 @@ const stats = [
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
           <div class="bg-white p-8 flex items-center justify-center group hover:shadow-lg transition-all">
             <div class="text-center">
-              <span class="font-['Space_Grotesk'] font-black text-2xl text-[#1b1b1c] group-hover:text-[#CD5C5C] transition-colors">Summerset</span>
-              <span class="block text-xs uppercase tracking-wider text-[#564241] font-['Space_Grotesk'] font-bold mt-1">Villages</span>
+              <img src="/images/logos/summerset-villages.png" alt="Summerset Villages" class="h-12 mx-auto mb-2 object-contain" />
+              <span class="block text-xs uppercase tracking-wider text-[#564241] font-['Space_Grotesk'] font-bold">Villages</span>
             </div>
           </div>
           <div class="bg-white p-8 flex items-center justify-center group hover:shadow-lg transition-all">
             <div class="text-center">
-              <span class="font-['Space_Grotesk'] font-black text-2xl text-[#1b1b1c] group-hover:text-[#CD5C5C] transition-colors">Ryman</span>
-              <span class="block text-xs uppercase tracking-wider text-[#564241] font-['Space_Grotesk'] font-bold mt-1">Healthcare</span>
+              <img src="/images/logos/ryman-healthcare.svg" alt="Ryman Healthcare" class="h-12 mx-auto mb-2 object-contain" />
+              <span class="block text-xs uppercase tracking-wider text-[#564241] font-['Space_Grotesk'] font-bold">Healthcare</span>
             </div>
           </div>
           <div class="bg-white p-8 flex items-center justify-center group hover:shadow-lg transition-all">
             <div class="text-center">
-              <img src="/images/rinnai-badge.png" alt="Rinnai Authorized Service Centre" class="h-10 mx-auto mb-1" />
+              <img src="/images/logos/rinnai.svg" alt="Rinnai" class="h-10 mx-auto mb-2 object-contain" />
+              <img src="/images/rinnai-badge.png" alt="Rinnai Authorized Service Centre" class="h-8 mx-auto mb-1 opacity-75" />
               <span class="block text-xs uppercase tracking-wider text-[#564241] font-['Space_Grotesk'] font-bold">Authorized Agent</span>
             </div>
           </div>
           <div class="bg-white p-8 flex items-center justify-center group hover:shadow-lg transition-all">
             <div class="text-center">
-              <span class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] group-hover:text-[#CD5C5C] transition-colors">Electrolux</span>
-              <span class="block text-xs uppercase tracking-wider text-[#564241] font-['Space_Grotesk'] font-bold mt-1">Authorized Agent</span>
+              <img src="/images/logos/electrolux.svg" alt="Electrolux" class="h-10 mx-auto mb-2 object-contain" />
+              <span class="block text-xs uppercase tracking-wider text-[#564241] font-['Space_Grotesk'] font-bold">Authorized Agent</span>
             </div>
           </div>
         </div>
         
         <HorizontalScroll bgColor="#e5e2e1">
-          {['Tonkin & Taylor', 'Downer Group', 'Fulton Hogan', 'Mainmark', 'Ventia', 'CCL Construction', 'Spotless Services', 'Neda Facilities', 'OCS', 'Maiden Construction'].map(client => (
-            <div class="bg-white p-6 flex items-center justify-center group hover:shadow-md transition-all" style="min-width: 220px; height: 80px;">
-              <span class="font-['Space_Grotesk'] font-bold text-sm text-[#564241] group-hover:text-[#CD5C5C] transition-colors text-center uppercase tracking-wider">{client}</span>
+          {[
+            { name: 'Tonkin & Taylor', logo: null },
+            { name: 'Downer Group', logo: null },
+            { name: 'Fulton Hogan', logo: '/images/logos/fulton-hogan.png' },
+            { name: 'Mainmark', logo: '/images/logos/mainmark.png' },
+            { name: 'Ventia', logo: '/images/logos/ventia.svg' },
+            { name: 'CCL Construction', logo: '/images/logos/ccl-construction.png' },
+            { name: 'Spotless Services', logo: null },
+            { name: 'Neda Facilities', logo: null },
+            { name: 'OCS', logo: '/images/logos/ocs.png' },
+            { name: 'Maiden Construction', logo: null }
+          ].map(client => (
+            <div class="bg-white p-6 flex flex-col items-center justify-center group hover:shadow-md transition-all" style="min-width: 220px; height: 100px;">
+              {client.logo ? (
+                <img src={client.logo} alt={client.name} class="h-8 mx-auto mb-2 object-contain" />
+              ) : null}
+              <span class="font-['Space_Grotesk'] font-bold text-xs text-[#564241] group-hover:text-[#CD5C5C] transition-colors text-center uppercase tracking-wider">{client.name}</span>
             </div>
           ))}
         </HorizontalScroll>
