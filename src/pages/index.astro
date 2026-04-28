@@ -68,7 +68,7 @@ const sectors = [
     <div class="grid grid-cols-1 md:grid-cols-12 gap-0 mt-8 scroll-reveal" id="services">
       
       <!-- Plumbing Block -->
-      <div class="md:col-span-7 bg-[#f6f3f2] border-r border-b border-[#CD5C5C]/10 p-12 lg:p-16 group relative overflow-hidden hover:bg-white transition-colors duration-500">
+      <a href="/services/plumbing/" class="md:col-span-7 bg-[#f6f3f2] border-r border-b border-[#CD5C5C]/10 p-12 lg:p-16 group relative overflow-hidden hover:bg-white transition-colors duration-500 block cursor-pointer">
         <div class="absolute top-0 right-0 w-48 h-48 bg-[#CD5C5C]/5 -mr-24 -mt-24 rotate-45 transition-transform duration-700 group-hover:scale-150"></div>
         <div class="relative z-10">
           <div class="flex items-center gap-6 mb-10">
@@ -81,21 +81,29 @@ const sectors = [
           <p class="text-[#564241] max-w-lg text-xl leading-relaxed font-light font-['Inter']">
             Precision hydraulic engineering for commercial infrastructure. System-wide diagnostics and proactive maintenance protocols designed for longevity.
           </p>
-          <div class="mt-16 flex gap-5">
+          <div class="mt-8 flex items-center gap-2 text-[#CD5C5C] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">
+            <span>View Plumbing Services</span>
+            <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+          <div class="mt-8 flex gap-5">
             <div class="w-6 h-6 bg-[#CD5C5C] skew-block group-hover:translate-y-[-4px] transition-transform delay-75"></div>
             <div class="w-6 h-6 bg-[#CD5C5C]/40 skew-block group-hover:translate-y-[-4px] transition-transform delay-150"></div>
             <div class="w-6 h-6 bg-[#CD5C5C]/20 skew-block group-hover:translate-y-[-4px] transition-transform delay-225"></div>
           </div>
         </div>
-      </div>
+      </a>
       
       <!-- Drainage Block -->
-      <div class="md:col-span-5 bg-[#1b1b1c] p-12 lg:p-16 flex flex-col justify-between group relative overflow-hidden transition-all duration-500 hover:shadow-2xl">
+      <a href="/services/drainage/" class="md:col-span-5 bg-[#1b1b1c] p-12 lg:p-16 flex flex-col justify-between group relative overflow-hidden transition-all duration-500 hover:shadow-2xl block cursor-pointer">
         <div class="absolute inset-0 bg-[#CD5C5C] opacity-0 group-hover:opacity-5 transition-opacity"></div>
         <div class="relative z-10">
           <span class="material-symbols-outlined text-[#CD5C5C] text-7xl mb-10 transition-transform group-hover:scale-110 duration-500 block">water_damage</span>
           <h2 class="font-['Space_Grotesk'] font-bold text-4xl lg:text-5xl text-white uppercase tracking-tight leading-none mb-6">Drainage<br/>Logistics</h2>
           <p class="text-white/70 text-lg font-['Inter'] leading-relaxed max-w-sm">Topographical flow mapping and high-capacity drainage solutions for municipal scale projects and industrial complexes.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">
+            <span>View Drainage Services</span>
+            <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
         </div>
         <div class="relative z-10 mt-12">
           <div class="grid grid-cols-4 gap-1.5 h-3">
@@ -105,12 +113,16 @@ const sectors = [
             <div class="bg-white/10"></div>
           </div>
         </div>
-      </div>
+      </a>
       
       <!-- Utility Locating -->
-      <div class="md:col-span-4 bg-[#e5e2e1] p-12 lg:p-16 border-r border-[#CD5C5C]/10 group">
+      <a href="/services/utility-locating/" class="md:col-span-4 bg-[#e5e2e1] p-12 lg:p-16 border-r border-[#CD5C5C]/10 group block cursor-pointer">
         <h2 class="font-['Space_Grotesk'] font-black text-3xl lg:text-4xl text-[#1b1b1c] uppercase tracking-tight leading-none mb-8 transition-transform group-hover:-translate-y-1">Utility<br/>Locating</h2>
         <p class="text-[#564241] text-sm mb-10 leading-relaxed font-medium">Sub-surface radar mapping (GPR) for risk mitigation during heavy infrastructure development and site preparation.</p>
+        <div class="flex items-center gap-2 text-[#CD5C5C] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider mb-6">
+          <span>View Locating Services</span>
+          <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+        </div>
         <div class="w-full h-56 bg-[#1b1b1c] overflow-hidden skew-block relative modular-shadow">
           <img 
             class="w-full h-full object-cover opacity-60 grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110" 
@@ -119,16 +131,20 @@ const sectors = [
           />
           <div class="absolute inset-0 border-[3px] border-[#CD5C5C]/30 group-hover:border-[#CD5C5C]/60 transition-colors"></div>
         </div>
-      </div>
+      </a>
       
       <!-- Leak Detection -->
-      <div class="md:col-span-8 bg-[#fcf9f8] p-12 lg:p-16 flex flex-col md:flex-row gap-16 items-center group hover:bg-[#f6f3f2] transition-colors duration-500">
+      <a href="/services/leak-detection/" class="md:col-span-8 bg-[#fcf9f8] p-12 lg:p-16 flex flex-col md:flex-row gap-16 items-center group hover:bg-[#f6f3f2] transition-colors duration-500 block cursor-pointer">
         <div class="flex-1">
           <div class="inline-block bg-[#CD5C5C] text-white px-4 py-1.5 text-xs font-black uppercase tracking-[0.25em] mb-6 skew-block shadow-md">
             <span class="skew-block-content">Detection Suite</span>
           </div>
           <h2 class="font-['Space_Grotesk'] font-black text-5xl lg:text-6xl text-[#1b1b1c] uppercase tracking-tighter mb-8 leading-none">Leak Detection</h2>
           <p class="text-[#564241] font-['Inter'] leading-relaxed text-xl font-light">Non-invasive acoustic profiling and thermal imaging technologies to identify structural vulnerabilities before failure occurs.</p>
+          <div class="mt-6 flex items-center gap-2 text-[#CD5C5C] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">
+            <span>View Detection Services</span>
+            <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
         </div>
         <div class="grid grid-cols-2 gap-6 w-full md:w-80">
           <div class="p-8 bg-white border border-[#CD5C5C]/10 modular-shadow group-hover:translate-y-[-8px] transition-transform duration-300">
@@ -140,7 +156,7 @@ const sectors = [
             <div class="text-[11px] uppercase font-black tracking-widest mt-2 skew-block-content">Impact</div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
     
     <!-- Sectors We Serve Section -->
@@ -270,11 +286,11 @@ const sectors = [
           <div class="text-sm uppercase tracking-widest text-[#564241] font-['Space_Grotesk'] font-bold">Years Combined</div>
         </div>
         <div class="text-center group" style="min-width: 220px;">
-          <div class="font-['Space_Grotesk'] font-black text-6xl lg:text-7xl text-[#CD5C5C] mb-2 transition-transform group-hover:scale-110">4.5</div>
+          <div class="font-['Space_Grotesk'] font-black text-6xl lg:text-7xl text-[#CD5C5C] mb-2 transition-transform group-hover:scale-110">4.7</div>
           <div class="text-sm uppercase tracking-widest text-[#564241] font-['Space_Grotesk'] font-bold">Google Rating</div>
         </div>
         <div class="text-center group" style="min-width: 220px;">
-          <div class="font-['Space_Grotesk'] font-black text-6xl lg:text-7xl text-[#CD5C5C] mb-2 transition-transform group-hover:scale-110">226+</div>
+          <div class="font-['Space_Grotesk'] font-black text-6xl lg:text-7xl text-[#CD5C5C] mb-2 transition-transform group-hover:scale-110">15</div>
           <div class="text-sm uppercase tracking-widest text-[#564241] font-['Space_Grotesk'] font-bold">Reviews</div>
         </div>
         <div class="text-center group" style="min-width: 220px;">
@@ -308,6 +324,77 @@ const sectors = [
       </HorizontalScroll>
     </section>
     
+    <!-- Google Reviews Section -->
+    <section class="bg-[#1b1b1c] mt-0">
+      <div class="max-w-[1800px] mx-auto px-8 pt-20 lg:pt-28 pb-4">
+        <div class="text-center mb-12">
+          <div class="flex items-center justify-center gap-6 mb-6">
+            <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+            <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Customer Feedback</span>
+            <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          </div>
+          <h2 class="font-['Space_Grotesk'] font-black text-4xl lg:text-5xl text-white uppercase tracking-tight mb-4">
+            What Our Clients Say
+          </h2>
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <span class="material-symbols-outlined text-[#CD5C5C] text-3xl">star</span>
+            <span class="material-symbols-outlined text-[#CD5C5C] text-3xl">star</span>
+            <span class="material-symbols-outlined text-[#CD5C5C] text-3xl">star</span>
+            <span class="material-symbols-outlined text-[#CD5C5C] text-3xl">star</span>
+            <span class="material-symbols-outlined text-[#CD5C5C]/40 text-3xl">star_half</span>
+          </div>
+          <p class="text-white/60 font-['Space_Grotesk'] font-bold text-sm uppercase tracking-wider">
+            4.7 out of 5 — Based on 15+ Google Reviews
+          </p>
+          <a href="https://www.google.com/search?q=Brooklyn+Services+Ltd+Christchurch+reviews" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-4 text-[#CD5C5C] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider hover:underline">
+            <span>View All Reviews on Google</span>
+            <span class="material-symbols-outlined text-sm">open_in_new</span>
+          </a>
+        </div>
+      </div>
+      <HorizontalScroll bgColor="#1b1b1c">
+        {[
+          { name: "Sarah M.", rating: 5, text: "Excellent service! Called at 8pm for a burst pipe and they were here within the hour. No after-hours fee either. Highly recommend." },
+          { name: "James T.", rating: 5, text: "Professional, punctual, and fair pricing. Brooklyn Services handled our commercial fit-out plumbing perfectly. Will use again." },
+          { name: "Linda K.", rating: 5, text: "Found a hidden leak we'd been struggling with for weeks. Their acoustic detection equipment pinpointed it perfectly. Minimal digging required." },
+          { name: "Michael R.", rating: 4, text: "Great drainage work on our new subdivision. The team was thorough and the CCTV inspection report was detailed and professional." },
+          { name: "David P.", rating: 5, text: "Sam and his team are legends. Quick response, quality work, and honest pricing. They've been maintaining our rental properties for years." },
+          { name: "Emma W.", rating: 5, text: "Hot water cylinder replacement done same day. The team was clean, professional, and explained everything. No hidden costs." },
+        ].map((review) => (
+          <div class="bg-[#252525] p-8 group hover:bg-[#CD5C5C] transition-all duration-300" style="min-width: 320px; max-width: 380px;">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 bg-[#CD5C5C] flex items-center justify-center font-['Space_Grotesk'] font-black text-white text-lg">
+                {review.name.charAt(0)}
+              </div>
+              <div>
+                <div class="font-['Space_Grotesk'] font-bold text-white uppercase text-sm">{review.name}</div>
+                <div class="flex gap-0.5">
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <span class="material-symbols-outlined text-sm" style={`color: ${i < review.rating ? '#CD5C5C' : '#564241'}`}>star</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <p class="text-white/70 text-sm leading-relaxed font-['Inter'] group-hover:text-white/90 transition-colors">
+              "{review.text}"
+            </p>
+            <div class="mt-4 flex items-center gap-2">
+              <span class="material-symbols-outlined text-sm text-[#CD5C5C] group-hover:text-white transition-colors">google</span>
+              <span class="text-white/40 text-xs font-['Space_Grotesk'] uppercase tracking-wider group-hover:text-white/60 transition-colors">Google Review</span>
+            </div>
+          </div>
+        ))}
+      </HorizontalScroll>
+      <div class="max-w-[1800px] mx-auto px-8 pb-20">
+        <div class="text-center">
+          <a href="https://www.google.com/search?q=Brooklyn+Services+Ltd+Christchurch+reviews" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white font-['Space_Grotesk'] font-bold uppercase tracking-widest text-xs hover:bg-white/20 transition-colors border border-white/30">
+            <span>Read All Google Reviews</span>
+            <span class="material-symbols-outlined text-sm">open_in_new</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    
     <!-- CTA Section -->
     <section class="py-20 lg:py-28 bg-[#CD5C5C] mt-16">
       <div class="max-w-4xl mx-auto px-8 text-center">
@@ -330,6 +417,63 @@ const sectors = [
         <p class="text-white/60 text-sm mt-6 font-['Inter']">
           No after-hours call-out fee • Same-day emergency service available
         </p>
+      </div>
+    </section>
+    
+    <!-- Latest Resources Section -->
+    <section class="bg-[#f6f3f2] mt-0">
+      <div class="max-w-[1800px] mx-auto px-8 pt-20 lg:pt-28 pb-4">
+        <div class="flex items-center justify-between mb-12">
+          <div>
+            <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Knowledge Base</span>
+            <h2 class="font-['Space_Grotesk'] font-black text-4xl text-[#1b1b1c] uppercase mt-4 tracking-tight">
+              Latest Resources
+            </h2>
+          </div>
+          <a href="/blog/" class="hidden md:flex items-center gap-2 text-[#CD5C5C] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider hover:underline">
+            <span>View All Resources</span>
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+      <HorizontalScroll bgColor="#f6f3f2">
+        {[
+          { slug: 'signs-of-a-water-leak', title: '7 Warning Signs You Have a Hidden Water Leak', desc: 'Learn to identify hidden water leaks before they cause major damage to your property.', tags: ['leak-detection'] },
+          { slug: 'preventing-blocked-drains', title: 'How to Prevent Blocked Drains: 10 Essential Tips', desc: 'Keep your drains flowing freely with these expert maintenance tips from our licensed drainlayers.', tags: ['drainage'] },
+          { slug: 'choosing-hot-water-system', title: 'How to Choose the Right Hot Water System', desc: 'Compare cylinder vs continuous flow systems for your Christchurch home.', tags: ['hot-water'] },
+          { slug: 'rinnai-vs-rheem-hot-water', title: 'Rinnai vs Rheem: Which is Best?', desc: 'Detailed comparison of New Zealand\'s top hot water brands.', tags: ['product-comparison'] },
+          { slug: 'plumbing-maintenance-checklist', title: 'Annual Plumbing Maintenance Checklist', desc: 'Prevent costly repairs with our comprehensive maintenance guide.', tags: ['maintenance'] },
+        ].map((post) => (
+          <a href={`/blog/${post.slug}/`} class="group bg-white hover:bg-[#CD5C5C] transition-all duration-300" style="min-width: 320px; max-width: 380px;">
+            <div class="p-8">
+              <div class="flex flex-wrap gap-2 mb-4">
+                {post.tags.map((tag) => (
+                  <span class="px-3 py-1 bg-[#CD5C5C]/10 text-[#CD5C5C] text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold group-hover:bg-white/20 group-hover:text-white transition-colors">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h3 class="font-['Space_Grotesk'] font-bold text-lg text-[#1b1b1c] mb-3 group-hover:text-white transition-colors line-clamp-2">
+                {post.title}
+              </h3>
+              <p class="text-[#564241] text-sm group-hover:text-white/80 leading-relaxed line-clamp-3 font-['Inter']">
+                {post.desc}
+              </p>
+              <div class="mt-6 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+                <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Read Article</span>
+                <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </HorizontalScroll>
+      <div class="max-w-[1800px] mx-auto px-8 pb-20">
+        <div class="md:hidden text-center">
+          <a href="/blog/" class="inline-flex items-center gap-2 text-[#CD5C5C] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider hover:underline">
+            <span>View All Resources</span>
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+        </div>
       </div>
     </section>
     

@@ -8,6 +8,21 @@ const expertiseLinks = [
   { label: 'Utility Mapping', href: '/services/utility-locating/' },
 ];
 
+const areaLinks = [
+  { label: 'Christchurch', href: '/areas/christchurch/' },
+  { label: 'Rolleston', href: '/areas/rolleston/' },
+  { label: 'Lincoln', href: '/areas/lincoln/' },
+  { label: 'Rangiora', href: '/areas/rangiora/' },
+  { label: 'Kaiapoi', href: '/areas/kaiapoi/' },
+  { label: 'Ashburton', href: '/areas/ashburton/' },
+];
+
+const resourceLinks = [
+  { label: 'Blog & Resources', href: '/blog/' },
+  { label: 'About Us', href: '/about/' },
+  { label: 'Projects', href: '/projects/' },
+];
+
 const regulatoryLinks = [
   { label: 'Privacy Protocol', href: '/privacy/' },
   { label: 'Terms of Engagement', href: '/terms/' },
@@ -19,14 +34,17 @@ const regulatoryLinks = [
   <!-- Isometric Pattern -->
   <div class="absolute inset-0 isometric-pattern opacity-[0.02] pointer-events-none"></div>
   
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 max-w-[1800px] mx-auto relative z-10">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-16 max-w-[1800px] mx-auto relative z-10">
     <!-- Logo & Copyright -->
-    <div class="col-span-1 flex flex-col gap-6 lg:gap-10">
+    <div class="col-span-1 lg:col-span-2 flex flex-col gap-6 lg:gap-10">
       <a href="/" class="flex items-center gap-4 group cursor-pointer">
         <AnimatedLogo trigger="scroll" size="medium" className="footer-logo" />
       </a>
       <p class="text-white/50 font-['Space_Grotesk'] text-[10px] lg:text-[11px] tracking-[0.3em] uppercase font-bold leading-relaxed max-w-[250px]">
         © 2024 BROOKLYN SERVICES. <br/>PRECISION ENGINEERED INFRASTRUCTURE SOLUTIONS.
+      </p>
+      <p class="text-white/40 font-['Inter'] text-xs">
+        Licensed plumbers and drainlayers serving Canterbury & the South Island since 2011.
       </p>
     </div>
     
@@ -34,6 +52,35 @@ const regulatoryLinks = [
     <div class="flex flex-col gap-4 lg:gap-6">
       <h5 class="text-[#CD5C5C] font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-black mb-2">Expertise</h5>
       {expertiseLinks.map((link) => (
+        <a 
+          href={link.href}
+          class="text-white/60 hover:text-white hover:translate-x-2 transition-all text-xs lg:text-sm font-bold uppercase tracking-wider inline-block"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Service Areas -->
+    <div class="flex flex-col gap-4 lg:gap-6">
+      <h5 class="text-[#CD5C5C] font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-black mb-2">Areas Served</h5>
+      {areaLinks.map((link) => (
+        <a 
+          href={link.href}
+          class="text-white/60 hover:text-white hover:translate-x-2 transition-all text-xs lg:text-sm font-bold uppercase tracking-wider inline-block"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="/areas/" class="text-[#CD5C5C] hover:text-[#CD5C5C]/80 transition-colors text-xs font-bold uppercase tracking-wider inline-block mt-2">
+        View All Areas →
+      </a>
+    </div>
+    
+    <!-- Resources -->
+    <div class="flex flex-col gap-4 lg:gap-6">
+      <h5 class="text-[#CD5C5C] font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-black mb-2">Resources</h5>
+      {resourceLinks.map((link) => (
         <a 
           href={link.href}
           class="text-white/60 hover:text-white hover:translate-x-2 transition-all text-xs lg:text-sm font-bold uppercase tracking-wider inline-block"
@@ -55,32 +102,36 @@ const regulatoryLinks = [
         </a>
       ))}
     </div>
-    
-    <!-- Secure Channels -->
-    <div class="flex flex-col gap-6 lg:gap-10">
-      <h5 class="text-[#CD5C5C] font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-black">Secure Channels</h5>
-      <div class="flex gap-4">
+  </div>
+  
+  <!-- Bottom Section -->
+  <div class="max-w-[1800px] mx-auto mt-16 pt-8 border-t border-white/10">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <!-- Emergency Contact -->
+      <div class="text-center md:text-left">
+        <p class="text-white/50 text-xs uppercase tracking-wider font-['Space_Grotesk'] font-bold mb-1">Emergency Line</p>
+        <a href="tel:0800127665" class="text-white font-['Space_Grotesk'] font-bold text-xl hover:text-[#CD5C5C] transition-colors">
+          0800 1 BROOK
+        </a>
+      </div>
+      
+      <!-- Secure Channels -->
+      <div class="flex items-center gap-4">
         <a 
           href="https://www.facebook.com/BrooklynServicesLtd"
           target="_blank"
           rel="noopener noreferrer"
-          class="w-12 h-12 lg:w-14 lg:h-14 bg-white/5 flex items-center justify-center hover:bg-[#CD5C5C] transition-all cursor-pointer skew-block hover:scale-110 shadow-lg group"
+          class="w-12 h-12 bg-white/5 flex items-center justify-center hover:bg-[#CD5C5C] transition-all cursor-pointer skew-block hover:scale-110 shadow-lg group"
+          aria-label="Follow us on Facebook"
         >
           <span class="material-symbols-outlined text-xl lg:text-2xl skew-block-content group-hover:text-white">share</span>
         </a>
         <a 
           href="mailto:sam@brooklynservices.co.nz"
-          class="w-12 h-12 lg:w-14 lg:h-14 bg-white/5 flex items-center justify-center hover:bg-[#CD5C5C] transition-all cursor-pointer skew-block hover:scale-110 shadow-lg group"
+          class="w-12 h-12 bg-white/5 flex items-center justify-center hover:bg-[#CD5C5C] transition-all cursor-pointer skew-block hover:scale-110 shadow-lg group"
+          aria-label="Email us"
         >
           <span class="material-symbols-outlined text-xl lg:text-2xl skew-block-content group-hover:text-white">mail</span>
-        </a>
-      </div>
-      
-      <!-- Emergency Contact -->
-      <div class="mt-4">
-        <p class="text-white/50 text-xs uppercase tracking-wider font-['Space_Grotesk'] font-bold mb-2">Emergency Line</p>
-        <a href="tel:0800127665" class="text-white font-['Space_Grotesk'] font-bold text-lg hover:text-[#CD5C5C] transition-colors">
-          0800 1 BROOK
         </a>
       </div>
     </div>

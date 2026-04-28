@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f6f3f2"/>
+  <rect x="0" y="0" width="1200" height="200" fill="#CD5C5C"/>
+  <text x="60" y="130" font-family="Arial Black, sans-serif" font-size="56" fill="white" font-weight="900" text-transform="uppercase">Plumbing Dynamics</text>
+  <text x="60" y="300" font-family="Arial Black, sans-serif" font-size="48" fill="#1b1b1c" font-weight="900">Licensed Plumbing</text>
+  <text x="60" y="360" font-family="Arial Black, sans-serif" font-size="48" fill="#1b1b1c" font-weight="900">Residential &amp; Commercial</text>
+  <line x1="60" y1="390" x2="260" y2="390" stroke="#CD5C5C" stroke-width="4"/>
+  <text x="60" y="440" font-family="Arial, sans-serif" font-size="24" fill="#564241">Hot Water Systems | Emergency Repairs | New Builds</text>
+  <text x="60" y="480" font-family="Arial, sans-serif" font-size="24" fill="#564241">Christchurch & Canterbury | No After-Hours Fee</text>
+  <text x="60" y="550" font-family="Arial Black, sans-serif" font-size="32" fill="#CD5C5C" font-weight="900">0800 1 BROOK</text>
+  <text x="60" y="590" font-family="Arial, sans-serif" font-size="20" fill="#999">brooklynservices.co.nz/services/plumbing</text>
+  <text x="800" y="350" font-family="Arial Black, sans-serif" font-size="120" fill="#CD5C5C" opacity="0.15">🔧</text>
+</svg>

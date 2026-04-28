@@ -7,18 +7,138 @@ export interface Props {
   keywords?: string[];
   ogImage?: string;
   canonical?: string;
+  structuredData?: object;
+  serviceSchema?: object;
+  faqSchema?: object;
 }
 
 const { 
   title, 
   description, 
   keywords = [],
-  ogImage = '/images/og-default.jpg',
-  canonical 
+  ogImage = '/images/og-default.svg',
+  canonical,
+  structuredData,
+  serviceSchema,
+  faqSchema
 } = Astro.props;
 
 const siteUrl = 'https://brooklynservices.co.nz';
-const canonicalUrl = canonical ? `${siteUrl}${canonical}` : Astro.url.href;
+const currentPath = Astro.url.pathname;
+const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${currentPath}`;
+
+// Enhanced LocalBusiness Schema
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Brooklyn Services Limited",
+  "image": `${siteUrl}/images/logo.png`,
+  "@id": `${siteUrl}/#localbusiness`,
+  "url": siteUrl,
+  "telephone": "+64-800-127-665",
+  "email": "sam@brooklynservices.co.nz",
+  "priceRange": "$$",
+  "currenciesAccepted": "NZD",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "96b Carmen Rd",
+    "addressLocality": "Hei Hei",
+    "addressRegion": "Canterbury",
+    "postalCode": "8042",
+    "addressCountry": "NZ"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -43.5627454,
+    "longitude": 172.6081238
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "17:00"
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Christchurch"
+    },
+    {
+      "@type": "State",
+      "name": "Canterbury"
+    },
+    {
+      "@type": "Country",
+      "name": "New Zealand"
+    }
+  ],
+  "serviceType": ["Plumbing", "Drainage", "Utility Locating", "Leak Detection"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Brooklyn Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Plumbing Services",
+          "description": "Licensed plumbing for residential and commercial properties"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Drainage Services",
+          "description": "Licensed drainlaying and drainage solutions"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Utility Locating",
+          "description": "GPR and electromagnetic utility detection"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Leak Detection",
+          "description": "Acoustic and thermal imaging leak detection"
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.7",
+    "reviewCount": "15",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "sameAs": [
+    "https://www.facebook.com/BrooklynServicesLtd"
+  ],
+  "foundingDate": "2011",
+  "founder": {
+    "@type": "Person",
+    "name": "Sam Aitken"
+  }
+};
+
+// Combine schemas if additional structured data provided
+const finalLocalBusinessSchema = structuredData 
+  ? { ...localBusinessSchema, ...structuredData } 
+  : localBusinessSchema;
+
+const schemas = [finalLocalBusinessSchema];
+if (serviceSchema) schemas.push(serviceSchema);
+if (faqSchema) schemas.push(faqSchema);
 ---
 
 <!DOCTYPE html>
@@ -30,10 +150,22 @@ const canonicalUrl = canonical ? `${siteUrl}${canonical}` : Astro.url.href;
     {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
     <meta name="author" content="Brooklyn Services Limited" />
     <meta name="geo.region" content="NZ-CAN" />
-    <meta name="geo.placename" content="Christchurch" />
+    <meta name="geo.placename" content="Christchurch, Canterbury" />
+    <meta name="geo.position" content="-43.5627454;172.6081238" />
+    <meta name="ICBM" content="-43.5627454, 172.6081238" />
+    <meta name="copyright" content="Brooklyn Services Limited" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="local" />
     
     <!-- Canonical -->
     <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.google.com" />
     
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -41,6 +173,8 @@ const canonicalUrl = canonical ? `${siteUrl}${canonical}` : Astro.url.href;
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_NZ" />
     <meta property="og:site_name" content="Brooklyn Services Limited" />
     
@@ -52,68 +186,149 @@ const canonicalUrl = canonical ? `${siteUrl}${canonical}` : Astro.url.href;
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/logo-icon.png" />
+    <link rel="apple-touch-icon" href="/images/logo-icon.png" />
     
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     
     <!-- Material Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
     
+    <!-- n8n Chat Widget Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    
     <title>{title}</title>
     
     <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Brooklyn Services Limited",
-      "image": "{siteUrl}/images/logo.png",
-      "@id": "{siteUrl}",
-      "url": "{siteUrl}",
-      "telephone": "+64-800-127-665",
-      "email": "sam@brooklynservices.co.nz",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "96b Carmen Rd",
-        "addressLocality": "Hei Hei",
-        "addressRegion": "Canterbury",
-        "postalCode": "8042",
-        "addressCountry": "NZ"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -43.5321,
-        "longitude": 172.6362
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "07:00",
-          "closes": "17:00"
-        }
-      ],
-      "priceRange": "$$",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.5",
-        "reviewCount": "226"
-      },
-      "sameAs": [
-        "https://www.facebook.com/BrooklynServicesLtd"
-      ]
-    }
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(schemas)}></script>
     
     <style is:global>
       .material-symbols-outlined {
         font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       }
+      
+      /* n8n Chat Widget Custom Styling - Brooklyn Services Brand */
+      :root {
+        /* Primary Colors - Brooklyn Red */
+        --chat--color--primary: #CD5C5C;
+        --chat--color--primary-shade-50: #bf5152;
+        --chat--color--primary--shade-100: #9f393b;
+        --chat--color--secondary: #1b1b1c;
+        --chat--color-secondary-shade-50: #2d2d2e;
+        --chat--color-secondary-shade-100: #3f3f40;
+        
+        /* Neutral Colors */
+        --chat--color-white: #ffffff;
+        --chat--color-light: #fcf9f8;
+        --chat--color-light-shade-50: #f6f3f2;
+        --chat--color-light-shade-100: #e5e2e1;
+        --chat--color-medium: #ddc0be;
+        --chat--color-dark: #1b1b1c;
+        --chat--color-disabled: #e5e2e1;
+        --chat--color-typing: #564241;
+        
+        /* Typography */
+        --chat--font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        
+        /* Window Dimensions */
+        --chat--window--width: 380px;
+        --chat--window--height: 600px;
+        --chat--window--border-radius: 0.25rem;
+        
+        /* Toggle Button */
+        --chat--toggle--size: 64px;
+        --chat--toggle--background: #CD5C5C;
+        --chat--toggle--hover--background: #bf5152;
+        --chat--toggle--active--background: #9f393b;
+        --chat--toggle--color: #ffffff;
+        
+        /* Header */
+        --chat--header--background: #1b1b1c;
+        --chat--header--color: #ffffff;
+        --chat--heading--font-size: 1.5rem;
+        
+        /* Messages */
+        --chat--message--bot--background: #ffffff;
+        --chat--message--bot--color: #1b1b1c;
+        --chat--message--user--background: #CD5C5C;
+        --chat--message--user--color: #ffffff;
+        
+        /* Body & Footer */
+        --chat--body--background: #fcf9f8;
+        --chat--footer--background: #f6f3f2;
+        --chat--footer--color: #1b1b1c;
+      }
+      
+      /* Chat toggle button positioning */
+      .chat-window-toggle {
+        bottom: 1.5rem !important;
+        right: 1.5rem !important;
+      }
+      
+      /* Mobile responsiveness */
+      @media (max-width: 640px) {
+        :root {
+          --chat--window--width: calc(100vw - 2rem);
+          --chat--window--height: 500px;
+        }
+        
+        .chat-window {
+          right: 1rem !important;
+          left: 1rem !important;
+        }
+      }
     </style>
   </head>
   <body class="bg-[#fcf9f8] text-[#1b1b1c] antialiased overflow-x-hidden">
     <slot />
+    
+    <!-- n8n Chat Widget -->
+    <script type="module">
+      import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+      
+      createChat({
+        webhookUrl: 'http://localhost:5678/webhook/6d2a35df-f350-4238-a97f-a7db402cf7a3/chat',
+        
+        mode: 'window',
+        
+        target: '#n8n-chat',
+        
+        showWelcomeScreen: true,
+        
+        initialMessages: [
+          'Kia ora! Welcome to Brooklyn Services Limited. 👋',
+          'I\'m here to help with plumbing, drainage, utility locating, or leak detection questions.',
+          'How can I assist you today?'
+        ],
+        
+        i18n: {
+          en: {
+            title: 'Brooklyn Services Assistant',
+            subtitle: 'Ask about plumbing, drainage, leaks, or utility locating',
+            footer: '0800 1 BROOK | sam@brooklynservices.co.nz',
+            getStarted: 'Start Chat',
+            inputPlaceholder: 'Type your message...',
+          }
+        },
+        
+        allowFileUploads: true,
+        allowedFilesMimeTypes: 'image/jpeg,image/png,image/gif,image/webp',
+        
+        loadPreviousSession: true,
+        chatSessionKey: 'sessionId',
+        
+        metadata: {},
+        
+        enableStreaming: true,
+        
+        onReady: () => {
+          console.log('Brooklyn Services chatbot ready');
+        },
+        onMessage: (message) => {
+          console.log('Message:', message);
+        }
+      });
+    </script>
   </body>
 </html>

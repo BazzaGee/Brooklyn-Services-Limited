@@ -70,40 +70,44 @@ const currentProjects = [
 
 const testimonials = [
   {
-    text: "They attended our property on the same day. They inspected our hot water cylinder, determined the cause of the leak and ordered a new cylinder the same afternoon. The replacement arrived a couple of days later and they installed it immediately.",
-    author: "M.C.",
-    role: "Homeowner, Christchurch",
-    service: "Emergency Hot Water Cylinder"
+    text: "Thanks Avenai for being such a friendly plumber who was willing to go the extra mile! So nice to see a happy tradesperson who very willingly went under the floor of my house with no frowning or sighing 😂 You even thought ahead and went to purchase the parts needed BEFORE arriving at the job!! Brooklyn team I really really appreciate you fitting me in so quickly and happily. First experience using you guys was amazing 👏🤩",
+    author: "Kylie Flanagan",
+    profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjVCLuqIrexDuY8ZRiDEO4BNoAsmVCWPzJA5YJxKzsG4Uv_HWTXuqQ=s128-c0x00000000-cc-rp-mo-ba2",
+    rating: 5,
+    time: "a year ago",
+    authorUrl: "https://www.google.com/maps/contrib/108444576727026724246/reviews"
   },
   {
-    text: "Thanks for being such a friendly plumber who was willing to go the extra mile! So nice to see a happy tradesperson who went under the floor of my house with no complaints. You even thought ahead and went to purchase the parts needed BEFORE arriving at the job!!",
-    author: "Customer Review",
-    role: "Residential",
-    service: "Plumbing Maintenance"
+    text: "Excellent. Came very quickly in the weekend when we could hear water under the house. Did a temporary fix and came back a few days later to do a proper job. Very friendly and good communication.",
+    author: "Clare Churcher",
+    profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjVAzR6X4Z2nDsTDAfI8Y7NCh5sKGI_I0INaOmqDF4eLOD-61aKP=s128-c0x00000000-cc-rp-mo",
+    rating: 5,
+    time: "10 months ago",
+    authorUrl: "https://www.google.com/maps/contrib/118006255888900141949/reviews"
   },
   {
-    text: "The team at Brooklyn Services have been a pleasure to deal with. They were quick to quote and answer any questions, and the work was booked in without delay. Would recommend to anyone looking for reliable service.",
-    author: "Verified Customer",
-    role: "Whole House Replumb",
-    service: "Major Plumbing Project"
+    text: "We would highly recommend the team at Brooklyn Services Ltd. We were dealing with a tight timeline relating to the sale of our home when a leak was discovered in our 2 year old cylinder. We called the team at Brooklyn Services and they attended our property on the same day. They inspected our hot water cylinder, determined the cause of the leak and ordered a new cylinder the same afternoon. The replacement arrived a couple of days later and they installed it immediately. Really appreciate their great service.",
+    author: "Mandy Caldwell",
+    profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjVs278tTFrGdMG6LLMml87lr6uwXCXOPOBYq760PlQdxH3vu40Vzw=s128-c0x00000000-cc-rp-mo-ba2",
+    rating: 5,
+    time: "7 years ago",
+    authorUrl: "https://www.google.com/maps/contrib/106926953345084706009/reviews"
   },
   {
-    text: "Prompt reliable service.",
-    author: "J.E.",
-    role: "Christchurch",
-    service: "General Plumbing"
+    text: "Jebs very helpful. The man!! Thank u",
+    author: "Nick Clarkson",
+    profilePhoto: "https://lh3.googleusercontent.com/a/ACg8ocIuGjb0wj4We4El73tL8XudMKGhGSJgN73-HkSn5WMtNl8BWg=s128-c0x00000000-cc-rp-mo-ba3",
+    rating: 5,
+    time: "5 months ago",
+    authorUrl: "https://www.google.com/maps/contrib/116165038675028158238/reviews"
   },
   {
-    text: "Great little company, good team, very friendly.",
-    author: "J.M.",
-    role: "Christchurch",
-    service: "General Plumbing"
-  },
-  {
-    text: "Good professional.",
-    author: "K.D.",
-    role: "Christchurch",
-    service: "Plumbing Service"
+    text: "I have used Brooklyn services to replace all Grey water drainage pipes and replace main water feed/replumb house fitting a inline main water filter as well. The team at Brooklyn services have been a pleasure to deal with. They were quick to quote and answer any questions, and the work was booked in without delay. Would recommend to anyone looking for reliable plumbing/drainage work.",
+    author: "Jeremy Burke",
+    profilePhoto: "https://lh3.googleusercontent.com/a/ACg8ocK-_SvoREBgyysgWHDyxiK5k0Q79R1zRoWhEvMN3L-YITxqfg=s128-c0x00000000-cc-rp-mo",
+    rating: 5,
+    time: "a year ago",
+    authorUrl: "https://www.google.com/maps/contrib/117884147064275777438/reviews"
   },
 ];
 
@@ -126,7 +130,7 @@ const stats = [
   { value: "1000+", label: "Projects Completed" },
   { value: "14+", label: "Major Clients" },
   { value: "50+", label: "Combined Years Exp" },
-  { value: "4.5/5", label: "Google Rating" },
+  { value: "4.7/5", label: "Google Rating" },
 ];
 ---
 
@@ -319,7 +323,7 @@ const stats = [
         <div class="text-center mb-16">
           <div class="flex items-center justify-center gap-6 mb-8">
             <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
-            <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">226+ Reviews</span>
+            <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">15 Reviews</span>
             <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
           </div>
           <h2 class="font-['Space_Grotesk'] font-black text-4xl text-[#1b1b1c] uppercase tracking-tight">
@@ -329,8 +333,17 @@ const stats = [
             {[1,2,3,4,5].map(() => (
               <span class="material-symbols-outlined text-[#CD5C5C] text-2xl">star</span>
             ))}
-            <span class="font-['Space_Grotesk'] font-bold text-[#1b1b1c] ml-2">4.5/5 on Google</span>
+            <span class="font-['Space_Grotesk'] font-bold text-[#1b1b1c] ml-2">4.7/5 on Google</span>
           </div>
+          <a 
+            href="https://www.google.com/maps/place/Brooklyn+Services+Ltd/data=!4m6!3m5!1s0x6d316ff6d0f10b19:0x69f6d040d85a3b26!8m2!3d-43.5627454!4d172.6081238!16s%2Fg%2F11b6gnzwpl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#CD5C5C]/10 text-[#CD5C5C] font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider hover:bg-[#CD5C5C] hover:text-white transition-all rounded-lg"
+          >
+            <span class="material-symbols-outlined text-sm">open_in_new</span>
+            Read All Reviews on Google
+          </a>
         </div>
         
         <HorizontalScroll bgColor="#fcf9f8">
@@ -345,11 +358,26 @@ const stats = [
                 "{testimonial.text}"
               </p>
               <div class="flex items-center justify-between">
-                <div>
-                  <div class="font-['Space_Grotesk'] font-bold text-[#1b1b1c] uppercase text-sm tracking-wider">{testimonial.author}</div>
-                  <div class="text-xs text-[#564241] font-['Inter']">{testimonial.role}</div>
+                <div class="flex items-center gap-3">
+                  <img 
+                    src={testimonial.profilePhoto} 
+                    alt={testimonial.author}
+                    class="w-10 h-10 rounded-full object-cover"
+                    loading="lazy"
+                  />
+                  <div>
+                    <a 
+                      href={testimonial.authorUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="font-['Space_Grotesk'] font-bold text-[#1b1b1c] uppercase text-sm tracking-wider hover:text-[#CD5C5C] transition-colors"
+                    >
+                      {testimonial.author}
+                    </a>
+                    <div class="text-xs text-[#564241] font-['Inter']">{testimonial.time}</div>
+                  </div>
                 </div>
-                <span class="px-3 py-1 bg-[#CD5C5C]/10 text-[#CD5C5C] text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold">{testimonial.service}</span>
+                <span class="px-3 py-1 bg-[#CD5C5C]/10 text-[#CD5C5C] text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold">Google Review</span>
               </div>
             </div>
           ))}

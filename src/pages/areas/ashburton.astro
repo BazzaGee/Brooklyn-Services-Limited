@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import FAQ from '../../components/ui/FAQ.astro';
+
+const title = "Plumber in Ashburton | Brooklyn Services - Mid Canterbury Plumbing";
+const description = "Licensed plumber in Ashburton serving Mid Canterbury. Emergency plumbing, drainage, leak detection, utility locating. South Island-wide service. Call 0800 1 BROOK.";
+const keywords = ["plumber Ashburton", "plumber Mid Canterbury", "drainlayer Ashburton", "leak detection Ashburton", "utility locating Mid Canterbury"];
+
+const faqItems = [
+  {
+    question: "Do you service Ashburton and Mid Canterbury?",
+    answer: "Yes. We provide plumbing, drainage, and specialized services to Ashburton and the Mid Canterbury region. Our utility locating and leak detection services are available South Island-wide, making us ideal for projects across Mid Canterbury."
+  },
+  {
+    question: "Can you provide leak detection and utility locating in Ashburton?",
+    answer: "Absolutely. Our leak detection and utility locating services are available South Island-wide on request. We regularly service Ashburton and Mid Canterbury for GPR scanning, cable detection, acoustic leak detection, and thermal imaging projects."
+  }
+];
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <div class="fixed inset-0 isometric-pattern pointer-events-none z-0"></div>
+  
+  <Header />
+  
+  <main class="relative z-10 space-y-0 px-4 pb-20 max-w-[1800px] mx-auto">
+    
+    <section class="grid grid-cols-1 md:grid-cols-12 gap-0 min-h-[500px]">
+      <div class="md:col-span-7 bg-[#1b1b1c] p-12 lg:p-20 flex flex-col justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#CD5C5C]/20 to-transparent"></div>
+        <div class="relative z-10">
+          <div class="flex items-center gap-6 mb-8">
+            <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+            <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Service Area</span>
+          </div>
+          <h1 class="font-['Space_Grotesk'] font-black text-5xl lg:text-7xl text-white tracking-tighter leading-[0.9] uppercase mb-6">
+            Ashburton<br/><span class="text-[#CD5C5C]">Plumbing</span>
+          </h1>
+          <p class="text-white/70 text-xl max-w-xl leading-relaxed font-light font-['Inter']">
+            Licensed plumbers serving Ashburton and Mid Canterbury. Plumbing, drainage, leak detection, and utility locating across the region.
+          </p>
+          <div class="mt-10 flex gap-4">
+            <a href="/contact/" class="btn-actuator">
+              <span>Request Service</span>
+            </a>
+            <a href="tel:0800127665" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 text-white font-['Space_Grotesk'] font-bold uppercase tracking-widest text-xs hover:bg-white/20 transition-colors border border-white/30">
+              <span class="material-symbols-outlined">phone</span>
+              <span>0800 1 BROOK</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="md:col-span-5 bg-[#CD5C5C] p-12 lg:p-16 flex flex-col justify-center tetris-module-alt">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white/10 p-6 skew-block">
+            <div class="skew-block-content">
+              <div class="font-['Space_Grotesk'] font-black text-3xl text-white">South</div>
+              <div class="text-white/80 text-xs uppercase tracking-widest font-['Space_Grotesk'] font-bold">Island-Wide</div>
+            </div>
+          </div>
+          <div class="bg-white p-6 skew-block">
+            <div class="skew-block-content">
+              <div class="font-['Space_Grotesk'] font-black text-3xl text-[#CD5C5C]">4</div>
+              <div class="text-[#1b1b1c]/70 text-xs uppercase tracking-widest font-['Space_Grotesk'] font-bold">Services</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="px-4 -mt-4">
+      <div class="bg-[#1b1b1c] px-6 py-4">
+        <Breadcrumbs items={[{ label: 'Areas', href: '/areas/' }, { label: 'Ashburton' }]} />
+      </div>
+    </section>
+    
+    <section class="py-20 lg:py-28 bg-[#f6f3f2] mt-8">
+      <div class="max-w-6xl mx-auto px-8">
+        <h2 class="font-['Space_Grotesk'] font-black text-3xl text-[#1b1b1c] uppercase mb-6 tracking-tight">
+          Ashburton & Mid Canterbury Services
+        </h2>
+        <p class="text-[#564241] text-lg leading-relaxed mb-8 font-['Inter']">
+          Comprehensive plumbing, drainage, and specialized services for Ashburton and Mid Canterbury.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { icon: 'plumbing', title: 'Plumbing', desc: 'Residential & commercial plumbing', href: '/services/plumbing/' },
+            { icon: 'water_damage', title: 'Drainage', desc: 'Drainlaying & CCTV inspection', href: '/services/drainage/' },
+            { icon: 'search', title: 'Leak Detection', desc: 'Acoustic & thermal imaging', href: '/services/leak-detection/' },
+            { icon: 'radar', title: 'Utility Locating', desc: 'GPR & cable detection', href: '/services/utility-locating/' },
+          ].map((service) => (
+            <a href={service.href} class="bg-white p-6 hover:bg-[#CD5C5C] transition-colors group">
+              <span class="material-symbols-outlined text-[#CD5C5C] text-4xl mb-3 block group-hover:text-white transition-colors">{service.icon}</span>
+              <h3 class="font-['Space_Grotesk'] font-black text-lg text-[#1b1b1c] uppercase group-hover:text-white transition-colors">{service.title}</h3>
+              <p class="text-[#564241] text-sm group-hover:text-white/80 transition-colors font-['Inter']">{service.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <FAQ 
+      items={faqItems}
+      title="Ashburton Plumbing Questions"
+      subtitle="Frequently asked questions from our Ashburton customers"
+    />
+    
+    <section class="py-20 lg:py-28 bg-[#CD5C5C] mt-0">
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <h2 class="font-['Space_Grotesk'] font-black text-white text-4xl lg:text-5xl mb-6 uppercase tracking-tight">
+          Need Plumbing in Ashburton?
+        </h2>
+        <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto font-['Inter']">
+          Our licensed plumbers serve Ashburton and Mid Canterbury. South Island-wide for specialized services.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="/contact/" class="btn-inverse group/btn">
+            <span>Get a Free Quote</span>
+            <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+          </a>
+          <a href="tel:0800127665" class="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white font-['Space_Grotesk'] font-bold uppercase tracking-widest text-sm hover:bg-white/20 transition-colors border border-white/30">
+            <span class="material-symbols-outlined">phone</span>
+            <span>0800 1 BROOK</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+  <Footer />
+</Layout>

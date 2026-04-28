@@ -1,0 +1,118 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+
+const title = "Service Areas | Brooklyn Services - Canterbury & South Island Coverage";
+const description = "Brooklyn Services operates across Christchurch, Canterbury, and the South Island. Local plumbers and drainage specialists serving Rolleston, Rangiora, Kaiapoi, and beyond.";
+
+const serviceAreas = [
+  {
+    name: "Christchurch",
+    subtitle: "CBD & All Suburbs",
+    description: "Primary service area covering Christchurch CBD and all surrounding suburbs including Hoon Hay, Halswell, Cashmere, and Hei Hei.",
+    href: "/areas/christchurch/"
+  },
+  {
+    name: "Rolleston",
+    subtitle: "Selwyn District",
+    description: "Rapid response for Rolleston and surrounding Selwyn District areas. New subdivisions, residential plumbing, and drainage services.",
+    href: "/areas/rolleston/"
+  },
+  {
+    name: "Lincoln",
+    subtitle: "Selwyn District",
+    description: "Serving the Lincoln township and surrounding rural properties. Agricultural and residential plumbing solutions.",
+    href: "/areas/lincoln/"
+  },
+  {
+    name: "Rangiora",
+    subtitle: "Waimakariri District",
+    description: "North Canterbury coverage including Rangiora and surrounding areas. Emergency plumbing and drainage services available.",
+    href: "/areas/rangiora/"
+  },
+  {
+    name: "Kaiapoi",
+    subtitle: "Waimakariri District",
+    description: "Full plumbing and drainage services for Kaiapoi residential and commercial properties.",
+    href: "/areas/kaiapoi/"
+  },
+  {
+    name: "Ashburton",
+    subtitle: "Mid Canterbury",
+    description: "South Island-wide utility locating and leak detection services available in Ashburton and Mid Canterbury region.",
+    href: "/areas/ashburton/"
+  }
+];
+
+const breadcrumbs = [{ label: "Service Areas", href: "/areas/" }];
+---
+
+<Layout title={title} description={description}>
+  <div class="fixed inset-0 isometric-pattern pointer-events-none z-0"></div>
+  
+  <Header />
+  
+  <div class="relative z-10">
+    <Breadcrumbs items={breadcrumbs} />
+    
+    <main class="space-y-0 pb-20 max-w-[1800px] mx-auto px-4">
+      
+      <section class="bg-[#CD5C5C] py-16 lg:py-24">
+        <div class="max-w-4xl mx-auto px-8 text-center">
+          <div class="flex items-center justify-center gap-4 mb-6">
+            <div class="w-16 h-1 bg-white/50 skew-block"></div>
+            <span class="text-white/80 font-['Space_Grotesk'] text-xs tracking-[0.4em] uppercase font-black">Coverage Map</span>
+            <div class="w-16 h-1 bg-white/50 skew-block"></div>
+          </div>
+          <h1 class="font-['Space_Grotesk'] font-black text-5xl lg:text-6xl text-white tracking-tighter leading-[0.9] uppercase mb-6">
+            Canterbury &<br/>South Island
+          </h1>
+          <p class="text-white/90 text-lg font-light font-['Inter'] leading-relaxed max-w-2xl mx-auto">
+            Based in Christchurch with rapid response across Canterbury. South Island-wide coverage for utility locating and leak detection.
+          </p>
+        </div>
+      </section>
+      
+      <section class="py-16 lg:py-24 bg-[#f6f3f2]">
+        <div class="max-w-6xl mx-auto px-4 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="font-['Space_Grotesk'] font-black text-4xl text-[#1b1b1c] uppercase tracking-tight mb-4">
+              Our Service Areas
+            </h2>
+            <p class="text-[#564241] text-lg font-['Inter'] max-w-2xl mx-auto">
+              Local expertise across Christchurch and Canterbury. South Island-wide for specialised services.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {serviceAreas.map((area) => (
+              <div class="group bg-white p-8 border-l-4 border-[#CD5C5C] hover:shadow-lg transition-all duration-300">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 class="font-['Space_Grotesk'] font-black text-2xl text-[#1b1b1c] uppercase tracking-tight group-hover:text-[#CD5C5C] transition-colors">
+                      {area.name}
+                    </h3>
+                    <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-xs tracking-wider uppercase font-bold">
+                      {area.subtitle}
+                    </span>
+                  </div>
+                  <span class="material-symbols-outlined text-[#CD5C5C] text-2xl">
+                    location_on
+                  </span>
+                </div>
+                <p class="text-[#564241] font-['Inter'] text-sm leading-relaxed">
+                  {area.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+    </main>
+  </div>
+  
+  <Footer />
+</Layout>

@@ -4,6 +4,8 @@ import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import Gallery from '../../components/ui/Gallery.astro';
 import HorizontalScroll from '../../components/ui/HorizontalScroll.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import FAQ from '../../components/ui/FAQ.astro';
 
 const title = "Utility Locating | Brooklyn Services - System 03";
 const description = "Professional utility locating services in Christchurch using GPR and electromagnetic technology. South Island-wide service. Call 0800 1 BROOK.";
@@ -32,6 +34,33 @@ const clients = [
   { name: 'Fulton Hogan', work: 'Roading upgrades — Timaru and South Canterbury' },
   { name: 'Thompson Wentworth', work: 'Surveying and property maintenance' },
   { name: 'Everest Consultants', work: 'Underground service locating and mapping' },
+];
+
+const faqItems = [
+  {
+    question: "Why is utility locating important before excavation?",
+    answer: "Utility strikes are costly, dangerous, and can cause service disruptions to entire neighborhoods. Before any excavation work — whether it's a new deck, subdivision, or road upgrade — professional utility locating identifies underground services to avoid damage. We use GPR, electromagnetic locating, and CCTV sonde tracking to provide accurate service maps."
+  },
+  {
+    question: "What technology do you use for utility locating?",
+    answer: "We use three main technologies: Ground Penetrating Radar (GPR) for non-metallic services like water mains and drains; electromagnetic locating for live cables and metallic pipes; and CCTV drain cameras with sonde for accurate drain location and depth measurement. This combination ensures comprehensive detection of all underground services."
+  },
+  {
+    question: "Do you offer utility locating services outside Christchurch?",
+    answer: "Yes. While we're based in Christchurch, we offer utility locating services South Island-wide on request. Our team has worked on projects across Canterbury, Central Otago, Timaru, Ashburton, and beyond. We're the preferred utility locating contractor for major infrastructure companies across the South Island."
+  },
+  {
+    question: "Can you locate non-metallic underground services?",
+    answer: "Yes. Our Ground Penetrating Radar (GPR) technology can detect non-metallic services including PVC water mains, drain pipes, ducts, and gas mains. This is particularly important in Christchurch where many post-earthquake repairs used non-metallic materials that traditional cable locators cannot detect."
+  },
+  {
+    question: "How accurate is your utility locating service?",
+    answer: "Our combination of GPR, electromagnetic locating, and CCTV sonde tracking provides highly accurate service location and depth measurement. We provide detailed mark-outs on the surface showing service paths and depths. Our accuracy has made us the preferred contractor for major infrastructure companies including Downer Group, Fulton Hogan, and Tonkin & Taylor."
+  },
+  {
+    question: "Do you provide full street mark-outs for construction projects?",
+    answer: "Yes. We provide full street mark-outs for construction sites, subdivisions, and roading projects across Canterbury. Our utility locators mark all detected services on the surface with paint and flags, indicating service type, path, and approximate depth. This ensures your excavation team can work safely and avoid damaging underground infrastructure."
+  }
 ];
 ---
 
@@ -74,6 +103,13 @@ const clients = [
             <span class="text-white font-['Space_Grotesk'] text-xs font-black uppercase tracking-wider skew-block-content">GPR Technology</span>
           </div>
         </div>
+      </div>
+    </section>
+    
+    <!-- Breadcrumbs -->
+    <section class="px-4 -mt-4">
+      <div class="bg-[#e5e2e1] px-6 py-4">
+        <Breadcrumbs items={[{ label: 'Services', href: '/services/' }, { label: 'Utility Locating' }]} />
       </div>
     </section>
     
@@ -172,6 +208,54 @@ const clients = [
       columns={3}
       horizontal={true}
     />
+    
+    <FAQ 
+      items={faqItems}
+      title="Utility Locating Questions"
+      subtitle="Common questions from our Christchurch and Canterbury customers"
+    />
+    
+    <!-- Related Services -->
+    <section class="bg-[#f6f3f2]">
+      <div class="max-w-[1800px] mx-auto px-8 pt-16 lg:pt-20 pb-8">
+        <div class="flex items-center gap-6 mb-6">
+          <div class="w-12 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Related Systems</span>
+        </div>
+        <h2 class="font-['Space_Grotesk'] font-black text-3xl lg:text-4xl text-[#1b1b1c] uppercase tracking-tight mb-8">
+          You May Also Need
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 pb-8">
+        <a href="/services/plumbing/" class="bg-white p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">plumbing</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] uppercase mb-2 group-hover:text-white transition-colors">Plumbing Dynamics</h3>
+          <p class="text-[#564241] text-sm group-hover:text-white/80 transition-colors font-['Inter']">Licensed plumbing for residential & commercial. Hot water, repairs & new builds.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+        <a href="/services/drainage/" class="bg-white p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">water_damage</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] uppercase mb-2 group-hover:text-white transition-colors">Drainage Logistics</h3>
+          <p class="text-[#564241] text-sm group-hover:text-white/80 transition-colors font-['Inter']">Blocked drains, CCTV inspection, new installations & septic systems.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+        <a href="/services/leak-detection/" class="bg-white p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">search</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] uppercase mb-2 group-hover:text-white transition-colors">Leak Detection</h3>
+          <p class="text-[#564241] text-sm group-hover:text-white/80 transition-colors font-['Inter']">Acoustic & thermal imaging to find hidden water leaks without digging.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+      </div>
+    </section>
     
     <section class="py-20 lg:py-28 bg-[#CD5C5C] mt-0">
       <div class="max-w-4xl mx-auto px-8 text-center">

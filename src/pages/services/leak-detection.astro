@@ -4,6 +4,8 @@ import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import Gallery from '../../components/ui/Gallery.astro';
 import HorizontalScroll from '../../components/ui/HorizontalScroll.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import FAQ from '../../components/ui/FAQ.astro';
 
 const title = "Leak Detection | Brooklyn Services - Detection Suite";
 const description = "Professional leak detection in Christchurch using acoustic geophone and thermal imaging technology. Accurate leak location with minimal disruption. South Island-wide.";
@@ -17,6 +19,33 @@ const galleryImages = [
   { src: '/images/services/leak-detection/leak-detect-5.jpg', alt: 'Leak detection April 2025', caption: 'Recent Work' },
   { src: '/images/services/leak-detection/historical-leak-1.jpg', alt: 'Historical leak detection project', caption: 'Detection Work' },
   { src: '/images/services/leak-detection/historical-leak-2.jpg', alt: 'Leak detection equipment', caption: 'Equipment' },
+];
+
+const faqItems = [
+  {
+    question: "How do you detect underground water leaks without digging?",
+    answer: "We use state-of-the-art geophone acoustic technology and thermal imaging to pinpoint underground water leaks with surgical accuracy. Our ultra-sonic leak detectors listen for the sound of water escaping from pipes, while thermal cameras detect temperature variations caused by leaks. This non-invasive approach means we can locate leaks without unnecessary excavation."
+  },
+  {
+    question: "What are the signs of a hidden water leak in my Christchurch home?",
+    answer: "Common signs include: unexplained increases in your water bill, damp spots on walls or floors, musty odors, reduced water pressure, the sound of running water when taps are off, and visible mold growth. If you notice any of these signs, contact us immediately for a professional leak detection assessment."
+  },
+  {
+    question: "How much does leak detection cost in Christchurch?",
+    answer: "Our leak detection pricing depends on the size and complexity of the property. We provide free initial consultations and transparent pricing before starting any work. The cost of professional leak detection is typically far less than the damage caused by undetected leaks, including water waste, structural damage, and mold remediation."
+  },
+  {
+    question: "Do you offer leak detection services outside Christchurch?",
+    answer: "Yes. While we're based in Christchurch, we offer leak detection services South Island-wide on request. Our acoustic and thermal imaging equipment is portable, allowing us to service properties across Canterbury and beyond. Contact us to discuss your specific location and requirements."
+  },
+  {
+    question: "Can you detect leaks in hot water pipes?",
+    answer: "Yes. Our thermal imaging technology is particularly effective for detecting hot water pipe leaks. The temperature difference between the hot water and surrounding materials creates a visible thermal signature that our cameras can detect. We can locate leaks in hot water cylinders, continuous flow systems, and underfloor heating pipes."
+  },
+  {
+    question: "How long does a typical leak detection survey take?",
+    answer: "Most residential leak detection surveys can be completed within 1-2 hours. Commercial properties and larger sites may require more time depending on the complexity. We aim to provide same-day service across Christchurch and Canterbury, with rapid response for emergency situations."
+  }
 ];
 ---
 
@@ -77,6 +106,13 @@ const galleryImages = [
             </div>
           </div>
         </div>
+      </div>
+    </section>
+    
+    <!-- Breadcrumbs -->
+    <section class="px-4 -mt-4">
+      <div class="bg-[#1b1b1c] px-6 py-4">
+        <Breadcrumbs items={[{ label: 'Services', href: '/services/' }, { label: 'Leak Detection' }]} />
       </div>
     </section>
     
@@ -181,6 +217,54 @@ const galleryImages = [
       columns={4}
       horizontal={true}
     />
+    
+    <FAQ 
+      items={faqItems}
+      title="Leak Detection Questions"
+      subtitle="Common questions from our Christchurch and Canterbury customers"
+    />
+    
+    <!-- Related Services -->
+    <section class="bg-[#1b1b1c]">
+      <div class="max-w-[1800px] mx-auto px-8 pt-16 lg:pt-20 pb-8">
+        <div class="flex items-center gap-6 mb-6">
+          <div class="w-12 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Related Systems</span>
+        </div>
+        <h2 class="font-['Space_Grotesk'] font-black text-3xl lg:text-4xl text-white uppercase tracking-tight mb-8">
+          You May Also Need
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 pb-8">
+        <a href="/services/plumbing/" class="bg-[#252525] p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors border-t border-[#CD5C5C]/10">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">plumbing</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-white uppercase mb-2">Plumbing Dynamics</h3>
+          <p class="text-white/60 text-sm group-hover:text-white/80 transition-colors font-['Inter']">Licensed plumbing for residential & commercial. Hot water, repairs & new builds.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+        <a href="/services/drainage/" class="bg-[#252525] p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors border-t border-[#CD5C5C]/10">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">water_damage</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-white uppercase mb-2">Drainage Logistics</h3>
+          <p class="text-white/60 text-sm group-hover:text-white/80 transition-colors font-['Inter']">Blocked drains, CCTV inspection, new installations & septic systems.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+        <a href="/services/utility-locating/" class="bg-[#252525] p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors border-t border-[#CD5C5C]/10">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">radar</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-white uppercase mb-2">Utility Locating</h3>
+          <p class="text-white/60 text-sm group-hover:text-white/80 transition-colors font-['Inter']">GPR scanning & cable detection before you dig. South Island-wide.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+      </div>
+    </section>
     
     <section class="py-20 lg:py-28 bg-[#CD5C5C] mt-0">
       <div class="max-w-4xl mx-auto px-8 text-center">

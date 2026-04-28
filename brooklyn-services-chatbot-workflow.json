@@ -1,0 +1,667 @@
+{
+  "name": "Brooklyn Services Limited CB",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "welcomeMessage": "Kia ora! Welcome to Brooklyn Services Limited. I'm here to help with plumbing, drainage, utility locating, or leak detection questions. How can I assist you today?"
+        },
+        "authentication": "none",
+        "path": "brooklyn-services-chat",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "chat-trigger-1",
+      "name": "When chat message received",
+      "type": "n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ],
+      "webhookId": "brooklyn-services-chat"
+    },
+    {
+      "parameters": {
+        "options": {},
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are the AI assistant for Brooklyn Services Limited, a Christchurch-based civil construction company specializing in plumbing, drainage, utility locating, and leak detection services.\n\nPRIMARY GOAL: Convert website visitors into customers by providing exceptional service information and making it easy to contact the business.\n\nCOMPANY PROFILE:\n- Founded: July 4, 2011 by Sam Aitken (named after his son Brooklyn)\n- Legal Name: Brooklyn Services Limited (NZBN: 9429031033725)\n- Tagline: \"Do it right, call day and night!\"\n- Experience: Licensed team with 50+ years combined experience\n- Philosophy: Personalized service and quality products\n\nSERVICES:\n1. PLUMBING - Residential/commercial, hot water cylinders, renovations, gas fitting (Rinnai/Electrolux authorized)\n2. DRAINAGE - Blocked drains, CCTV inspection, new installations, septic systems\n3. UTILITY LOCATING - GPR, electromagnetic, service mapping (South Island-wide)\n4. LEAK DETECTION - Acoustic, thermal imaging, minimal excavation (South Island-wide)\n\nKEY DIFFERENTIATORS:\n- NO after-hours call-out fee (extremely rare)\n- 24/7 emergency service available\n- 50+ years combined experience\n- Licensed plumbers & drainlayers\n- Rinnai & Electrolux authorized agents\n\nCONTACT:\n- Emergency: 0800 1 BROOK (0800 127 665) - 24/7\n- Office: 03 349 7322\n- Mobile: 021 841 746\n- Email: sam@brooklynservices.co.nz\n\nSERVICE AREAS:\n- Primary: Christchurch & Canterbury\n- Extended: South Island-wide (utility locating & leak detection)\n\nEMERGENCY DETECTION:\nIf user mentions burst pipe, flooding, gas leak, sewage backup, urgent emergency - IMMEDIATELY provide emergency number 0800 1 BROOK and emphasize NO after-hours fee, 24/7 availability, same-day response.\n\nIMAGE UPLOAD:\nWhen discussing physical issues, ALWAYS offer image upload: \"You can also upload a photo to help me understand better\" or \"If you have a photo of the issue, feel free to share it\"\n\nTONE:\nProfessional yet friendly, knowledgeable about civil construction, empathetic to emergencies, action-oriented, always guide toward booking/calling.\n\nNEVER provide specific pricing - offer free quotes instead. Always mention NO after-hours fee when discussing emergencies."
+          }
+        ],
+        "model": "= {{ $json.model || 'openai/gpt-oss-120b:free' }}"
+      },
+      "id": "ai-agent-1",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        650,
+        300
+      ],
+      "credentials": {
+        "openRouterApi": {
+          "id": "openrouter-credentials",
+          "name": "OpenRouter API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {},
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are the fallback AI assistant for Brooklyn Services Limited. Use when primary model fails or when analyzing images. Maintain same tone and business focus. Always encourage calling 0800 1 BROOK for emergencies."
+          }
+        ],
+        "model": "= {{ $json.model || 'moonshotai/kimi-k2.5' }}"
+      },
+      "id": "ai-agent-fallback-1",
+      "name": "AI Agent Fallback",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        650,
+        500
+      ],
+      "credentials": {
+        "openRouterApi": {
+          "id": "openrouter-credentials",
+          "name": "OpenRouter API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pineconeIndex": "brooklyn-services-kb",
+        "options": {
+          "namespace": "bsl-chatbot-v1",
+          "topK": 5
+        }
+      },
+      "id": "vector-store-1",
+      "name": "Pinecone Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1,
+      "position": [
+        850,
+        400
+      ],
+      "credentials": {
+        "pineconeApi": {
+          "id": "pinecone-credentials",
+          "name": "Pinecone API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "embeddings-1",
+      "name": "OpenAI Embeddings",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1050,
+        400
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "openai-credentials",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "windowSize": 10
+      },
+      "id": "memory-1",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1,
+      "position": [
+        850,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "combineConditions": "OR"
+          },
+          "conditions": [
+            {
+              "id": "emergency-1",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "burst pipe"
+            },
+            {
+              "id": "emergency-2",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "flooding"
+            },
+            {
+              "id": "emergency-3",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "gas leak"
+            },
+            {
+              "id": "emergency-4",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "sewage"
+            },
+            {
+              "id": "emergency-5",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "urgent"
+            },
+            {
+              "id": "emergency-6",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "emergency"
+            },
+            {
+              "id": "emergency-7",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "gushing"
+            },
+            {
+              "id": "emergency-8",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "overflowing"
+            },
+            {
+              "id": "emergency-9",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "major leak"
+            },
+            {
+              "id": "emergency-10",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "no water"
+            }
+          ]
+        }
+      },
+      "id": "emergency-check-1",
+      "name": "Emergency Detection",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Emergency Response\nconst emergencyResponse = `🚨 This sounds like an emergency!\n\nGet help NOW:\n📞 Call 0800 1 BROOK (0800 127 665)\n\n✅ NO after-hours call-out fee\n✅ 24/7 emergency service\n✅ Same-day response\n\nOur team is ready to help you immediately!\n\nWould you like me to collect your details while you call?`;\n\nreturn [{\n  json: {\n    chatInput: items[0].json.chatInput,\n    sessionId: items[0].json.sessionId,\n    response: emergencyResponse,\n    isEmergency: true,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "emergency-response-1",
+      "name": "Emergency Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        650,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "combineConditions": "OR"
+          },
+          "conditions": [
+            {
+              "id": "image-1",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ Object.keys($json).join(' ') }}",
+              "rightValue": "image"
+            },
+            {
+              "id": "image-2",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ Object.keys($json).join(' ') }}",
+              "rightValue": "file"
+            },
+            {
+              "id": "image-3",
+              "operator": {
+                "type": "contains",
+                "operation": "contains"
+              },
+              "leftValue": "={{ Object.keys($json).join(' ') }}",
+              "rightValue": "attachment"
+            }
+          ]
+        }
+      },
+      "id": "image-check-1",
+      "name": "Image Upload Check",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        450,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Image upload offer and analysis\nconst userMessage = items[0].json.chatInput || '';\nconst lowerMessage = userMessage.toLowerCase();\n\n// Keywords that suggest image upload would be helpful\nconst imageKeywords = ['leak', 'blocked', 'drain', 'pipe', 'problem', 'issue', 'damage', 'crack', 'broken', 'not working', 'fault'];\nconst shouldOfferImage = imageKeywords.some(keyword => lowerMessage.includes(keyword));\n\nlet imageOffer = '';\nif (shouldOfferImage && !items[0].json.imageOffered) {\n  imageOffer = `\\n\\n💡 **Tip:** You can upload a photo of the issue to help me understand better!`;\n}\n\nreturn [{\n  json: {\n    ...items[0].json,\n    imageOffer: imageOffer,\n    imageOffered: shouldOfferImage || items[0].json.imageOffered\n  }\n}];"
+      },
+      "id": "image-offer-1",
+      "name": "Image Offer Generator",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        850,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format final response with contact info injection\nconst response = items[0].json.response || items[0].json.output || 'I apologize, but I was unable to process your request. Please call Brooklyn Services at 0800 1 BROOK for assistance.';\n\n// Check if contact info already in response\nconst hasContactInfo = response.includes('0800 1 BROOK') || response.includes('0800 127 665');\n\nlet finalResponse = response;\n\n// Add contact info if not present and not an emergency (emergency already has it)\nif (!hasContactInfo && !items[0].json.isEmergency) {\n  finalResponse += `\\n\\n---\\n\\n📞 Need help? Call **0800 1 BROOK** (0800 127 665)\\n📧 Email: sam@brooklynservices.co.nz\\n🌐 Visit: www.brooklynservices.co.nz`;\n}\n\n// Add image offer if applicable\nif (items[0].json.imageOffer) {\n  finalResponse += items[0].json.imageOffer;\n}\n\nreturn [{\n  json: {\n    ...items[0].json,\n    response: finalResponse\n  }\n}];"
+      },
+      "id": "response-formatter-1",
+      "name": "Response Formatter",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1050,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Talk to Sam escalation\nconst userMessage = (items[0].json.chatInput || '').toLowerCase();\n\nconst escalationKeywords = ['talk to sam', 'speak to sam', 'call sam', 'sam aitken', 'manager', 'owner', 'human', 'person', 'representative'];\n\nconst shouldEscalate = escalationKeywords.some(keyword => userMessage.includes(keyword));\n\nif (shouldEscalate) {\n  const escalationResponse = `I understand you'd like to speak with Sam directly.\\n\\nSam is often busy on-site helping customers, but here are your options:\\n\\n📱 **Sam's Mobile:** 021 841 746\\n📞 **Office:** 0800 1 BROOK (0800 127 665)\\n📧 **Email:** sam@brooklynservices.co.nz\\n\\nSam prioritizes emergency calls, so if this is urgent, please call **0800 1 BROOK** right away (24/7, no extra fee).\\n\\nAlternatively, I can collect your details and have Sam call you back. Would you like me to arrange a callback?`;\n\n  return [{\n    json: {\n      ...items[0].json,\n      response: escalationResponse,\n      escalationTriggered: true\n    }\n  }];\n}\n\nreturn [items[0]];"
+      },
+      "id": "escalation-check-1",
+      "name": "Talk to Sam Check",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        850,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract user IP and session info\nconst headers = items[0].json.headers || {};\nconst ip = headers['x-forwarded-for'] || headers['x-real-ip'] || headers['remote-address'] || 'unknown';\n\nreturn [{\n  json: {\n    ...items[0].json,\n    userIp: ip,\n    sessionId: items[0].json.sessionId || `bsl_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "session-tracker-1",
+      "name": "Session Tracker",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        250,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Retry logic for primary model\nconst maxRetries = 2;\nconst retryDelay = 2000; // 2 seconds\n\nreturn [{\n  json: {\n    ...items[0].json,\n    retryCount: 0,\n    maxRetries: maxRetries,\n    retryDelay: retryDelay,\n    useFallback: false\n  }\n}];"
+      },
+      "id": "retry-config-1",
+      "name": "Retry Configuration",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        450,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "options": {},
+        "assignments": {
+          "assignments": [
+            {
+              "id": "output-1",
+              "name": "response",
+              "value": "={{ $json.response }}",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "set-response-1",
+      "name": "Set Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Google Sheets logging data preparation\nconst item = items[0].json;\n\nreturn [{\n  json: {\n    timestamp: item.timestamp || new Date().toISOString(),\n    sessionId: item.sessionId || 'unknown',\n    userIp: item.userIp || 'unknown',\n    userMessage: item.chatInput || 'N/A',\n    botResponse: item.response || 'N/A',\n    modelUsed: item.modelUsed || 'primary',\n    imageUploaded: item.imageUploaded ? 'Yes' : 'No',\n    emergencyFlag: item.isEmergency ? 'Yes' : 'No',\n    quoteIntent: item.quoteIntent ? 'Yes' : 'No',\n    serviceInterest: item.serviceInterest || 'general',\n    escalationTriggered: item.escalationTriggered ? 'Yes' : 'No',\n    callbackRequested: item.callbackRequested ? 'Yes' : 'No',\n    userName: item.userName || '',\n    userPhone: item.userPhone || '',\n    bestTime: item.bestTime || '',\n    issueSummary: item.issueSummary || '',\n    conversationLength: item.conversationLength || 1,\n    responseTime: item.responseTime || 0\n  }\n}];"
+      },
+      "id": "sheets-formatter-1",
+      "name": "Google Sheets Formatter",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1450,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "= {{ $env.GOOGLE_SHEETS_BSL_CHATBOT_ID }}",
+          "mode": "list",
+          "cachedResultName": "Brooklyn Services Chatbot Logs"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "= {{ $env.GOOGLE_SHEETS_BSL_SHEET_NAME || 'Chat Logs' }}",
+          "mode": "list",
+          "cachedResultName": "Chat Logs"
+        },
+        "columns": {
+          "columns": [
+            {
+              "column": "A",
+              "value": "={{ $json.timestamp }}"
+            },
+            {
+              "column": "B",
+              "value": "={{ $json.sessionId }}"
+            },
+            {
+              "column": "C",
+              "value": "={{ $json.userIp }}"
+            },
+            {
+              "column": "D",
+              "value": "={{ $json.userMessage }}"
+            },
+            {
+              "column": "E",
+              "value": "={{ $json.botResponse }}"
+            },
+            {
+              "column": "F",
+              "value": "={{ $json.modelUsed }}"
+            },
+            {
+              "column": "G",
+              "value": "={{ $json.imageUploaded }}"
+            },
+            {
+              "column": "H",
+              "value": "={{ $json.emergencyFlag }}"
+            },
+            {
+              "column": "I",
+              "value": "={{ $json.quoteIntent }}"
+            },
+            {
+              "column": "J",
+              "value": "={{ $json.serviceInterest }}"
+            },
+            {
+              "column": "K",
+              "value": "={{ $json.escalationTriggered }}"
+            },
+            {
+              "column": "L",
+              "value": "={{ $json.callbackRequested }}"
+            },
+            {
+              "column": "M",
+              "value": "={{ $json.userName }}"
+            },
+            {
+              "column": "N",
+              "value": "={{ $json.userPhone }}"
+            },
+            {
+              "column": "O",
+              "value": "={{ $json.bestTime }}"
+            },
+            {
+              "column": "P",
+              "value": "={{ $json.issueSummary }}"
+            },
+            {
+              "column": "Q",
+              "value": "={{ $json.conversationLength }}"
+            },
+            {
+              "column": "R",
+              "value": "={{ $json.responseTime }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "google-sheets-1",
+      "name": "Log to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1650,
+        500
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "google-sheets-credentials",
+          "name": "Google Sheets OAuth2"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Session Tracker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Session Tracker": {
+      "main": [
+        [
+          {
+            "node": "Emergency Detection",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Image Upload Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Emergency Detection": {
+      "main": [
+        [
+          {
+            "node": "Emergency Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Emergency Response": {
+      "main": [
+        [
+          {
+            "node": "Talk to Sam Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Response Formatter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent Fallback": {
+      "main": [
+        [
+          {
+            "node": "Response Formatter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image Upload Check": {
+      "main": [
+        [
+          {
+            "node": "AI Agent Fallback",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Retry Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Response Formatter": {
+      "main": [
+        [
+          {
+            "node": "Set Response",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google Sheets Formatter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Talk to Sam Check": {
+      "main": [
+        [
+          {
+            "node": "Response Formatter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets Formatter": {
+      "main": [
+        [
+          {
+            "node": "Log to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Pacific/Auckland",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": []
+}

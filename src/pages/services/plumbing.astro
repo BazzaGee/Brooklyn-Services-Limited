@@ -4,9 +4,12 @@ import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import Gallery from '../../components/ui/Gallery.astro';
 import HorizontalScroll from '../../components/ui/HorizontalScroll.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import FAQ from '../../components/ui/FAQ.astro';
 
 const title = "Plumbing Dynamics | Brooklyn Services - System 01";
 const description = "Precision hydraulic engineering for commercial and residential infrastructure. Licensed plumbers serving Christchurch & Canterbury. Call 0800 1 BROOK.";
+const ogImage = '/images/og-plumbing.svg';
 
 const galleryImages = [
   { src: '/images/services/plumbing/water-filter-install.jpeg', alt: 'Whole house water filter installation', caption: 'Water Filter Install' },
@@ -30,9 +33,36 @@ const advantages = [
   { icon: "emergency", title: "24/7 Emergency", desc: "Burst pipes, blocked drains, no hot water — we respond around the clock.", color: "#1b1b1c" },
   { icon: "build", title: "New Build Specialist", desc: "Full plumbing systems for new residential and commercial construction projects.", color: "#f6f3f2" },
 ];
+
+const faqItems = [
+  {
+    question: "Do you charge an after-hours call-out fee in Christchurch?",
+    answer: "No. Brooklyn Services is one of the few plumbing companies in Christchurch that doesn't charge extra for emergency call-outs outside business hours. We believe in fair pricing, always. Whether it's a burst pipe at midnight or a blocked drain on the weekend, you'll pay the same rate as during business hours."
+  },
+  {
+    question: "What areas around Christchurch do you service?",
+    answer: "We service the greater Canterbury region including Christchurch CBD, Halswell, Rolleston, Lincoln, Kaiapoi, Rangiora, Prebbleton, West Melton, and Ashburton. Our utility locating and leak detection services are available South Island-wide on request."
+  },
+  {
+    question: "Are your plumbers licensed and insured?",
+    answer: "Yes. All our plumbers are fully licensed with current certifications and ongoing technical training. We carry comprehensive insurance for all plumbing work. We're also authorized service agents for Rinnai and Electrolux across Canterbury."
+  },
+  {
+    question: "How quickly can you respond to an emergency plumbing call?",
+    answer: "We offer 24/7 emergency response with same-day service available across Christchurch and Canterbury. For critical infrastructure failures, our rapid response team is dispatched immediately. Call 0800 1 BROOK for immediate assistance."
+  },
+  {
+    question: "Do you provide free quotes for plumbing work?",
+    answer: "Yes, we provide free quotes for all plumbing services. Our licensed plumbers will assess your requirements and provide a detailed estimate before starting any work. Contact us to schedule a consultation."
+  },
+  {
+    question: "What brands of hot water systems do you install and service?",
+    answer: "As Rinnai and Electrolux authorized agents, we specialize in Rinnai and Electrolux hot water systems. We also service Rheem systems and work with both gas and electric models. We supply, install, and service continuous flow systems, storage cylinders, and instant boiling water units like Rinnai Boil & Brew and Zip."
+  }
+];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} ogImage={ogImage}>
   <div class="fixed inset-0 isometric-pattern pointer-events-none z-0"></div>
   
   <Header />
@@ -67,6 +97,13 @@ const advantages = [
           <h3 class="font-['Space_Grotesk'] font-black text-2xl text-white uppercase tracking-tight mb-4">Licensed Specialists</h3>
           <p class="text-white/80 font-['Inter']">Fully certified plumbers with 50+ years combined experience across Canterbury.</p>
         </div>
+      </div>
+    </section>
+    
+    <!-- Breadcrumbs -->
+    <section class="px-4 -mt-4">
+      <div class="bg-[#f6f3f2] px-6 py-4">
+        <Breadcrumbs items={[{ label: 'Services', href: '/services/' }, { label: 'Plumbing' }]} />
       </div>
     </section>
     
@@ -259,6 +296,54 @@ const advantages = [
           </div>
         ))}
       </HorizontalScroll>
+    </section>
+    
+    <FAQ 
+      items={faqItems}
+      title="Plumbing Questions"
+      subtitle="Common questions from our Christchurch and Canterbury customers"
+    />
+    
+    <!-- Related Services -->
+    <section class="bg-[#1b1b1c]">
+      <div class="max-w-[1800px] mx-auto px-8 pt-16 lg:pt-20 pb-8">
+        <div class="flex items-center gap-6 mb-6">
+          <div class="w-12 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Related Systems</span>
+        </div>
+        <h2 class="font-['Space_Grotesk'] font-black text-3xl lg:text-4xl text-white uppercase tracking-tight mb-8">
+          You May Also Need
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 pb-8">
+        <a href="/services/drainage/" class="bg-[#252525] p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors border-t border-[#CD5C5C]/10">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">water_damage</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-white uppercase mb-2">Drainage Logistics</h3>
+          <p class="text-white/60 text-sm group-hover:text-white/80 transition-colors font-['Inter']">Blocked drains, CCTV inspection, new installations & septic systems.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+        <a href="/services/leak-detection/" class="bg-[#252525] p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors border-t border-[#CD5C5C]/10">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">search</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-white uppercase mb-2">Leak Detection</h3>
+          <p class="text-white/60 text-sm group-hover:text-white/80 transition-colors font-['Inter']">Acoustic & thermal imaging to find hidden water leaks without digging.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+        <a href="/services/utility-locating/" class="bg-[#252525] p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors border-t border-[#CD5C5C]/10">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">radar</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-white uppercase mb-2">Utility Locating</h3>
+          <p class="text-white/60 text-sm group-hover:text-white/80 transition-colors font-['Inter']">GPR scanning & cable detection before you dig. South Island-wide.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+      </div>
     </section>
     
     <section class="py-20 lg:py-28 bg-[#CD5C5C] mt-0">

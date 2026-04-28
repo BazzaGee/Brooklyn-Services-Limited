@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://brooklynservices.co.nz/sitemap.xml
+
+# Block access to admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*?*
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /

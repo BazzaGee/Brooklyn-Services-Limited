@@ -1,0 +1,269 @@
+{
+  "name": "Brooklyn Services Limited CB",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "mode": "hostedChat",
+        "hostedChatNotice": "",
+        "authentication": "none",
+        "initialMessages": "Kia ora! Welcome to Brooklyn Services Limited. \u00f0\u0178\u2018\u2039\nI'm here to help with plumbing, drainage, utility locating, or leak detection questions.\nHow can I assist you today?",
+        "availableInChat": true,
+        "options": {}
+      },
+      "id": "chat-trigger-1",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -800,
+        -300
+      ]
+    },
+    {
+      "parameters": {
+        "aiAgentStarterCallout": "",
+        "promptType": "define",
+        "text": "=User: {{$json.chatInput}}",
+        "hasOutputParser": false,
+        "needsFallback": true,
+        "fallbackNotice": "",
+        "options": {
+          "systemMessage": "=You are a friendly, knowledgeable assistant for Brooklyn Services Limited, a Christchurch-based company specialising in plumbing, drainage, utility locating, and leak detection services.\n\nCOMPANY PROFILE:\n- Founded: 2011 by Sam Aitken\n- 50+ years combined team experience\n- NO after-hours call-out fee (extremely rare!)\n- Licensed plumbers and drainlayers\n- 24/7 emergency service: 0800 1 BROOK (0800 127 665)\n- Rinnai & Electrolux authorized agents (Canterbury-wide)\n\nSERVICES:\n1. Plumbing: Hot water, renovations, gas fitting, backflow, filters\n2. Drainage: Blocked drains (CCTV + water blaster), septic, stormwater\n3. Utility Locating: GPR, electromagnetic (South Island-wide)\n4. Leak Detection: Acoustic, thermal imaging (South Island-wide)\n\nEMERGENCY: If user mentions burst pipe, flooding, gas leak, sewage - IMMEDIATELY provide emergency number and emphasize NO after-hours fee!",
+          "maxIterations": 3
+        }
+      },
+      "id": "ai-agent-1",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        -480,
+        -300
+      ]
+    },
+    {
+      "parameters": {
+        "notice": "",
+        "scalingNotice": "",
+        "sessionIdType": "fromInput",
+        "sessionKey": "={{ $json.sessionId }}",
+        "contextWindowLength": 10
+      },
+      "id": "memory-1",
+      "name": "Simple Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -500,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "ragStarterCallout": "",
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Contains ALL service information for Brooklyn Services Limited including plumbing, drainage, utility locating, and leak detection services.",
+        "pineconeIndex": "brooklyn-services-kb",
+        "topK": 5,
+        "includeDocumentMetadata": true,
+        "useReranker": false,
+        "options": {
+          "pineconeNamespace": "bsl-chatbot-v1"
+        }
+      },
+      "id": "vs-docs-1",
+      "name": "VS Docs",
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        -350,
+        -150
+      ]
+    },
+    {
+      "parameters": {
+        "notice": "",
+        "model": "text-embedding-3-small",
+        "options": {
+          "dimensions": 1536
+        }
+      },
+      "id": "embeddings-1",
+      "name": "Embeddings OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "notice": "",
+        "model": "openai/gpt-oss-120b:free",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -650,
+        -200
+      ],
+      "id": "openrouter-primary",
+      "name": "OpenRouter Primary"
+    },
+    {
+      "parameters": {
+        "notice": "",
+        "model": "moonshotai/kimi-k2.5",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -650,
+        -50
+      ],
+      "id": "openrouter-fallback",
+      "name": "OpenRouter Fallback"
+    },
+    {
+      "parameters": {
+        "descriptionType": "auto",
+        "resource": "search",
+        "operation": "query",
+        "query": "={{ $json.chatInput }}",
+        "options": {}
+      },
+      "id": "tavily-1",
+      "name": "Web Search",
+      "type": "@tavily/n8n-nodes-tavily.tavilyTool",
+      "typeVersion": 1,
+      "position": [
+        -150,
+        -150
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "response",
+              "name": "text",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": false,
+        "options": {}
+      },
+      "id": "set-response",
+      "name": "Set Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        -300
+      ]
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Set Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VS Docs": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ],
+      "ai_embedding": [
+        [
+          {
+            "node": "Embeddings OpenAI",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Web Search": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Primary": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Fallback": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "id": "03b3bb99-9f85-4c06-b53f-8d70e0a274e8",
+  "active": true
+}

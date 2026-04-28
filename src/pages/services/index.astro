@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import HorizontalScroll from '../../components/ui/HorizontalScroll.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 
 const title = "Services | Brooklyn Services - Infrastructure Systems";
 const description = "Complete infrastructure solutions: Plumbing, Drainage, Utility Locating & Leak Detection. Licensed specialists serving Christchurch & Canterbury. Call 0800 1 BROOK.";
@@ -104,6 +105,13 @@ const capabilities = [
             </div>
           ))}
         </div>
+      </div>
+    </section>
+    
+    <!-- Breadcrumbs -->
+    <section class="px-4 -mt-4">
+      <div class="bg-[#f6f3f2] px-6 py-4">
+        <Breadcrumbs items={[{ label: 'Services' }]} />
       </div>
     </section>
     

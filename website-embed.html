@@ -1,0 +1,148 @@
+<!-- Brooklyn Services Limited Chat Widget -->
+<!-- Add this code before the closing </body> tag of your website -->
+
+<!-- n8n Chat Widget -->
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+  
+  // Initialize chat
+  const chat = createChat({
+    // n8n webhook endpoint - update with your actual n8n URL
+    webhookUrl: 'http://localhost:5678/webhook/brooklyn-services-chat',
+    
+    // Target container (creates floating widget if not found)
+    mode: 'window',
+    
+    // Welcome screen
+    showWelcomeScreen: true,
+    
+    // Initial messages
+    initialMessages: [
+      'Kia ora! Welcome to Brooklyn Services Limited. 👋',
+      'I\'m here to help with plumbing, drainage, utility locating, or leak detection questions.',
+      'How can I assist you today?'
+    ],
+    
+    // Localization
+    i18n: {
+      en: {
+        title: 'Brooklyn Services Assistant',
+        subtitle: 'Ask about plumbing, drainage, leaks, or utility locating',
+        footer: '0800 1 BROOK | sam@brooklynservices.co.nz',
+        getStarted: 'Start Chat',
+        inputPlaceholder: 'Type your message or upload a photo...',
+        fileUploadPlaceholder: 'Upload a photo of the issue...'
+      }
+    },
+    
+    // File upload configuration
+    allowFileUploads: true,
+    allowedMimeTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
+    maxFileSize: 5242880, // 5MB
+    
+    // Session configuration
+    loadPreviousSession: true,
+    sessionIdKey: 'bsl_chat_session',
+    
+    // Styling - matches Brooklyn Services brand
+    styling: {
+      primaryColor: '#dc2626', // Red - adjust to match your brand
+      position: 'bottom-right',
+      height: 600,
+      width: 380,
+      borderRadius: 12,
+      fontFamily: 'system-ui, -apple-system, sans-serif'
+    },
+    
+    // Additional features
+    showTimestamp: true,
+    enableMarkdown: true,
+    
+    // Callbacks
+    onReady: () => {
+      console.log('Brooklyn Services chatbot ready');
+    },
+    onMessage: (message) => {
+      console.log('Message:', message);
+    },
+    onFileUpload: (file) => {
+      console.log('File uploaded:', file.name);
+    }
+  });
+</script>
+
+<!-- Emergency Contact Banner (shown conditionally) -->
+<div id="bsl-emergency-banner" style="display: none; background: #dc2626; color: white; padding: 12px; text-align: center; position: fixed; top: 0; left: 0; right: 0; z-index: 9999; font-family: system-ui, sans-serif; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+  🚨 Emergency? Call <strong style="font-size: 1.1em;">0800 1 BROOK</strong> (0800 127 665) — 24/7, NO after-hours fee
+</div>
+
+<script>
+  // Show emergency banner if URL contains emergency parameter
+  if (window.location.search.includes('emergency=true')) {
+    document.getElementById('bsl-emergency-banner').style.display = 'block';
+  }
+  
+  // Add emergency button to page
+  document.addEventListener('DOMContentLoaded', function() {
+    // Create emergency button
+    const emergencyBtn = document.createElement('button');
+    emergencyBtn.id = 'bsl-emergency-btn';
+    emergencyBtn.innerHTML = '🚨 Emergency? Call 0800 1 BROOK';
+    emergencyBtn.style.cssText = `
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background: #dc2626;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 9998;
+      box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+      transition: all 0.3s ease;
+    `;
+    
+    emergencyBtn.onmouseover = function() {
+      this.style.transform = 'scale(1.05)';
+      this.style.boxShadow = '0 4px 12px rgba(220, 38, 38, 0.4)';
+    };
+    
+    emergencyBtn.onmouseout = function() {
+      this.style.transform = 'scale(1)';
+      this.style.boxShadow = '0 2px 8px rgba(220, 38, 38, 0.3)';
+    };
+    
+    emergencyBtn.onclick = function() {
+      window.location.href = 'tel:0800127665';
+    };
+    
+    document.body.appendChild(emergencyBtn);
+    
+    // Hide button on mobile after 5 seconds (optional)
+    if (window.innerWidth < 768) {
+      setTimeout(function() {
+        emergencyBtn.style.opacity = '0.7';
+      }, 5000);
+    }
+  });
+</script>
+
+<!-- Styles for mobile responsiveness -->
+<style>
+  @media (max-width: 768px) {
+    #bsl-emergency-banner {
+      font-size: 14px;
+      padding: 8px;
+    }
+    
+    #bsl-emergency-btn {
+      top: auto !important;
+      bottom: 100px !important;
+      right: 10px !important;
+      left: 10px !important;
+      width: calc(100% - 20px);
+    }
+  }
+</style>

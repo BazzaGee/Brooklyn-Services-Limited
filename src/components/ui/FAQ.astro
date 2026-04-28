@@ -1,0 +1,64 @@
+---
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  items: FAQItem[];
+  title?: string;
+  subtitle?: string;
+}
+
+const { 
+  items, 
+  title = "Frequently Asked Questions",
+  subtitle = "Common questions from our Christchurch and Canterbury customers"
+} = Astro.props;
+---
+
+<section class="py-20 lg:py-28 bg-[#f6f3f2]">
+  <div class="max-w-4xl mx-auto px-8">
+    <div class="text-center mb-12">
+      <div class="flex items-center justify-center gap-6 mb-6">
+        <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+        <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">FAQ</span>
+        <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+      </div>
+      <h2 class="font-['Space_Grotesk'] font-black text-4xl lg:text-5xl text-[#1b1b1c] uppercase mb-4 tracking-tight">
+        {title}
+      </h2>
+      <p class="text-[#564241] text-lg font-['Inter']">
+        {subtitle}
+      </p>
+    </div>
+    
+    <div class="space-y-4">
+      {items.map((item, index) => (
+        <div class="bg-white group" id={`faq-${index}`}>
+          <details class="group/open">
+            <summary class="flex items-center justify-between p-6 lg:p-8 cursor-pointer list-none hover:bg-[#f6f3f2] transition-colors">
+              <h3 class="font-['Space_Grotesk'] font-bold text-lg text-[#1b1b1c] pr-4">
+                {item.question}
+              </h3>
+              <span class="material-symbols-outlined text-[#CD5C5C] text-3xl flex-shrink-0 group-open/open:rotate-45 transition-transform">
+                add
+              </span>
+            </summary>
+            <div class="px-6 lg:px-8 pb-6 lg:pb-8">
+              <p class="text-[#564241] leading-relaxed font-['Inter']">
+                {item.answer}
+              </p>
+            </div>
+          </details>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

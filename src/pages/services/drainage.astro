@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import Gallery from '../../components/ui/Gallery.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import FAQ from '../../components/ui/FAQ.astro';
 
 const title = "Drainage Logistics | Brooklyn Services - System 02";
 const description = "Licensed drainlayers providing drainage solutions in Christchurch. New drains, blocked drain clearing, CCTV inspection, septic tanks. Call 0800 1 BROOK.";
@@ -16,6 +18,33 @@ const galleryImages = [
   { src: '/images/services/drainage/drainage-work-6.jpg', alt: 'Drainage project', caption: 'Drainage Project' },
   { src: '/images/services/drainage/drainage-work-7.jpg', alt: 'Drain clearing work', caption: 'Drain Clearing' },
   { src: '/images/services/drainage/drainage-work-8.jpg', alt: 'Drain inspection and repair', caption: 'Inspection' },
+];
+
+const faqItems = [
+  {
+    question: "How quickly can you clear a blocked drain in Christchurch?",
+    answer: "We offer same-day blocked drain clearing across Christchurch and Canterbury. Our high-pressure water blaster truck and mechanical spring machines can clear most blockages on the first visit. For emergencies, our 24/7 response team is dispatched immediately. Call 0800 1 BROOK."
+  },
+  {
+    question: "Do you offer CCTV drain inspections in Canterbury?",
+    answer: "Yes. We provide high-definition colour CCTV drain camera inspections across Christchurch and Canterbury. We email digital reports and video footage directly to customers, pinpointing exact locations of damage or blockages. This service is essential when buying or selling a property."
+  },
+  {
+    question: "Can you help with EQC or Natural Hazards Commission drainage claims?",
+    answer: "Yes. Our CCTV inspection reports can support Natural Hazards Commission (formerly EQC) claims for earthquake or natural hazard damage to drainage systems. We provide detailed documentation including video evidence to help with your claim process."
+  },
+  {
+    question: "What causes blocked drains in Christchurch homes?",
+    answer: "The most common causes of blocked drains in Christchurch include tree root intrusion (especially in older suburbs), grease and fat buildup, foreign objects flushed down toilets, and earthquake-damaged pipes. Our CCTV inspections can identify the exact cause and recommend the best solution."
+  },
+  {
+    question: "Do you install septic tanks in rural Canterbury?",
+    answer: "Yes. We install state-of-the-art septic tank systems for rural and lifestyle properties across Canterbury. We recommend Hynds Lifestyle Septic Tank Systems for their excellent quality and environmentally friendly design. We handle full installation, maintenance, and repairs."
+  },
+  {
+    question: "How much does drain unblocking cost in Christchurch?",
+    answer: "We provide transparent pricing with no hidden fees. Our rates vary depending on the severity and location of the blockage. We always assess the situation first and provide a clear estimate before starting work. Call 0800 1 BROOK for a free quote — and remember, we don't charge after-hours call-out fees."
+  }
 ];
 ---
 
@@ -53,6 +82,13 @@ const galleryImages = [
             </a>
           </div>
         </div>
+      </div>
+    </section>
+    
+    <!-- Breadcrumbs -->
+    <section class="px-4 -mt-4">
+      <div class="bg-[#1b1b1c] px-6 py-4">
+        <Breadcrumbs items={[{ label: 'Services', href: '/services/' }, { label: 'Drainage' }]} />
       </div>
     </section>
     
@@ -266,6 +302,54 @@ const galleryImages = [
       columns={4}
       horizontal={true}
     />
+    
+    <FAQ 
+      items={faqItems}
+      title="Drainage Questions"
+      subtitle="Common questions from our Christchurch and Canterbury customers"
+    />
+    
+    <!-- Related Services -->
+    <section class="bg-[#f6f3f2]">
+      <div class="max-w-[1800px] mx-auto px-8 pt-16 lg:pt-20 pb-8">
+        <div class="flex items-center gap-6 mb-6">
+          <div class="w-12 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Related Systems</span>
+        </div>
+        <h2 class="font-['Space_Grotesk'] font-black text-3xl lg:text-4xl text-[#1b1b1c] uppercase tracking-tight mb-8">
+          You May Also Need
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 pb-8">
+        <a href="/services/plumbing/" class="bg-white p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">plumbing</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] uppercase mb-2 group-hover:text-white transition-colors">Plumbing Dynamics</h3>
+          <p class="text-[#564241] text-sm group-hover:text-white/80 transition-colors font-['Inter']">Licensed plumbing for residential & commercial. Hot water, repairs & new builds.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+        <a href="/services/leak-detection/" class="bg-white p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">search</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] uppercase mb-2 group-hover:text-white transition-colors">Leak Detection</h3>
+          <p class="text-[#564241] text-sm group-hover:text-white/80 transition-colors font-['Inter']">Acoustic & thermal imaging to find hidden water leaks without digging.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+        <a href="/services/utility-locating/" class="bg-white p-8 lg:p-12 group hover:bg-[#CD5C5C] transition-colors">
+          <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-4 block group-hover:text-white transition-colors">radar</span>
+          <h3 class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] uppercase mb-2 group-hover:text-white transition-colors">Utility Locating</h3>
+          <p class="text-[#564241] text-sm group-hover:text-white/80 transition-colors font-['Inter']">GPR scanning & cable detection before you dig. South Island-wide.</p>
+          <div class="mt-4 flex items-center gap-2 text-[#CD5C5C] group-hover:text-white transition-colors">
+            <span class="font-['Space_Grotesk'] font-bold uppercase text-xs tracking-wider">Learn More</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+      </div>
+    </section>
     
     <section class="py-20 lg:py-28 bg-[#1b1b1c] mt-0">
       <div class="max-w-4xl mx-auto px-8 text-center">
