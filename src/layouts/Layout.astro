@@ -234,6 +234,7 @@ if (faqSchema) schemas.push(faqSchema);
         /* Window Dimensions */
         --chat--window--width: 380px;
         --chat--window--height: 600px;
+        --chat--window--border: 1px solid #CD5C5C;
         --chat--window--border-radius: 0.25rem;
         
         /* Toggle Button */
@@ -264,6 +265,11 @@ if (faqSchema) schemas.push(faqSchema);
       .chat-window-toggle {
         bottom: 1.5rem !important;
         right: 1.5rem !important;
+      }
+      
+      /* Chat window border shadow */
+      .chat-window {
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
       }
       
       /* Mobile responsiveness */
