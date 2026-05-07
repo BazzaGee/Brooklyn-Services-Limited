@@ -1,0 +1,25 @@
+{
+  "workflow_id": "eZ3gntFEOuHvGArV",
+  "workflow_name": "Brooklyn Services Limited Chatbot",
+  "webhook_id": "1780114b-14d6-4a4b-97ac-e16e4edf9c72",
+  "chat_url": "http://localhost:5678/chat/1780114b-14d6-4a4b-97ac-e16e4edf9c72",
+  "webhook_url": "http://localhost:5678/webhook/1780114b-14d6-4a4b-97ac-e16e4edf9c72",
+  "workflow_url": "http://localhost:5678/workflow/eZ3gntFEOuHvGArV",
+  "pinecone_namespace": "brooklyn-services-limited",
+  "pinecone_index": "n8n",
+  "pinecone_vectors_uploaded": 30,
+  "business_name": "Brooklyn Services Limited",
+  "business_slug": "brooklyn-services-limited",
+  "tavily_url": "https://www.brooklynservices.co.nz/",
+  "tavily_url_fixed": true,
+  "workflow_type": "webhook",
+  "enable_streaming": false,
+  "google_sheet_id": null,
+  "google_sheet_url": null,
+  "created_at": "2026-05-05T15:35:27",
+  "fixed_at": "2026-05-05T15:37:00",
+  "fixes_applied": [
+    "pinecone_rag_upload",
+    "tavily_url_fix"
+  ]
+}

@@ -130,7 +130,7 @@ const equipment = [
       <HorizontalScroll bgColor="#f6f3f2">
         {valueProps.map((prop) => (
           <div class="group transition-all duration-300" style={`min-width: 320px; max-width: 360px; background: ${prop.color}; padding: 2rem;`}>
-            <span class="material-symbols-outlined text-[#CD5C5C] text-5xl mb-6 block">{prop.icon}</span>
+            <span class={`material-symbols-outlined text-5xl mb-6 block ${prop.color === '#CD5C5C' ? 'text-white' : 'text-[#CD5C5C]'}`}>{prop.icon}</span>
             <h3 class={`font-['Space_Grotesk'] font-black text-2xl uppercase mb-4 tracking-tight ${prop.color === '#CD5C5C' ? 'text-white' : 'text-[#1b1b1c]'}`}>{prop.title}</h3>
             <p class={`font-['Inter'] leading-relaxed ${prop.color === '#CD5C5C' ? 'text-white/90' : prop.color === '#1b1b1c' ? 'text-white/70' : 'text-[#564241]'}`}>{prop.desc}</p>
           </div>
