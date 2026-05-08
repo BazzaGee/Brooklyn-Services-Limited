@@ -1,0 +1,23 @@
+{
+  "cloud_workflow_id": "FufXBD9U7t3PgI5V",
+  "cloud_webhook_path": "brooklyn-services-limited",
+  "cloud_webhook_url": "https://bazzagee.app.n8n.cloud/webhook/brooklyn-services-limited",
+  "cloud_workflow_url": "https://bazzagee.app.n8n.cloud/workflow/FufXBD9U7t3PgI5V",
+  "cloud_production_url": "https://bazzagee.app.n8n.cloud/workflow/FufXBD9U7t3PgI5V",
+  "postgres_table": "brooklyn_services_limited_chat_histories",
+  "pinecone_namespace": "brooklyn-services-limited",
+  "business_name": "Brooklyn Services Limited",
+  "business_slug": "brooklyn-services-limited",
+  "source_workflow_id": "eZ3gntFEOuHvGArV",
+  "deployed_at": "2026-05-08T11:26:00Z",
+  "verified_at": "2026-05-08T11:32:00Z",
+  "credentials_configured": true,
+  "test_status": "passed",
+  "test_results": {
+    "webhook_response": "success",
+    "session_memory": "verified (follow-up in same session retained context)",
+    "postgres_storage": "6 messages stored",
+    "pinecone_rag": "operational (service-specific responses returned)",
+    "tavily_crawl": "configured (https://www.brooklynservices.co.nz/)"
+  }
+}

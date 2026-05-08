@@ -267,9 +267,103 @@ if (faqSchema) schemas.push(faqSchema);
         right: 1.5rem !important;
       }
       
+      /* Animated chat bubble - pulse + bounce */
+      @keyframes chat-pulse {
+        0%, 100% {
+          transform: scale(1);
+          box-shadow: 0 4px 12px rgba(205, 92, 92, 0.3);
+        }
+        50% {
+          transform: scale(1.08);
+          box-shadow: 0 6px 20px rgba(205, 92, 92, 0.5);
+        }
+      }
+      
+      @keyframes chat-bounce {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+      
+      .chat-window-toggle {
+        animation: chat-pulse 2s ease-in-out infinite, chat-bounce 3s ease-in-out infinite !important;
+        transition: all 0.3s ease;
+      }
+      
+      /* Stop animation when chat is open */
+      .chat-window-toggle.active {
+        animation: none !important;
+      }
+      
+      /* Bot message avatar - Brooklyn Services logo */
+      .chat-message-from-bot {
+        display: flex;
+        align-items: flex-start;
+      }
+      
+      .chat-message-from-bot::before {
+        content: '';
+        display: block;
+        width: 32px;
+        height: 32px;
+        background-image: url('/images/logo-icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 50%;
+        margin-right: 8px;
+        flex-shrink: 0;
+        background-color: transparent !important;
+        padding: 0 !important;
+      }
+      
+      /* User message - no avatar icon */
+      .chat-message-from-user {
+        display: flex;
+        align-items: flex-start;
+      }
+      
+      .chat-message-from-user::before {
+        display: none;
+      }
+      
       /* Chat window border shadow */
       .chat-window {
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+      }
+      
+      /* Footer - Byte Digital branded link at bottom */
+      .chat-footer {
+        position: relative;
+      }
+      .chat-footer::after {
+        content: '';
+        display: none;
+      }
+      
+      /* Hide "Powered by n8n" branding */
+      .chat-footer a[href*="n8n"],
+      .chat-footer .chat-powered-by,
+      .chat-footer .n8n-chat-powered-by {
+        display: none !important;
+      }
+      
+      /* Typing indicator - fix layout and spacing */
+      .chat-message-typing {
+        max-width: none !important;
+        margin-left: 40px !important;
+        padding: 8px 16px !important;
+      }
+      
+      .chat-message-typing .chat-message-typing-body {
+        padding: 4px 8px !important;
+      }
+      
+      .chat-message-typing .chat-message-typing-circle {
+        margin: 3px !important;
       }
       
       /* Mobile responsiveness */
@@ -294,7 +388,7 @@ if (faqSchema) schemas.push(faqSchema);
       import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
       
       createChat({
-        webhookUrl: 'http://localhost:5678/webhook/6d2a35df-f350-4238-a97f-a7db402cf7a3/chat',
+        webhookUrl: 'https://bazzagee.app.n8n.cloud/webhook/brooklyn-services-limited',
         
         mode: 'window',
         
@@ -312,7 +406,7 @@ if (faqSchema) schemas.push(faqSchema);
           en: {
             title: 'Brooklyn Services Assistant',
             subtitle: 'Ask about plumbing, drainage, leaks, or utility locating',
-            footer: '0800 1 BROOK | sam@brooklynservices.co.nz',
+            footer: '',
             getStarted: 'Start Chat',
             inputPlaceholder: 'Type your message...',
           }
@@ -326,10 +420,34 @@ if (faqSchema) schemas.push(faqSchema);
         
         metadata: {},
         
-        enableStreaming: true,
+        enableStreaming: false,
         
         onReady: () => {
           console.log('Brooklyn Services chatbot ready');
+          
+          const injectFooter = () => {
+            const footer = document.querySelector('.chat-footer');
+            if (footer) {
+              footer.innerHTML = `
+                <div style="text-align: center; padding: 8px 0; font-size: 0.7rem; color: #564241;">
+                  Designed by <a href="https://www.bytedigital.co.nz/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; font-weight: 700;">
+                    <span style="color: #8B78E6;">BYTE</span><span style="color: #5EEAD4;">DIGITAL</span>
+                  </a>
+                </div>
+              `;
+            }
+          };
+          
+          injectFooter();
+          
+          const observer = new MutationObserver(() => {
+            const footer = document.querySelector('.chat-footer');
+            if (footer && footer.innerHTML.includes('n8n')) {
+              injectFooter();
+            }
+          });
+          
+          observer.observe(document.body, { childList: true, subtree: true });
         },
         onMessage: (message) => {
           console.log('Message:', message);
