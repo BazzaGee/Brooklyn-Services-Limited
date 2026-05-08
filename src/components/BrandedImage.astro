@@ -1,0 +1,44 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  logoPosition?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
+  logoOpacity?: number;
+  className?: string;
+}
+
+const {
+  src,
+  alt,
+  logoPosition = 'bottom-right',
+  logoOpacity = 0.75,
+  className = '',
+} = Astro.props;
+
+const positionClasses = {
+  'bottom-right': 'bottom-3 right-3',
+  'bottom-left': 'bottom-3 left-3',
+  'top-right': 'top-3 right-3',
+  'top-left': 'top-3 left-3',
+};
+
+const logoPositionClass = positionClasses[logoPosition] || positionClasses['bottom-right'];
+---
+
+<div class={`relative overflow-hidden group ${className}`}>
+  <img
+    src={src}
+    alt={alt}
+    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+    loading="lazy"
+  />
+  <div class={`absolute ${logoPositionClass} opacity-[${logoOpacity}] transition-opacity duration-300 group-hover:opacity-100`}>
+    <img
+      src="/images/logo-icon.png"
+      alt="Brooklyn Services"
+      class="w-8 h-8 md:w-10 md:h-10 object-contain drop-shadow-lg"
+      aria-hidden="true"
+    />
+  </div>
+  <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#CD5C5C] to-[#e28c8c] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+</div>
