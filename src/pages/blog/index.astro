@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
+import BrandedImage from '../../components/BrandedImage.astro';
+import { blogImages } from '../../data/blog-images.js';
 
 const title = "Resources | Brooklyn Services - Infrastructure Intelligence";
 const description = "Expert plumbing, drainage, and infrastructure maintenance resources from Brooklyn Services. Technical guides and protocols for Christchurch & Canterbury.";
@@ -60,7 +62,7 @@ const posts = [
             <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Information Resources</span>
             <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
           </div>
-          <h1 class="font-['Space_Grotesk'] font-black text-5xl lg:text-6xl text-[#1b1b1c] uppercase mb-6 tracking-tight">
+          <h1 class="font-['Space_Grotesk'] font-black text-4xl md:text-5xl lg:text-6xl text-[#1b1b1c] uppercase mb-6 tracking-tight">
             Infrastructure<br/><span class="text-[#CD5C5C]">Intelligence</span>
           </h1>
           <p class="text-xl text-[#564241] leading-relaxed font-['Inter']">
@@ -77,9 +79,13 @@ const posts = [
           {posts.map((post) => (
             <article class="bg-[#f0eded] group hover:bg-white transition-all duration-300 hover:shadow-ambient">
               <a href={`/blog/${post.slug}/`} class="block">
-                <div class="aspect-video bg-[#1b1b1c] flex items-center justify-center overflow-hidden relative">
-                  <span class="material-symbols-outlined text-6xl text-[#CD5C5C]/40">article</span>
-                  <div class="absolute inset-0 bg-[#CD5C5C]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="aspect-video bg-[#1b1b1c] overflow-hidden relative">
+                  <BrandedImage
+                    src={blogImages[post.slug] || '/images/blog/default.jpg'}
+                    alt={post.title}
+                    logoPosition="bottom-right"
+                    logoOpacity={0.75}
+                  />
                 </div>
                 <div class="p-6">
                   <div class="flex flex-wrap gap-2 mb-4">
