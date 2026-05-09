@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const title = "Thank You | Brooklyn Services - Message Received";
+const description = "Your message has been received. Brooklyn Services will respond within 24 hours. For emergencies, call 0800 1 BROOK.";
+---
+
+<Layout title={title} description={description}>
+  <div class="fixed inset-0 isometric-pattern pointer-events-none z-0"></div>
+  
+  <Header />
+  
+  <main class="relative z-10 space-y-0 px-4 pb-20 max-w-[1800px] mx-auto">
+    
+    <!-- Hero Section -->
+    <section class="bg-[#CD5C5C] py-20 lg:py-28">
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <span class="text-white/80 font-['Space_Grotesk'] text-xs tracking-[0.4em] uppercase font-black mb-6 block">Transmission Received</span>
+        <h1 class="font-['Space_Grotesk'] font-black text-4xl md:text-5xl lg:text-7xl text-white tracking-tighter leading-[0.95] uppercase mb-6 break-words">
+          Thank You
+        </h1>
+        <p class="text-white/90 text-lg font-light font-['Inter'] leading-relaxed max-w-2xl mx-auto">
+          Your message has been successfully transmitted to our infrastructure intelligence unit.
+        </p>
+      </div>
+    </section>
+    
+    <!-- Confirmation Content -->
+    <section class="max-w-3xl mx-auto mt-16 px-8">
+      <div class="bg-white p-10 lg:p-16 shadow-lg">
+        <div class="flex items-center gap-6 mb-10">
+          <div class="w-16 h-1.5 bg-[#CD5C5C] skew-block"></div>
+          <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-sm tracking-[0.3em] uppercase font-black">Next Steps</span>
+        </div>
+        
+        <div class="space-y-8">
+          <div>
+            <h2 class="font-['Space_Grotesk'] font-black text-2xl text-[#1b1b1c] tracking-tight uppercase mb-4">
+              What Happens Next?
+            </h2>
+            <p class="text-[#564241] font-['Inter'] leading-relaxed text-base">
+              A member of our team will review your inquiry and respond within 24 hours during business days. For urgent matters, please contact us directly.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-[#f6f3f2] p-6">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-[#CD5C5C]/10 flex items-center justify-center skew-block">
+                  <span class="material-symbols-outlined text-2xl text-[#CD5C5C] skew-block-content">phone</span>
+                </div>
+                <div>
+                  <span class="text-[#564241]/60 font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-bold block mb-1">Emergency Line</span>
+                  <a href="tel:0800127665" class="font-['Space_Grotesk'] font-black text-xl text-[#1b1b1c] hover:text-[#CD5C5C] transition-colors">
+                    0800 1 BROOK
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-[#f6f3f2] p-6">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-[#CD5C5C]/10 flex items-center justify-center skew-block">
+                  <span class="material-symbols-outlined text-2xl text-[#CD5C5C] skew-block-content">email</span>
+                </div>
+                <div>
+                  <span class="text-[#564241]/60 font-['Space_Grotesk'] text-xs tracking-[0.3em] uppercase font-bold block mb-1">Email</span>
+                  <a href="mailto:sam@brooklynservices.co.nz" class="font-['Space_Grotesk'] font-bold text-base text-[#1b1b1c] hover:text-[#CD5C5C] transition-colors break-all">
+                    sam@brooklynservices.co.nz
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pt-6 border-t border-[#e5e2e1]">
+            <a 
+              href="/"
+              class="btn-actuator inline-flex items-center"
+            >
+              <span>Return to Homepage</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Emergency Banner -->
+    <section class="bg-[#CD5C5C] py-8 mt-16">
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <div class="flex items-center justify-center gap-4">
+          <span class="material-symbols-outlined text-white text-3xl animate-pulse">emergency</span>
+          <p class="text-white font-['Space_Grotesk'] font-bold uppercase tracking-wider">
+            Critical Infrastructure Failure? Call <a href="tel:0800127665" class="underline hover:text-white/80">0800 1 BROOK</a> — 24/7 Response
+          </p>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+  <Footer />
+</Layout>

@@ -267,6 +267,33 @@ if (faqSchema) schemas.push(faqSchema);
         right: 1.5rem !important;
       }
       
+      /* Ensure chat layout is flex container for proper footer positioning */
+      .chat-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 100% !important;
+      }
+      
+      .chat-body {
+        flex: 1 !important;
+        overflow-y: auto !important;
+      }
+      
+      /* Brand footer styling */
+      .chat-brand-footer {
+        border-top: 1px solid #e5e5e5 !important;
+        padding: 8px !important;
+        font-size: 0.7rem !important;
+        text-align: center !important;
+        color: #564241 !important;
+        background: #f6f3f2 !important;
+      }
+      
+      .chat-brand-footer a {
+        text-decoration: none !important;
+        font-weight: 700 !important;
+      }
+      
       /* Animated chat bubble - pulse + bounce */
       @keyframes chat-pulse {
         0%, 100% {
@@ -387,6 +414,22 @@ if (faqSchema) schemas.push(faqSchema);
     <script type="module">
       import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
       
+      const injectFooter = () => {
+        try {
+          const chatLayout = document.querySelector('.chat-layout');
+          const chatFooter = document.querySelector('.chat-footer');
+          const existingBrandFooter = document.querySelector('.chat-brand-footer');
+          if (chatLayout && chatFooter && !existingBrandFooter) {
+            const footer = document.createElement('div');
+            footer.className = 'chat-brand-footer';
+            footer.innerHTML = `Built by <a href="https://www.bytedigital.co.nz/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; font-weight: 700;"><span style="color: #8B78E6;">BYTE</span><span style="color: #5EEAD4;">DIGITAL</span></a>`;
+            chatFooter.after(footer);
+          }
+        } catch (e) {
+          console.error('Footer injection error:', e);
+        }
+      };
+      
       createChat({
         webhookUrl: 'https://bazzagee.app.n8n.cloud/webhook/brooklyn-services-limited',
         
@@ -424,35 +467,24 @@ if (faqSchema) schemas.push(faqSchema);
         
         onReady: () => {
           console.log('Brooklyn Services chatbot ready');
-          
-          const injectFooter = () => {
-            const footer = document.querySelector('.chat-footer');
-            if (footer) {
-              footer.innerHTML = `
-                <div style="text-align: center; padding: 8px 0; font-size: 0.7rem; color: #564241;">
-                  Designed by <a href="https://www.bytedigital.co.nz/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; font-weight: 700;">
-                    <span style="color: #8B78E6;">BYTE</span><span style="color: #5EEAD4;">DIGITAL</span>
-                  </a>
-                </div>
-              `;
-            }
-          };
-          
           injectFooter();
-          
-          const observer = new MutationObserver(() => {
-            const footer = document.querySelector('.chat-footer');
-            if (footer && footer.innerHTML.includes('n8n')) {
-              injectFooter();
-            }
-          });
-          
-          observer.observe(document.body, { childList: true, subtree: true });
         },
         onMessage: (message) => {
           console.log('Message:', message);
         }
       });
+      
+      injectFooter();
+      
+      const observer = new MutationObserver(() => {
+        const chatLayout = document.querySelector('.chat-layout');
+        const existingBrandFooter = document.querySelector('.chat-brand-footer');
+        if (chatLayout && !existingBrandFooter) {
+          injectFooter();
+        }
+      });
+      
+      observer.observe(document.body, { childList: true, subtree: true });
     </script>
   </body>
 </html>

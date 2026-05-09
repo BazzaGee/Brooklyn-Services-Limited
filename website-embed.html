@@ -5,6 +5,22 @@
 <script type="module">
   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
   
+  const injectFooter = () => {
+    try {
+      const chatLayout = document.querySelector('.chat-layout');
+      const chatFooter = document.querySelector('.chat-footer');
+      const existingBrandFooter = document.querySelector('.chat-brand-footer');
+      if (chatLayout && chatFooter && !existingBrandFooter) {
+        const footer = document.createElement('div');
+        footer.className = 'chat-brand-footer';
+        footer.innerHTML = `Built by <a href="https://www.bytedigital.co.nz/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; font-weight: 700;"><span style="color: #8B78E6;">BYTE</span><span style="color: #5EEAD4;">DIGITAL</span></a>`;
+        chatFooter.after(footer);
+      }
+    } catch (e) {
+      console.error('Footer injection error:', e);
+    }
+  };
+  
   // Initialize chat
   const chat = createChat({
     // n8n webhook endpoint - update with your actual n8n URL
@@ -61,6 +77,7 @@
     // Callbacks
     onReady: () => {
       console.log('Brooklyn Services chatbot ready');
+      injectFooter();
     },
     onMessage: (message) => {
       console.log('Message:', message);
@@ -69,6 +86,18 @@
       console.log('File uploaded:', file.name);
     }
   });
+  
+  injectFooter();
+  
+  const observer = new MutationObserver(() => {
+    const chatLayout = document.querySelector('.chat-layout');
+    const existingBrandFooter = document.querySelector('.chat-brand-footer');
+    if (chatLayout && !existingBrandFooter) {
+      injectFooter();
+    }
+  });
+  
+  observer.observe(document.body, { childList: true, subtree: true });
 </script>
 
 <!-- Emergency Contact Banner (shown conditionally) -->

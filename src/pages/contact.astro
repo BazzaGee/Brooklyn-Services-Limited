@@ -135,7 +135,7 @@ const description = "Contact Brooklyn Services for plumbing, drainage, and detec
         </div>
         
         <form 
-          action="https://contact-form.brooklynservices.co.nz"
+          id="contact-form"
           method="POST"
           class="space-y-6"
         >
@@ -279,3 +279,23 @@ const description = "Contact Brooklyn Services for plumbing, drainage, and detec
   
   <Footer />
 </Layout>
+
+<script>
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.querySelector('span').textContent;
+      btn.querySelector('span').textContent = 'Transmitting...';
+      btn.disabled = true;
+      btn.style.opacity = '0.6';
+      btn.style.cursor = 'not-allowed';
+      
+      setTimeout(function() {
+        window.location.href = '/thank-you/';
+      }, 1500);
+    });
+  }
+</script>
