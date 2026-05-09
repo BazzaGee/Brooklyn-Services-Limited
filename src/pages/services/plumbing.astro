@@ -291,7 +291,7 @@ const faqItems = [
             <div class="w-14 h-14 bg-[#CD5C5C]/10 mb-6 flex items-center justify-center skew-block group-hover:bg-[#CD5C5C] transition-colors">
               <span class="material-symbols-outlined text-3xl text-[#CD5C5C] group-hover:text-white skew-block-content transition-colors">{adv.icon}</span>
             </div>
-            <h3 class={`font-['Space_Grotesk'] font-black text-xl uppercase mb-3 ${adv.color === '#CD5C5C' ? 'text-white' : 'text-[#1b1b1c]'}`}>{adv.title}</h3>
+            <h3 class={`font-['Space_Grotesk'] font-black text-xl uppercase mb-3 ${adv.color === '#CD5C5C' ? 'text-white' : adv.color === '#1b1b1c' ? 'text-white' : 'text-[#1b1b1c]'}`}>{adv.title}</h3>
             <p class={`text-sm font-['Inter'] ${adv.color === '#CD5C5C' ? 'text-white/90' : adv.color === '#1b1b1c' ? 'text-white/70' : 'text-[#564241]'}`}>{adv.desc}</p>
           </div>
         ))}

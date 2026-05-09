@@ -276,6 +276,12 @@ input:focus, textarea:focus, select:focus {
   .tetris-module-alt {
     clip-path: none;
   }
+
+  /* Full color images on mobile - remove grayscale filter */
+  img.grayscale,
+  img[class*="grayscale"] {
+    filter: none !important;
+  }
 }
 
 /* Scroll-Driven Horizontal Sections */

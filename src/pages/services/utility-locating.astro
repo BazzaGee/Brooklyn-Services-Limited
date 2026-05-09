@@ -20,20 +20,20 @@ const galleryImages = [
 ];
 
 const clients = [
-  { name: 'Tonkin & Taylor', work: 'EQC Service locating in Christchurch' },
-  { name: 'RDCL Geotech', work: 'Geophysics specialists — post-earthquake projects' },
-  { name: 'Mainmark Ground Engineering', work: 'Building lifting projects' },
-  { name: 'Downer Group NZ', work: 'Chorus UFB Rollout — Oamaru, Timaru, Ashburton; Kiwi Rail crossing upgrades' },
-  { name: 'Ventia', work: 'Enable UFB Rollout — Christchurch and surrounding towns' },
-  { name: 'Alpine Energy', work: 'Transpower Dark Fibre Network — Central Otago' },
-  { name: 'EA Networks', work: 'Electricity and fibre upgrades — Ashburton/Mid Canterbury' },
-  { name: 'Treetech', work: 'Arborist services' },
-  { name: 'Apollo Projects', work: 'Fonterra Clandeboye utility locating' },
-  { name: 'CCL Construction', work: 'New construction and subdivisions' },
-  { name: "Barnsy's All Trade Services", work: 'Drainage and CCC water main upgrades' },
-  { name: 'Fulton Hogan', work: 'Roading upgrades — Timaru and South Canterbury' },
-  { name: 'Thompson Wentworth', work: 'Surveying and property maintenance' },
-  { name: 'Everest Consultants', work: 'Underground service locating and mapping' },
+  { name: 'Tonkin & Taylor', logo: '/images/logos/tonkin-taylor.jpg', work: 'EQC Service locating in Christchurch' },
+  { name: 'RDCL Geotech', logo: null, work: 'Geophysics specialists — post-earthquake projects' },
+  { name: 'Mainmark Ground Engineering', logo: '/images/logos/mainmark.png', work: 'Building lifting projects' },
+  { name: 'Downer Group NZ', logo: '/images/logos/downer-group.png', work: 'Chorus UFB Rollout — Oamaru, Timaru, Ashburton; Kiwi Rail crossing upgrades' },
+  { name: 'Ventia', logo: '/images/logos/ventia.svg', work: 'Enable UFB Rollout — Christchurch and surrounding towns' },
+  { name: 'Alpine Energy', logo: null, work: 'Transpower Dark Fibre Network — Central Otago' },
+  { name: 'EA Networks', logo: null, work: 'Electricity and fibre upgrades — Ashburton/Mid Canterbury' },
+  { name: 'Treetech', logo: null, work: 'Arborist services' },
+  { name: 'Apollo Projects', logo: null, work: 'Fonterra Clandeboye utility locating' },
+  { name: 'CCL Construction', logo: '/images/logos/ccl-construction.png', work: 'New construction and subdivisions' },
+  { name: "Barnsy's All Trade Services", logo: null, work: 'Drainage and CCC water main upgrades' },
+  { name: 'Fulton Hogan', logo: '/images/logos/fulton-hogan.png', work: 'Roading upgrades — Timaru and South Canterbury' },
+  { name: 'Thompson Wentworth', logo: null, work: 'Surveying and property maintenance' },
+  { name: 'Everest Consultants', logo: null, work: 'Underground service locating and mapping' },
 ];
 
 const faqItems = [
@@ -92,11 +92,12 @@ const faqItems = [
         </div>
       </div>
       <div class="md:col-span-5 relative overflow-hidden bg-[#1b1b1c] tetris-module">
-        <img 
-          class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale contrast-125"
-          src="/images/services/utility-locating/new-drain-locate-1.jpg" 
-          alt="Utility locating equipment in action"
-        />
+          <img
+            src={image.src}
+            alt={image.alt}
+            loading={index < 2 ? "eager" : "lazy"}
+            class="absolute inset-0 w-full h-full object-cover opacity-70 grayscale transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110"
+          />
         <div class="absolute inset-0 bg-gradient-to-tl from-[#CD5C5C]/40 to-transparent"></div>
         <div class="absolute bottom-0 left-0 right-0 p-8">
           <div class="bg-[#CD5C5C] inline-block px-4 py-2 skew-block">
@@ -192,9 +193,14 @@ const faqItems = [
             <div class={`p-6 group transition-all ${index % 2 === 0 ? 'bg-white hover:shadow-lg' : 'bg-[#f6f3f2] hover:bg-white'}`} style="min-width: 320px; max-width: 380px;">
               <div class="flex items-center gap-4 mb-2">
                 <div class="w-3 h-3 bg-[#CD5C5C] skew-block"></div>
-                <h3 class="font-['Space_Grotesk'] font-black text-lg text-[#1b1b1c] uppercase tracking-tight">{client.name}</h3>
+                {client.logo ? (
+                  <img src={client.logo} alt={client.name} class="h-8 md:h-10 object-contain" loading="lazy" />
+                ) : (
+                  <h3 class="font-['Space_Grotesk'] font-black text-lg text-[#1b1b1c] uppercase tracking-tight">{client.name}</h3>
+                )}
               </div>
-              <p class="text-[#564241] text-sm font-['Inter'] pl-7">{client.work}</p>
+              {!client.logo && <p class="text-[#564241] text-sm font-['Inter'] pl-7">{client.work}</p>}
+              {client.logo && <p class="text-[#564241] text-sm font-['Inter']">{client.work}</p>}
             </div>
           ))}
         </HorizontalScroll>

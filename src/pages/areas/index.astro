@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import HorizontalScroll from '../../components/ui/HorizontalScroll.astro';
 
 const title = "Service Areas | Brooklyn Services - Canterbury & South Island Coverage";
 const description = "Brooklyn Services operates across Christchurch, Canterbury, and the South Island. Local plumbers and drainage specialists serving Rolleston, Rangiora, Kaiapoi, and beyond.";
@@ -86,7 +87,7 @@ const breadcrumbs = [{ label: "Service Areas", href: "/areas/" }];
             </p>
           </div>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:hidden">
             {serviceAreas.map((area) => (
               <div class="group bg-white p-8 border-l-4 border-[#CD5C5C] hover:shadow-lg transition-all duration-300">
                 <div class="flex items-start justify-between mb-4">
@@ -107,6 +108,31 @@ const breadcrumbs = [{ label: "Service Areas", href: "/areas/" }];
                 </p>
               </div>
             ))}
+          </div>
+
+          <div class="hidden lg:block">
+            <HorizontalScroll bgColor="#f6f3f2">
+              {serviceAreas.map((area) => (
+                <div class="group bg-white p-8 border-l-4 border-[#CD5C5C] hover:shadow-lg transition-all duration-300" style="min-width: 320px; max-width: 380px;">
+                  <div class="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 class="font-['Space_Grotesk'] font-black text-2xl text-[#1b1b1c] uppercase tracking-tight group-hover:text-[#CD5C5C] transition-colors">
+                        {area.name}
+                      </h3>
+                      <span class="text-[#CD5C5C] font-['Space_Grotesk'] text-xs tracking-wider uppercase font-bold">
+                        {area.subtitle}
+                      </span>
+                    </div>
+                    <span class="material-symbols-outlined text-[#CD5C5C] text-2xl">
+                      location_on
+                    </span>
+                  </div>
+                  <p class="text-[#564241] font-['Inter'] text-sm leading-relaxed">
+                    {area.description}
+                  </p>
+                </div>
+              ))}
+            </HorizontalScroll>
           </div>
         </div>
       </section>
