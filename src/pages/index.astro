@@ -193,12 +193,12 @@ const sectors = [
       </div>
       <HorizontalScroll bgColor="#1b1b1c">
         {sectors.map((sector) => (
-          <div class="bg-[#252525] p-8 group hover:bg-[#CD5C5C] transition-all duration-500 cursor-default" style="min-width: 280px; max-width: 320px;">
-            <div class="w-12 h-12 bg-[#CD5C5C]/20 group-hover:bg-white/20 mb-6 flex items-center justify-center skew-block transition-transform group-hover:scale-110">
-              <span class="material-symbols-outlined text-[#CD5C5C] group-hover:text-white text-2xl skew-block-content">{sector.icon}</span>
+          <div class="bg-[#CD5C5C] p-8 cursor-default" style="min-width: 280px; max-width: 320px;">
+            <div class="w-12 h-12 bg-white/20 mb-6 flex items-center justify-center skew-block">
+              <span class="material-symbols-outlined text-white text-2xl skew-block-content">{sector.icon}</span>
             </div>
-            <h4 class="font-black uppercase text-sm mb-3 tracking-widest group-hover:text-white font-['Space_Grotesk']">{sector.title}</h4>
-            <p class="text-sm text-white/60 group-hover:text-white/80 leading-relaxed font-['Inter']">{sector.desc}</p>
+            <h4 class="font-black uppercase text-sm mb-3 tracking-widest text-white font-['Space_Grotesk']">{sector.title}</h4>
+            <p class="text-sm text-white/90 leading-relaxed font-['Inter']">{sector.desc}</p>
           </div>
         ))}
       </HorizontalScroll>
